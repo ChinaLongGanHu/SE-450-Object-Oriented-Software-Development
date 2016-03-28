@@ -1,0 +1,20 @@
+<pre><tt><font color="#000000">01: </font><b><font color="#000080">import</font></b> java<font color="#990000">.</font>lang<font color="#990000">.</font>reflect<font color="#990000">.</font><font color="#990000">*</font><font color="#990000">;</font>
+<font color="#000000">02: </font><b><font color="#000080">import</font></b> java<font color="#990000">.</font>io<font color="#990000">.</font><font color="#990000">*</font><font color="#990000">;</font>
+<font color="#000000">03: </font>
+<font color="#000000">04: </font><i><font color="#9A1900">/**</font></i>
+<font color="#000000">05: </font><i><font color="#9A1900">   This program prints "Hello, World" the hard way,</font></i>
+<font color="#000000">06: </font><i><font color="#9A1900">   using reflection.</font></i>
+<font color="#000000">07: </font><i><font color="#9A1900">*/</font></i>
+<font color="#000000">08: </font><b><font color="#0000FF">public</font></b> <b><font color="#0000FF">class</font></b> HardHello
+<font color="#000000">09: </font><font color="#FF0000">{</font>
+<font color="#000000">10: </font>   <b><font color="#0000FF">public</font></b> <b><font color="#0000FF">static</font></b> <font color="#009900">void</font> <b><font color="#000000">main</font></b><font color="#990000">(</font>String<font color="#990000">[</font><font color="#990000">]</font> args<font color="#990000">)</font>
+<font color="#000000">11: </font>      <b><font color="#0000FF">throws</font></b> NoSuchMethodException<font color="#990000">,</font> IllegalAccessException<font color="#990000">,</font>
+<font color="#000000">12: </font>             InvocationTargetException
+<font color="#000000">13: </font>   <font color="#FF0000">{</font>
+<font color="#000000">14: </font>      Method m <font color="#990000">=</font> PrintStream<font color="#990000">.</font><b><font color="#0000FF">class</font></b><font color="#990000">.</font><b><font color="#000000">getDeclaredMethod</font></b><font color="#990000">(</font>
+<font color="#000000">15: </font>            <font color="#FF0000">"println"</font><font color="#990000">,</font> String<font color="#990000">.</font><b><font color="#0000FF">class</font></b><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">16: </font>      m<font color="#990000">.</font><b><font color="#000000">invoke</font></b><font color="#990000">(</font>System<font color="#990000">.</font>out<font color="#990000">,</font> <font color="#FF0000">"Hello, World!"</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">17: </font>   <font color="#FF0000">}</font>
+<font color="#000000">18: </font><font color="#FF0000">}</font>
+<font color="#000000">19: </font>
+</tt></pre>

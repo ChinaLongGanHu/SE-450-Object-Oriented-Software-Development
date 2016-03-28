@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="generator"
+ content="HTML Tidy for Linux/x86 (vers 12 April 2005), see www.w3.org">
+  <title>Horstmann Chapter 7</title>
+</head>
+
+<body>
+<div onclick="document.location='slide045.html'">
+<center><small><a href="slide043.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide045.html">next</a></small></center>
+<hr></div>
+<h2>Serialization</h2>
+<ul>
+  <li>Save collection of objects to stream<br>
+    <pre>Employee[] staff = new Employee[2]; <br>staff.add(new Employee(...)); <br>staff.add(new Employee(...)); <br></pre>
+  </li>
+  <li>Construct <tt>ObjectOutputStream</tt>:<br>
+    <pre>ObjectOutputStream out <br>   = new ObjectOutputStream( <br>      new FileOutputStream("staff.dat")); <br></pre>
+  </li>
+  <li>Save the array and close the stream<br>
+    <pre>out.writeObject(staff); <br>out.close(); <br></pre>
+  </li>
+</ul>
+
+<div onclick="document.location='slide045.html'"><hr>
+<center><small><a href="slide043.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide045.html">next</a></small></center>
+</div>
+</body>
+</html>

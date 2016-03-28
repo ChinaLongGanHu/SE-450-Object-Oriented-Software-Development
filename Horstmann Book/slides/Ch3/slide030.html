@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+  
+  <meta name="generator" content="HTML Tidy for Linux/x86 (vers 12 April 2005), see www.w3.org" />
+
+  
+  <title>Horstmann Chapter 3</title>
+</head>
+
+
+
+<body>
+<div onclick="document.location='slide031.html'">
+<center><small><a href="slide029.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide031.html">next</a></small></center>
+<hr></div>
+<h2>Law of Demeter</h2>
+
+<ul>
+
+  <li>The law: A method should only use objects that are
+    
+    <ul>
+
+      <li>instance fields of its class </li>
+
+      <li>parameters </li>
+
+      <li>objects that it constructs with <tt>new</tt> </li>
+
+    
+    </ul>
+
+  </li>
+
+  <li>Shouldn't use an object that is returned from a method call </li>
+
+  <li>Remedy in mail system: Delegate mailbox methods to mail system<br />
+
+    <tt>mailSystem.getCurrentMessage(int mailboxNumber);<br />
+
+mailSystem.addMessage(int mailboxNumber, Message msg);<br />
+
+. . .</tt> </li>
+
+  <li>Rule of thumb, not a mathematical law </li>
+
+</ul>
+
+
+<div onclick="document.location='slide031.html'"><hr>
+<center><small><a href="slide029.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide031.html">next</a></small></center>
+</div>
+</body>
+</html>

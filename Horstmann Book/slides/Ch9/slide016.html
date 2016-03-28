@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Horstmann Chapter 9</title>
+</head>
+
+<body>
+<div onclick="document.location='slide017.html'">
+<center><small><a href="slide015.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide017.html">next</a></small></center>
+<hr></div>
+<h2>Sensing Interruptions</h2>
+<pre>public class MyRunnable implements Runnable<br />{<br />   public void run()<br />   {<br />      try<br />      {<br />         while (...)<br />         {<br /><i>            do work</i>            <br />            Thread.sleep(...);<br />         }<i>      <br />      </i>}<br />      catch (InterruptedException e) {}<br />      <i>clean up</i><i> </i>
+   }
+}</pre>
+
+<div onclick="document.location='slide017.html'"><hr>
+<center><small><a href="slide015.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide017.html">next</a></small></center>
+</div>
+</body>
+</html>

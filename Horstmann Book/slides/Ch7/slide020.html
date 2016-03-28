@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="generator"
+ content="HTML Tidy for Linux/x86 (vers 12 April 2005), see www.w3.org">
+  <title>Horstmann Chapter 7</title>
+</head>
+
+<body>
+<div onclick="document.location='slide021.html'">
+<center><small><a href="slide019.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide021.html">next</a></small></center>
+<hr></div>
+<h2>Array Types</h2>
+<ul>
+  <li>Can apply <tt>getClass</tt> to an array </li>
+  <li>Returned object describes an array type<br>
+    <pre>double[] a = new double[10];<br>Class c = a.getClass();<br>if (c.isArray())<br>   System.out.println(c.getComponentType()); <br>      // prints double<br></pre>
+  </li>
+  <li> <tt>getName</tt> produces strange names for array types<br>
+    <pre><tt>[D for double[])<br>[[java.lang.String; for String[][]</tt>
+    </pre>
+  </li>
+</ul>
+
+<div onclick="document.location='slide021.html'"><hr>
+<center><small><a href="slide019.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide021.html">next</a></small></center>
+</div>
+</body>
+</html>

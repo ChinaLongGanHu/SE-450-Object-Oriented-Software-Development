@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+  
+  <meta name="generator" content="HTML Tidy for Linux/x86 (vers 12 April 2005), see www.w3.org" />
+
+  
+  <title>Horstmann Chapter 3</title>
+</head>
+
+
+
+<body>
+<div onclick="document.location='slide054.html'">
+<center><small><a href="slide052.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide054.html">next</a></small></center>
+<hr></div>
+<h2>Class Invariants</h2>
+
+<ul>
+
+  <li>Example: Circular array queue<br />
+
+    
+    <pre>0 &lt;= head &amp;&amp; head &lt; elements.length<br /></pre>
+
+  </li>
+
+  <li>First check it's true for constructor 
+    
+    <ul>
+
+      <li>Sets <tt>head = 0</tt> </li>
+
+      <li>Need precondition <tt>size &gt; 0</tt>! </li>
+
+    
+    </ul>
+
+  </li>
+
+  <li>Check mutators. Start with&nbsp;<tt>remove</tt>
+    
+    <ul>
+
+      <li>Sets <tt>head<sub>new</sub> = (head<sub>old</sub> + 1) %
+elements.length</tt> </li>
+
+      <li>We know <tt>head<sub>old</sub></tt> &gt;= 0 (Why?) </li>
+
+      <li> <tt>%</tt> operator property:
+        
+        <pre>0 &lt;= head<sub>new</sub> &amp;&amp; head<sub>new</sub> &lt; elements.length<br /></pre>
+
+      </li>
+
+    
+    </ul>
+
+  </li>
+
+  <li>What's the use? Array accesses are correct!<br />
+
+    
+    <pre>return elements[head];<br /></pre>
+
+  </li>
+
+</ul>
+
+
+<div onclick="document.location='slide054.html'"><hr>
+<center><small><a href="slide052.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide054.html">next</a></small></center>
+</div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="" />
+  <title>Horstmann Chapter 6</title>
+</head>
+
+<body>
+<div onclick="document.location='slide020.html'">
+<center><small><a href="slide018.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide020.html">next</a></small></center>
+<hr></div>
+<h2>Mouse Adapters</h2>
+<ul>
+  <li>What if you just want to listen to <tt>mousePressed?</tt></li>
+  <li>Extend <tt>MouseAdapter<br />
+    </tt>
+    <pre>public class MouseAdapter implements MouseListener<br />{ <br />   public void mouseClicked(MouseEvent event) {} <br />   public void mousePressed(MouseEvent event) {}<br />   public void mouseReleased(MouseEvent event) {}<br />   public void mouseEntered(MouseEvent event) {} <br />   public void mouseExited(MouseEvent event) {} <br />}<br /></pre>
+  </li>
+  <li>Component constructor adds listener:<br />
+    <pre>addMouseListener(new<br />   Mouse<b>Adapter</b>()<br />   {<br />      public void mousePressed(MouseEvent event) <br />      {<br />         <i>mouse action goes here</i>
+      }
+   });
+    </pre>
+  </li>
+</ul>
+
+<div onclick="document.location='slide020.html'"><hr>
+<center><small><a href="slide018.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide020.html">next</a></small></center>
+</div>
+</body>
+</html>

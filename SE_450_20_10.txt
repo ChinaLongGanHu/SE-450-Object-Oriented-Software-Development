@@ -1,0 +1,7 @@
+
+// This is for Homework
+http://fpl.cs.depaul.edu/jriely/450/notes/notes-final-project.html#slide001
+
+
+// JavaFX tutorial
+http://code.makery.ch/library/javafx-8-tutorial/

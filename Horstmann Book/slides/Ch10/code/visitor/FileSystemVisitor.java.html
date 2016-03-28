@@ -1,0 +1,18 @@
+<pre><tt><font color="#000000">01: </font><i><font color="#9A1900">/**</font></i>
+<font color="#000000">02: </font><i><font color="#9A1900">   The visitor interface type for visiting file system nodes.</font></i>
+<font color="#000000">03: </font><i><font color="#9A1900">*/</font></i>
+<font color="#000000">04: </font><b><font color="#0000FF">public</font></b> <b><font color="#0000FF">interface</font></b> FileSystemVisitor
+<font color="#000000">05: </font><font color="#FF0000">{</font>
+<font color="#000000">06: </font>   <i><font color="#9A1900">/**</font></i>
+<font color="#000000">07: </font><i><font color="#9A1900">      Visits a file node.</font></i>
+<font color="#000000">08: </font><i><font color="#9A1900">      @param node the file node</font></i>
+<font color="#000000">09: </font><i><font color="#9A1900">   */</font></i>
+<font color="#000000">10: </font>   <font color="#009900">void</font> <b><font color="#000000">visitFileNode</font></b><font color="#990000">(</font>FileNode node<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">11: </font>
+<font color="#000000">12: </font>   <i><font color="#9A1900">/**</font></i>
+<font color="#000000">13: </font><i><font color="#9A1900">      Visits a directory node.</font></i>
+<font color="#000000">14: </font><i><font color="#9A1900">      @param node the directory node</font></i>
+<font color="#000000">15: </font><i><font color="#9A1900">   */</font></i>
+<font color="#000000">16: </font>   <font color="#009900">void</font> <b><font color="#000000">visitDirectoryNode</font></b><font color="#990000">(</font>DirectoryNode node<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">17: </font><font color="#FF0000">}</font>
+</tt></pre>

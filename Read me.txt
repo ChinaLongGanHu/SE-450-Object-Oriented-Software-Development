@@ -1,0 +1,3 @@
+holub_design_patterns.pdf
+
+An excellent book for design patterns.

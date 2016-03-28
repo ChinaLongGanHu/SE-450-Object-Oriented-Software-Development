@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+  <title>Horstmann Chapter 2</title></head>
+
+
+<body>
+<div onclick="document.location='slide061.html'">
+<center><small><a href="slide059.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide061.html">next</a></small></center>
+<hr></div>
+<h2>Analyze Use Case: Leave a message</h2>
+<ol>
+  <li>User dials extension. <tt>Telephone</tt> sends number to <tt>Connection</tt><br />
+(Add collaborator&nbsp;<tt></tt><tt>Connection</tt> to <tt>Telephone</tt>) </li>
+  <li><tt>Connection</tt> asks <tt>MailSystem</tt> to find matching <tt>Mailbox</tt>
+  </li>
+  <li><tt>Connection</tt> asks <tt>Mailbox</tt> for greeting<br />
+(Add responsibility "manage greeting" to <tt>Mailbox</tt>,<br />
+add collaborator <tt>Mailbox</tt> to <tt>Connection</tt>) </li>
+  <li><tt>Connection</tt> asks <tt>Telephone</tt> to play greeting </li>
+  <li>User speaks message. <tt>Telephone</tt> asks <tt>Connection</tt>
+to record it.<br />
+(Add responsibility "record voice input" to <tt>Connection</tt>) </li>
+  <li>User hangs up. <tt>Telephone</tt> notifies <tt>Connection.</tt>
+  </li>
+  <li><tt>Connection</tt> constructs <tt>Message<br />
+    </tt> (Add card for <tt>Message</tt> class,<br />
+add collaborator&nbsp; <tt>Message</tt> to <tt>Connection</tt>) </li>
+  <li><tt>Connection</tt> adds <tt>Message</tt> to <tt>Mailbox</tt><br />
+  </li>
+</ol>
+
+<div onclick="document.location='slide061.html'"><hr>
+<center><small><a href="slide059.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide061.html">next</a></small></center>
+</div>
+</body>
+</html>

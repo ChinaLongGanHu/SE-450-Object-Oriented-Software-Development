@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="" />
+  <title>Horstmann Chapter 6</title>
+</head>
+
+<body>
+<div onclick="document.location='slide012.html'">
+<center><small><a href="slide010.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide012.html">next</a></small></center>
+<hr></div>
+<h2>The Substitution Principle</h2>
+<ul>
+  <li>Formulated by Barbara Liskov</li>
+  <li>You can use a subclass object whenever a superclass object is
+expected</li>
+  <li>Example:<br />
+    <tt>Employee e;<br />
+...<br />
+System.out.println("salary=" + e.getSalary());</tt></li>
+  <li>Can set <tt>e</tt> to <tt>Manager</tt> reference</li>
+  <li>Polymorphism: Correct <tt>getSalary</tt> method is invoked</li>
+</ul>
+
+<div onclick="document.location='slide012.html'"><hr>
+<center><small><a href="slide010.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide012.html">next</a></small></center>
+</div>
+</body>
+</html>

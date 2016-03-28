@@ -1,0 +1,45 @@
+---When User press Choice :2 "Change Simulation Parameters"--------------------------------------------------------------------------
+
+1.   Function Not Completed
+2.   Function     Completed
+3.   Function     Completed
+4.   Function     Completed
+5.   Function     Completed
+6.   Function     Completed
+7.   Function Not Completed
+8.   Function     Completed
+9.   Function     Completed
+10.  Function     Completed
+11.  Function     Completed
+12.  Function     Completed
+13.  Function     Completed
+14.  Function     Completed
+15.  Function Not Completed
+16.  Function     Completed
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+---When User press Choice :1 "Run Simulation"----------------------------------------------------------------------------------------
+
+1. I changed the color of traffic signals like RED, GREEN and YELLOW.
+2. I made rules for lights.
+3. I made a test case for light signals.
+4. I made classes for all traffic signals with their behaviors, properties along with thier controls.
+5. Implement all the methods of car functions. 
+6. Made a public interface for various functions of a car.
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+---Towards Report--------------------------------------------------------------------------------------------------------------------
+
+1. I draw some UML diagrams, Class Diagrams and Sequence Diagrams for my rough idea.
+2. I prepared an INDEX for my report.
+
+---My Next Goal----------------------------------------------------------------------------------------------------------------------
+
+1. To create all test cases for my project.
+2. To modify car behavior.
+3. I will implement all the simulations parameters as according to user.
+4. I will work on road side functionalities.
+5. The most important, I will make a RESET() method which will RESET all the parameters when user will click on "RESET Simulation and Return to Main Menu"
+-------------------------------------------------------------------------------------------------------------------------------------

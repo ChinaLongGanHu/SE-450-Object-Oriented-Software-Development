@@ -1,0 +1,53 @@
+<pre><tt><font color="#000000">01: </font><i><font color="#9A1900">/**</font></i>
+<font color="#000000">02: </font><i><font color="#9A1900">   A country with a name and area.</font></i>
+<font color="#000000">03: </font><i><font color="#9A1900">*/</font></i>
+<font color="#000000">04: </font><b><font color="#0000FF">public</font></b> <b><font color="#0000FF">class</font></b> Country <b><font color="#0000FF">implements</font></b> Comparable<font color="#990000">&lt;</font>Country<font color="#990000">&gt;</font>
+<font color="#000000">05: </font><font color="#FF0000">{</font>
+<font color="#000000">06: </font>   <i><font color="#9A1900">/**</font></i>
+<font color="#000000">07: </font><i><font color="#9A1900">      Constructs a country.</font></i>
+<font color="#000000">08: </font><i><font color="#9A1900">      @param aName the name of the country</font></i>
+<font color="#000000">09: </font><i><font color="#9A1900">      @param anArea the area of the country</font></i>
+<font color="#000000">10: </font><i><font color="#9A1900">   */</font></i>
+<font color="#000000">11: </font>   <b><font color="#0000FF">public</font></b> <b><font color="#000000">Country</font></b><font color="#990000">(</font>String aName<font color="#990000">,</font> <font color="#009900">double</font> anArea<font color="#990000">)</font>
+<font color="#000000">12: </font>   <font color="#FF0000">{</font>
+<font color="#000000">13: </font>      name <font color="#990000">=</font> aName<font color="#990000">;</font>
+<font color="#000000">14: </font>      area <font color="#990000">=</font> anArea<font color="#990000">;</font>
+<font color="#000000">15: </font>   <font color="#FF0000">}</font>
+<font color="#000000">16: </font>
+<font color="#000000">17: </font>   <i><font color="#9A1900">/**</font></i>
+<font color="#000000">18: </font><i><font color="#9A1900">      Gets the name of the country.</font></i>
+<font color="#000000">19: </font><i><font color="#9A1900">      @return the name</font></i>
+<font color="#000000">20: </font><i><font color="#9A1900">   */</font></i>
+<font color="#000000">21: </font>   <b><font color="#0000FF">public</font></b> String <b><font color="#000000">getName</font></b><font color="#990000">(</font><font color="#990000">)</font>
+<font color="#000000">22: </font>   <font color="#FF0000">{</font>
+<font color="#000000">23: </font>      <b><font color="#0000FF">return</font></b> name<font color="#990000">;</font>
+<font color="#000000">24: </font>   <font color="#FF0000">}</font>
+<font color="#000000">25: </font>
+<font color="#000000">26: </font>   <i><font color="#9A1900">/**</font></i>
+<font color="#000000">27: </font><i><font color="#9A1900">      Gets the area of the country.</font></i>
+<font color="#000000">28: </font><i><font color="#9A1900">      @return the area</font></i>
+<font color="#000000">29: </font><i><font color="#9A1900">   */</font></i>
+<font color="#000000">30: </font>   <b><font color="#0000FF">public</font></b> <font color="#009900">double</font> <b><font color="#000000">getArea</font></b><font color="#990000">(</font><font color="#990000">)</font>
+<font color="#000000">31: </font>   <font color="#FF0000">{</font>
+<font color="#000000">32: </font>      <b><font color="#0000FF">return</font></b> area<font color="#990000">;</font>
+<font color="#000000">33: </font>   <font color="#FF0000">}</font>
+<font color="#000000">34: </font>
+<font color="#000000">35: </font>
+<font color="#000000">36: </font>   <i><font color="#9A1900">/**</font></i>
+<font color="#000000">37: </font><i><font color="#9A1900">      Compares two countries by area.</font></i>
+<font color="#000000">38: </font><i><font color="#9A1900">      @param other the other country</font></i>
+<font color="#000000">39: </font><i><font color="#9A1900">      @return a negative number if this country has a smaller</font></i>
+<font color="#000000">40: </font><i><font color="#9A1900">      area than otherCountry, 0 if the areas are the same,</font></i>
+<font color="#000000">41: </font><i><font color="#9A1900">      a positive number otherwise</font></i>
+<font color="#000000">42: </font><i><font color="#9A1900">   */</font></i>
+<font color="#000000">43: </font>   <b><font color="#0000FF">public</font></b> <font color="#009900">int</font> <b><font color="#000000">compareTo</font></b><font color="#990000">(</font>Country other<font color="#990000">)</font>
+<font color="#000000">44: </font>   <font color="#FF0000">{</font>
+<font color="#000000">45: </font>      <b><font color="#0000FF">if</font></b> <font color="#990000">(</font>area <font color="#990000">&lt;</font> other<font color="#990000">.</font>area<font color="#990000">)</font> <b><font color="#0000FF">return</font></b> <font color="#990000">-</font><font color="#993399">1</font><font color="#990000">;</font>
+<font color="#000000">46: </font>      <b><font color="#0000FF">if</font></b> <font color="#990000">(</font>area <font color="#990000">&gt;</font> other<font color="#990000">.</font>area<font color="#990000">)</font> <b><font color="#0000FF">return</font></b> <font color="#993399">1</font><font color="#990000">;</font>
+<font color="#000000">47: </font>      <b><font color="#0000FF">return</font></b> <font color="#993399">0</font><font color="#990000">;</font>
+<font color="#000000">48: </font>   <font color="#FF0000">}</font>
+<font color="#000000">49: </font>
+<font color="#000000">50: </font>   <b><font color="#0000FF">private</font></b> String name<font color="#990000">;</font>
+<font color="#000000">51: </font>   <b><font color="#0000FF">private</font></b> <font color="#009900">double</font> area<font color="#990000">;</font>
+<font color="#000000">52: </font><font color="#FF0000">}</font>
+</tt></pre>

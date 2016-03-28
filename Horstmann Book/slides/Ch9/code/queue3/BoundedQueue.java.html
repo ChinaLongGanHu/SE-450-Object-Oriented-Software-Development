@@ -1,0 +1,56 @@
+<pre><tt><font color="#000000">01: </font><i><font color="#9A1900">/** </font></i>
+<font color="#000000">02: </font><i><font color="#9A1900">    A first-in, first-out bounded collection of objects. </font></i>
+<font color="#000000">03: </font><i><font color="#9A1900">*/</font></i> 
+<font color="#000000">04: </font><b><font color="#0000FF">public</font></b> <b><font color="#0000FF">class</font></b> BoundedQueue<font color="#990000">&lt;</font>E<font color="#990000">&gt;</font>
+<font color="#000000">05: </font><font color="#FF0000">{</font> 
+<font color="#000000">06: </font>   <i><font color="#9A1900">/** </font></i>
+<font color="#000000">07: </font><i><font color="#9A1900">       Constructs an empty queue. </font></i>
+<font color="#000000">08: </font><i><font color="#9A1900">       @param capacity the maximum capacity of the queue </font></i>
+<font color="#000000">09: </font><i><font color="#9A1900">   */</font></i> 
+<font color="#000000">10: </font>   <b><font color="#0000FF">public</font></b> <b><font color="#000000">BoundedQueue</font></b><font color="#990000">(</font><font color="#009900">int</font> capacity<font color="#990000">)</font> 
+<font color="#000000">11: </font>   <font color="#FF0000">{</font> 
+<font color="#000000">12: </font>      elements <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> Object<font color="#990000">[</font>capacity<font color="#990000">]</font><font color="#990000">;</font> 
+<font color="#000000">13: </font>      head <font color="#990000">=</font> <font color="#993399">0</font><font color="#990000">;</font> 
+<font color="#000000">14: </font>      tail <font color="#990000">=</font> <font color="#993399">0</font><font color="#990000">;</font> 
+<font color="#000000">15: </font>      size <font color="#990000">=</font> <font color="#993399">0</font><font color="#990000">;</font>
+<font color="#000000">16: </font>   <font color="#FF0000">}</font> 
+<font color="#000000">17: </font>
+<font color="#000000">18: </font>   <i><font color="#9A1900">/** </font></i>
+<font color="#000000">19: </font><i><font color="#9A1900">       Removes the object at the head. </font></i>
+<font color="#000000">20: </font><i><font color="#9A1900">       @return the object that has been removed from the queue</font></i>
+<font color="#000000">21: </font><i><font color="#9A1900">   */</font></i> 
+<font color="#000000">22: </font>   <b><font color="#0000FF">public</font></b> <b><font color="#0000FF">synchronized</font></b> E <b><font color="#000000">remove</font></b><font color="#990000">(</font><font color="#990000">)</font> 
+<font color="#000000">23: </font>         <b><font color="#0000FF">throws</font></b> InterruptedException
+<font color="#000000">24: </font>   <font color="#FF0000">{</font> 
+<font color="#000000">25: </font>      <b><font color="#0000FF">while</font></b> <font color="#990000">(</font>size <font color="#990000">=</font><font color="#990000">=</font> <font color="#993399">0</font><font color="#990000">)</font> <b><font color="#000000">wait</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">26: </font>      E r <font color="#990000">=</font> <font color="#990000">(</font>E<font color="#990000">)</font> elements<font color="#990000">[</font>head<font color="#990000">]</font><font color="#990000">;</font> 
+<font color="#000000">27: </font>      head<font color="#990000">+</font><font color="#990000">+</font><font color="#990000">;</font>
+<font color="#000000">28: </font>      size<font color="#990000">-</font><font color="#990000">-</font><font color="#990000">;</font>
+<font color="#000000">29: </font>      <b><font color="#0000FF">if</font></b> <font color="#990000">(</font>head <font color="#990000">=</font><font color="#990000">=</font> elements<font color="#990000">.</font>length<font color="#990000">)</font> 
+<font color="#000000">30: </font>         head <font color="#990000">=</font> <font color="#993399">0</font><font color="#990000">;</font> 
+<font color="#000000">31: </font>      <b><font color="#000000">notifyAll</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">32: </font>      <b><font color="#0000FF">return</font></b> r<font color="#990000">;</font> 
+<font color="#000000">33: </font>   <font color="#FF0000">}</font> 
+<font color="#000000">34: </font>
+<font color="#000000">35: </font>   <i><font color="#9A1900">/** </font></i>
+<font color="#000000">36: </font><i><font color="#9A1900">       Appends an object at the tail. </font></i>
+<font color="#000000">37: </font><i><font color="#9A1900">       @param newValue the object to be appended </font></i>
+<font color="#000000">38: </font><i><font color="#9A1900">   */</font></i> 
+<font color="#000000">39: </font>   <b><font color="#0000FF">public</font></b> <b><font color="#0000FF">synchronized</font></b> <font color="#009900">void</font> <b><font color="#000000">add</font></b><font color="#990000">(</font>E newValue<font color="#990000">)</font> 
+<font color="#000000">40: </font>         <b><font color="#0000FF">throws</font></b> InterruptedException
+<font color="#000000">41: </font>   <font color="#FF0000">{</font> 
+<font color="#000000">42: </font>      <b><font color="#0000FF">while</font></b> <font color="#990000">(</font>size <font color="#990000">=</font><font color="#990000">=</font> elements<font color="#990000">.</font>length<font color="#990000">)</font> <b><font color="#000000">wait</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">43: </font>      elements<font color="#990000">[</font>tail<font color="#990000">]</font> <font color="#990000">=</font> newValue<font color="#990000">;</font> 
+<font color="#000000">44: </font>      tail<font color="#990000">+</font><font color="#990000">+</font><font color="#990000">;</font>
+<font color="#000000">45: </font>      size<font color="#990000">+</font><font color="#990000">+</font><font color="#990000">;</font>
+<font color="#000000">46: </font>      <b><font color="#0000FF">if</font></b> <font color="#990000">(</font>tail <font color="#990000">=</font><font color="#990000">=</font> elements<font color="#990000">.</font>length<font color="#990000">)</font> 
+<font color="#000000">47: </font>         tail <font color="#990000">=</font> <font color="#993399">0</font><font color="#990000">;</font> 
+<font color="#000000">48: </font>      <b><font color="#000000">notifyAll</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">49: </font>   <font color="#FF0000">}</font> 
+<font color="#000000">50: </font>
+<font color="#000000">51: </font>   <b><font color="#0000FF">private</font></b> Object<font color="#990000">[</font><font color="#990000">]</font> elements<font color="#990000">;</font> 
+<font color="#000000">52: </font>   <b><font color="#0000FF">private</font></b> <font color="#009900">int</font> head<font color="#990000">;</font> 
+<font color="#000000">53: </font>   <b><font color="#0000FF">private</font></b> <font color="#009900">int</font> tail<font color="#990000">;</font> 
+<font color="#000000">54: </font>   <b><font color="#0000FF">private</font></b> <font color="#009900">int</font> size<font color="#990000">;</font>
+<font color="#000000">55: </font><font color="#FF0000">}</font>
+</tt></pre>

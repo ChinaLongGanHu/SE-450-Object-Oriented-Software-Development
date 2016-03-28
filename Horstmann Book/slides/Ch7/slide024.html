@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="generator"
+ content="HTML Tidy for Linux/x86 (vers 12 April 2005), see www.w3.org">
+  <title>Horstmann Chapter 7</title>
+</head>
+
+<body>
+<div onclick="document.location='slide025.html'">
+<center><small><a href="slide023.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide025.html">next</a></small></center>
+<hr></div>
+<h2>Overriding <tt>toString</tt> in Subclass</h2>
+<ul>
+  <li>Format superclass first </li>
+  <li>
+    <pre>public class Manager extends Employee <br>{ <br>   public String toString() <br>   {  <br>      <b>return super.toString() </b>
+         + "[department=" + department + "]"; 
+   } 
+   ... 
+} 
+
+    </pre>
+  </li>
+  <li>Typical string<br>
+    <pre>Manager[name=Dolly Dollar,salary=100000][department=Finance]<br></pre>
+  </li>
+  <li>Note that superclass reports actual class name </li>
+</ul>
+
+<div onclick="document.location='slide025.html'"><hr>
+<center><small><a href="slide023.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide025.html">next</a></small></center>
+</div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="generator"
+ content="HTML Tidy for Linux/x86 (vers 12 April 2005), see www.w3.org">
+  <title>Horstmann Chapter 7</title>
+</head>
+
+<body>
+<div onclick="document.location='slide069.html'">
+<center><small><a href="slide067.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide069.html">next</a></small></center>
+<hr></div>
+<h2>Limitations of Generics</h2>
+<ul>
+  <li>Cannot form arrays of parameterized types<br>
+    <tt>Comparable&lt;E&gt;[]</tt> is illegal. Remedy: <tt>ArrayList&lt;Comparable&lt;E&gt;&gt;</tt></li>
+  <li>Cannot reference type parameters in a static context (static
+fields, methods, inner classes)</li>
+  <li>Cannot throw or catch generic types</li>
+  <li>Cannot have type clashes after erasure. Ex. <tt>GregorianCalendar</tt>
+cannot&nbsp; implement <tt>Comparable&lt;GregorianCalendar&gt;</tt>
+since it already implements <tt>Comparable&lt;Calendar&gt;</tt>, and
+both erase to <tt>Comparable</tt><br>
+  </li>
+</ul>
+
+<div onclick="document.location='slide069.html'"><hr>
+<center><small><a href="slide067.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide069.html">next</a></small></center>
+</div>
+</body>
+</html>

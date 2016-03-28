@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+  
+  <meta name="generator" content="HTML Tidy for Linux/x86 (vers 12 April 2005), see www.w3.org" />
+
+  
+  <title>Horstmann Chapter 3</title>
+</head>
+
+
+
+<body>
+<div onclick="document.location='slide025.html'">
+<center><small><a href="slide023.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide025.html">next</a></small></center>
+<hr></div>
+<h2>Separating Accessors and Mutators</h2>
+
+<ul>
+
+  <li>If we call a method to access an object, we don't expect the
+object to mutate<br />
+
+  </li>
+
+  <li>Rule of thumb:<br />
+
+Mutators should return <tt>void</tt> </li>
+
+  <li>Example of violation:&nbsp;<br />
+
+    
+    <pre>Scanner in = . . .;<br />String s = in.next();<br /></pre>
+
+  </li>
+
+  <li>Yields current token <i>and</i> advances iteration </li>
+
+  <li>What if I want to read the current token again? </li>
+
+</ul>
+
+
+<div onclick="document.location='slide025.html'"><hr>
+<center><small><a href="slide023.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide025.html">next</a></small></center>
+</div>
+</body>
+</html>

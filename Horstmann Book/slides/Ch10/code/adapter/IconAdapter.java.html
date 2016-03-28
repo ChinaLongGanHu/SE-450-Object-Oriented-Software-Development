@@ -1,0 +1,31 @@
+<pre><tt><font color="#000000">01: </font><b><font color="#000080">import</font></b> java<font color="#990000">.</font>awt<font color="#990000">.</font><font color="#990000">*</font><font color="#990000">;</font>
+<font color="#000000">02: </font><b><font color="#000080">import</font></b> javax<font color="#990000">.</font>swing<font color="#990000">.</font><font color="#990000">*</font><font color="#990000">;</font>
+<font color="#000000">03: </font>
+<font color="#000000">04: </font><i><font color="#9A1900">/**</font></i>
+<font color="#000000">05: </font><i><font color="#9A1900">   An adapter that turns an icon into a JComponent.</font></i>
+<font color="#000000">06: </font><i><font color="#9A1900">*/</font></i>
+<font color="#000000">07: </font><b><font color="#0000FF">public</font></b> <b><font color="#0000FF">class</font></b> IconAdapter <b><font color="#0000FF">extends</font></b> JComponent
+<font color="#000000">08: </font><font color="#FF0000">{</font>
+<font color="#000000">09: </font>   <i><font color="#9A1900">/**</font></i>
+<font color="#000000">10: </font><i><font color="#9A1900">      Constructs a JComponent that displays a given icon.</font></i>
+<font color="#000000">11: </font><i><font color="#9A1900">      @param icon the icon to display</font></i>
+<font color="#000000">12: </font><i><font color="#9A1900">   */</font></i>
+<font color="#000000">13: </font>   <b><font color="#0000FF">public</font></b> <b><font color="#000000">IconAdapter</font></b><font color="#990000">(</font>Icon icon<font color="#990000">)</font>
+<font color="#000000">14: </font>   <font color="#FF0000">{</font>
+<font color="#000000">15: </font>      <b><font color="#0000FF">this</font></b><font color="#990000">.</font>icon <font color="#990000">=</font> icon<font color="#990000">;</font>
+<font color="#000000">16: </font>   <font color="#FF0000">}</font>
+<font color="#000000">17: </font>
+<font color="#000000">18: </font>   <b><font color="#0000FF">public</font></b> <font color="#009900">void</font> <b><font color="#000000">paintComponent</font></b><font color="#990000">(</font>Graphics g<font color="#990000">)</font>
+<font color="#000000">19: </font>   <font color="#FF0000">{</font>
+<font color="#000000">20: </font>      icon<font color="#990000">.</font><b><font color="#000000">paintIcon</font></b><font color="#990000">(</font><b><font color="#0000FF">this</font></b><font color="#990000">,</font> g<font color="#990000">,</font> <font color="#993399">0</font><font color="#990000">,</font> <font color="#993399">0</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">21: </font>   <font color="#FF0000">}</font>
+<font color="#000000">22: </font>
+<font color="#000000">23: </font>   <b><font color="#0000FF">public</font></b> Dimension <b><font color="#000000">getPreferredSize</font></b><font color="#990000">(</font><font color="#990000">)</font>
+<font color="#000000">24: </font>   <font color="#FF0000">{</font>
+<font color="#000000">25: </font>      <b><font color="#0000FF">return</font></b> <b><font color="#0000FF">new</font></b> <b><font color="#000000">Dimension</font></b><font color="#990000">(</font>icon<font color="#990000">.</font><b><font color="#000000">getIconWidth</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">,</font>
+<font color="#000000">26: </font>            icon<font color="#990000">.</font><b><font color="#000000">getIconHeight</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">27: </font>   <font color="#FF0000">}</font>
+<font color="#000000">28: </font>
+<font color="#000000">29: </font>   <b><font color="#0000FF">private</font></b> Icon icon<font color="#990000">;</font>
+<font color="#000000">30: </font><font color="#FF0000">}</font>
+</tt></pre>

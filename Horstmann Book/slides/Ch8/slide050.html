@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="generator"
+ content="HTML Tidy for Linux/x86 (vers 12 April 2005), see www.w3.org" />
+  <title>Horstmann Chapter 8</title>
+</head>
+
+<body>
+<div onclick="document.location='slide051.html'">
+<center><small><a href="slide049.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide051.html">next</a></small></center>
+<hr></div>
+<h2>Add New Node</h2>
+<pre>public void mousePressed(MouseEvent event)<br />{<br />   Point2D mousePoint = event.getPoint();<br />   Object tool = toolBar.getSelectedTool();<br />   ...<br />   if (tool instanceof Node)<br />   {<br />      Node prototype = (Node) tool;<br />      Node newNode = (Node)prototype.clone();<br />      graph.add(newNode, mousePoint);<br />   }<br />   ...<br />   repaint();<br />}<br /></pre>
+
+<div onclick="document.location='slide051.html'"><hr>
+<center><small><a href="slide049.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide051.html">next</a></small></center>
+</div>
+</body>
+</html>

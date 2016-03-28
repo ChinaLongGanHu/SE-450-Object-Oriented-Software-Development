@@ -1,0 +1,19 @@
+<pre><tt><font color="#000000">01: </font><i><font color="#9A1900">/**</font></i>
+<font color="#000000">02: </font><i><font color="#9A1900">   This program runs two threads in parallel.</font></i>
+<font color="#000000">03: </font><i><font color="#9A1900">*/</font></i>
+<font color="#000000">04: </font><b><font color="#0000FF">public</font></b> <b><font color="#0000FF">class</font></b> ThreadTester
+<font color="#000000">05: </font><font color="#FF0000">{</font>
+<font color="#000000">06: </font>   <b><font color="#0000FF">public</font></b> <b><font color="#0000FF">static</font></b> <font color="#009900">void</font> <b><font color="#000000">main</font></b><font color="#990000">(</font>String<font color="#990000">[</font><font color="#990000">]</font> args<font color="#990000">)</font>
+<font color="#000000">07: </font>   <font color="#FF0000">{</font>
+<font color="#000000">08: </font>      Runnable r1 <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> <b><font color="#000000">GreetingProducer</font></b><font color="#990000">(</font><font color="#FF0000">"Hello, World!"</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">09: </font>      Runnable r2 <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> <b><font color="#000000">GreetingProducer</font></b><font color="#990000">(</font><font color="#FF0000">"Goodbye, World!"</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">10: </font>      
+<font color="#000000">11: </font>      Thread t1 <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> <b><font color="#000000">Thread</font></b><font color="#990000">(</font>r1<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">12: </font>      Thread t2 <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> <b><font color="#000000">Thread</font></b><font color="#990000">(</font>r2<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">13: </font>
+<font color="#000000">14: </font>      t1<font color="#990000">.</font><b><font color="#000000">start</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">15: </font>      t2<font color="#990000">.</font><b><font color="#000000">start</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">16: </font>   <font color="#FF0000">}</font>
+<font color="#000000">17: </font><font color="#FF0000">}</font>
+<font color="#000000">18: </font>
+</tt></pre>

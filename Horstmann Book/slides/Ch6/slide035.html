@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="" />
+  <title>Horstmann Chapter 6</title>
+</head>
+
+<body>
+<div onclick="document.location='slide036.html'">
+<center><small><a href="slide034.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide036.html">next</a></small></center>
+<hr></div>
+<h2>Template Method</h2>
+<ul>
+  <li><tt>drawSelection</tt> calls <tt>draw</tt></li>
+  <li>Must declare <tt>draw</tt> in <tt>SelectableShape</tt></li>
+  <li>No implementation at that level!<br />
+  </li>
+  <li>Declare as <i>abstract</i> method<tt><br />
+public <b>abstract</b> void draw(Graphics2D g2)</tt><br />
+  </li>
+  <li>Defined in <tt>CarShape</tt>, <tt>HouseShape</tt></li>
+  <li><tt>drawSelection</tt> method calls <tt>draw</tt>, <tt>translate</tt></li>
+  <li><tt>drawSelection</tt> doesn't know <i>which</i>
+methods--polymorphism</li>
+  <li><tt>draw</tt><tt>Selection</tt> is a <i>template method</i></li>
+  <li><a href="code/scene2/SelectableShape.java.html">Ch6/scene2/SelectableShape.java</a></li>
+  <li><a href="code/scene2/HouseShape.java.html">Ch6/scene2/HouseShape.java</a></li>
+</ul>
+
+<div onclick="document.location='slide036.html'"><hr>
+<center><small><a href="slide034.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide036.html">next</a></small></center>
+</div>
+</body>
+</html>

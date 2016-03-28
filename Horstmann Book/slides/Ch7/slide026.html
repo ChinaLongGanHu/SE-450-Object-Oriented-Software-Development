@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="generator"
+ content="HTML Tidy for Linux/x86 (vers 12 April 2005), see www.w3.org">
+  <title>Horstmann Chapter 7</title>
+</head>
+
+<body>
+<div onclick="document.location='slide027.html'">
+<center><small><a href="slide025.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide027.html">next</a></small></center>
+<hr></div>
+<h2>Overriding the <tt>equals</tt> Method</h2>
+<ul>
+  <li>Notion of equality depends on class </li>
+  <li>Common definition: compare all fields<br>
+    <pre>public class Employee <br>{ <br>   public boolean equals(Object otherObject) <br>      // not complete--see below <br>   { <br>      Employee other = (Employee)otherObject; <br>      return name.equals(other.name) <br>         &amp;&amp; salary == other.salary; <br>   } <br>   ... <br>} <br></pre>
+  </li>
+  <li>Must cast the <tt>Object</tt> parameter to subclass </li>
+  <li>Use <tt>==</tt> for primitive types, <tt>equals</tt> for object
+fields<br>
+  </li>
+</ul>
+
+<div onclick="document.location='slide027.html'"><hr>
+<center><small><a href="slide025.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide027.html">next</a></small></center>
+</div>
+</body>
+</html>

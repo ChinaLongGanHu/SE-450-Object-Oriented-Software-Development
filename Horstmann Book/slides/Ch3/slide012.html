@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+  
+  <meta name="generator" content="HTML Tidy for Linux/x86 (vers 12 April 2005), see www.w3.org" />
+
+  
+  <title>Horstmann Chapter 3</title>
+</head>
+
+
+
+<body>
+<div onclick="document.location='slide013.html'">
+<center><small><a href="slide011.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide013.html">next</a></small></center>
+<hr></div>
+<h2>Designing a <tt>Day</tt> Class</h2>
+
+<ul>
+
+  <li> <tt>daysFrom</tt> computes number of days between two days:<br />
+
+    
+    <pre>int n = today.daysFrom(birthday);<br /></pre>
+
+  </li>
+
+  <li> <tt>addDays</tt> computes a day that is some days away from a
+given day:<br />
+
+    
+    <pre>Day later = today.addDays(999);<br /></pre>
+
+  </li>
+
+  <li>Mathematical relationship:<br />
+
+    
+    <pre>d.addDays(n).daysFrom(d) == n<br />d1.addDays(d2.daysFrom(d1)) == d2<br /></pre>
+
+  </li>
+
+  <li>Clearer when written with "overloaded operators":<br />
+
+    
+    <pre>(d + n) - d == n<br />d1 + (d2 - d1) == d2<br /></pre>
+
+  </li>
+
+  <li>Constructor <tt>Date(int year, int month, int date)</tt><br />
+
+  </li>
+
+  <li><tt>getYear</tt>, <tt>getMonth</tt>, <tt>getDate</tt> acccesors<br />
+
+  </li>
+
+</ul>
+
+
+<div onclick="document.location='slide013.html'"><hr>
+<center><small><a href="slide011.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide013.html">next</a></small></center>
+</div>
+</body>
+</html>

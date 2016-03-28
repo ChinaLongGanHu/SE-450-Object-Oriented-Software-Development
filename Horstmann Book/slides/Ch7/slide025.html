@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="generator"
+ content="HTML Tidy for Linux/x86 (vers 12 April 2005), see www.w3.org">
+  <title>Horstmann Chapter 7</title>
+</head>
+
+<body>
+<div onclick="document.location='slide026.html'">
+<center><small><a href="slide024.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide026.html">next</a></small></center>
+<hr></div>
+<h2>The <tt>equals</tt> Method</h2>
+<ul>
+  <li><tt>equals</tt> tests for equal <i>contents</i> </li>
+  <li><tt>==</tt> tests for equal <i>location</i> </li>
+  <li>Used in many standard library methods </li>
+  <li>Example: <tt>ArrayList.indexOf<br>
+    </tt>
+    <pre>/** <br>   Searches for the first occurrence of the given argument, <br>   testing for equality using the equals method. <br>   @param elem an object. <br>   @return the index of the first occurrence <br>   of the argument in this list; returns -1 if <br>   the object is not found. <br>*/ <br>public int indexOf(Object elem) <br>{ <br>   if (elem == null) <br>   { <br>      for (int i = 0; i &lt; size; i++) <br>         if (elementData[i] == null) return i; <br>   } <br>   else <br>   { <br>      for (int i = 0; i &lt; size; i++) <br>         if (elem.<b>equals</b>(elementData[i])) return i; <br>   } <br>   return -1; <br>} <br></pre>
+  </li>
+</ul>
+
+<div onclick="document.location='slide026.html'"><hr>
+<center><small><a href="slide024.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide026.html">next</a></small></center>
+</div>
+</body>
+</html>

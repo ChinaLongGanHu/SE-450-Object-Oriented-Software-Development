@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="generator"
+ content="HTML Tidy for Linux/x86 (vers 12 April 2005), see www.w3.org" />
+  <title>Horstmann Chapter 1</title>
+</head>
+
+<body>
+<div onclick="document.location='slide021.html'">
+<center><small><a href="slide019.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide021.html">next</a></small></center>
+<hr></div>
+<h2>Parameter Passing</h2>
+<ul>
+  <li>Java uses "call by value":<br />
+Method receives copy of parameter value </li>
+  <li>Copy of object reference
+lets method modify object<br />
+    <pre>public void copyNameTo(Greeter other)<br />{<br /> other.name = this.name;<br />}<br /></pre>
+  </li>
+  <li>
+    <pre>Greeter worldGreeter = new Greeter("World");<br />Greeter daveGreeter = new Greeter("Dave");<br />worldGreeter.copyNameTo(daveGreeter);<br /></pre>
+    <img src="images/Ch1_08.jpg" title="" alt="."
+ style="width: 550px; height: 137px;" />&nbsp;<br />
+  </li>
+</ul>
+
+<div onclick="document.location='slide021.html'"><hr>
+<center><small><a href="slide019.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide021.html">next</a></small></center>
+</div>
+</body>
+</html>

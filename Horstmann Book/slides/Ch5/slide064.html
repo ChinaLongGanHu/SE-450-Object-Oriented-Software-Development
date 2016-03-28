@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+  <meta http-equiv="Content-Type" content="" />
+  <title>Horstmann Chapter 5</title></head>
+
+
+<body>
+<div onclick="document.location='slide065.html'">
+<center><small><a href="slide063.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide065.html">next</a></small></center>
+<hr></div>
+<h2>Change Listeners</h2>
+<ul>
+  <li>Use standard <tt>ChangeListener</tt> interface type<br />
+    <tt>public interface ChangeListener<br />
+{<br />
+&nbsp;&nbsp; void stateChanged(ChangeEvent event);<br />
+}</tt><br />
+  </li>
+  <li><tt>Invoice</tt> collects <tt>ArrayList</tt> of change listeners</li>
+  <li>When the invoice changes, it notifies all listeners:<br />
+    <tt>ChangeEvent event = new ChangeEvent(this);<br />
+for (ChangeListener listener : listeners)<br />
+&nbsp;&nbsp; listener.stateChanged(event);</tt><br />
+  </li>
+</ul>
+
+<div onclick="document.location='slide065.html'"><hr>
+<center><small><a href="slide063.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide065.html">next</a></small></center>
+</div>
+</body>
+</html>

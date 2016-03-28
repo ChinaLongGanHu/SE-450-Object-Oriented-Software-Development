@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="generator"
+ content="HTML Tidy for Linux/x86 (vers 12 April 2005), see www.w3.org" />
+  <title>Horstmann Chapter 9</title>
+</head>
+
+<body>
+<div onclick="document.location='slide025.html'">
+<center><small><a href="slide023.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide025.html">next</a></small></center>
+<hr></div>
+<h2>Not a FACTORY METHOD</h2>
+<ul>
+  <li>Not all "factory-like" methods are instances of this pattern </li>
+  <li>Create <tt>DateFormat</tt> instances<br />
+    <tt>DateFormat formatter = DateFormat.getDateInstance();</tt><br
+ style="font-family: monospace;" />
+    <tt>Date now = new Date();</tt><br style="font-family: monospace;" />
+    <tt>String formattedDate = formatter.format(now);</tt> </li>
+  <li><tt>getDateInstance</tt> is a <i>static</i> method </li>
+  <li>No polymorphic creation </li>
+</ul>
+
+<div onclick="document.location='slide025.html'"><hr>
+<center><small><a href="slide023.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide025.html">next</a></small></center>
+</div>
+</body>
+</html>

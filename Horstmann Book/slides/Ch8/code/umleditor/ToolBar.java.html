@@ -1,0 +1,136 @@
+<pre><tt><font color="#000000">001: </font><b><font color="#000080">import</font></b> java<font color="#990000">.</font>awt<font color="#990000">.</font><font color="#990000">*</font><font color="#990000">;</font>
+<font color="#000000">002: </font><b><font color="#000080">import</font></b> java<font color="#990000">.</font>awt<font color="#990000">.</font>geom<font color="#990000">.</font><font color="#990000">*</font><font color="#990000">;</font>
+<font color="#000000">003: </font><b><font color="#000080">import</font></b> java<font color="#990000">.</font>util<font color="#990000">.</font><font color="#990000">*</font><font color="#990000">;</font>
+<font color="#000000">004: </font><b><font color="#000080">import</font></b> javax<font color="#990000">.</font>swing<font color="#990000">.</font><font color="#990000">*</font><font color="#990000">;</font>
+<font color="#000000">005: </font>
+<font color="#000000">006: </font><i><font color="#9A1900">/**</font></i>
+<font color="#000000">007: </font><i><font color="#9A1900">   A tool bar that contains node and edge prototype icons.</font></i>
+<font color="#000000">008: </font><i><font color="#9A1900">   Exactly one icon is selected at any time.</font></i>
+<font color="#000000">009: </font><i><font color="#9A1900">*/</font></i>
+<font color="#000000">010: </font><b><font color="#0000FF">public</font></b> <b><font color="#0000FF">class</font></b> ToolBar <b><font color="#0000FF">extends</font></b> JPanel
+<font color="#000000">011: </font><font color="#FF0000">{</font>
+<font color="#000000">012: </font>   <i><font color="#9A1900">/**</font></i>
+<font color="#000000">013: </font><i><font color="#9A1900">      Constructs a tool bar with no icons.</font></i>
+<font color="#000000">014: </font><i><font color="#9A1900">   */</font></i>
+<font color="#000000">015: </font>   <b><font color="#0000FF">public</font></b> <b><font color="#000000">ToolBar</font></b><font color="#990000">(</font>Graph graph<font color="#990000">)</font>
+<font color="#000000">016: </font>   <font color="#FF0000">{</font>
+<font color="#000000">017: </font>      group <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> <b><font color="#000000">ButtonGroup</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">018: </font>      tools <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> ArrayList<font color="#990000">&lt;</font>Object<font color="#990000">&gt;</font><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">019: </font>
+<font color="#000000">020: </font>      JToggleButton grabberButton <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> <b><font color="#000000">JToggleButton</font></b><font color="#990000">(</font><b><font color="#0000FF">new</font></b>
+<font color="#000000">021: </font>         <b><font color="#000000">Icon</font></b><font color="#990000">(</font><font color="#990000">)</font>
+<font color="#000000">022: </font>         <font color="#FF0000">{</font>
+<font color="#000000">023: </font>            <b><font color="#0000FF">public</font></b> <font color="#009900">int</font> <b><font color="#000000">getIconHeight</font></b><font color="#990000">(</font><font color="#990000">)</font> <font color="#FF0000">{</font> <b><font color="#0000FF">return</font></b> BUTTON_SIZE<font color="#990000">;</font> <font color="#FF0000">}</font>
+<font color="#000000">024: </font>            <b><font color="#0000FF">public</font></b> <font color="#009900">int</font> <b><font color="#000000">getIconWidth</font></b><font color="#990000">(</font><font color="#990000">)</font> <font color="#FF0000">{</font> <b><font color="#0000FF">return</font></b> BUTTON_SIZE<font color="#990000">;</font> <font color="#FF0000">}</font>
+<font color="#000000">025: </font>            <b><font color="#0000FF">public</font></b> <font color="#009900">void</font> <b><font color="#000000">paintIcon</font></b><font color="#990000">(</font>Component c<font color="#990000">,</font> Graphics g<font color="#990000">,</font>
+<font color="#000000">026: </font>               <font color="#009900">int</font> x<font color="#990000">,</font> <font color="#009900">int</font> y<font color="#990000">)</font>
+<font color="#000000">027: </font>            <font color="#FF0000">{</font>
+<font color="#000000">028: </font>               Graphics2D g2 <font color="#990000">=</font> <font color="#990000">(</font>Graphics2D<font color="#990000">)</font> g<font color="#990000">;</font>
+<font color="#000000">029: </font>               GraphPanel<font color="#990000">.</font><b><font color="#000000">drawGrabber</font></b><font color="#990000">(</font>g2<font color="#990000">,</font> x <font color="#990000">+</font> OFFSET<font color="#990000">,</font> y <font color="#990000">+</font> OFFSET<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">030: </font>               GraphPanel<font color="#990000">.</font><b><font color="#000000">drawGrabber</font></b><font color="#990000">(</font>g2<font color="#990000">,</font> x <font color="#990000">+</font> OFFSET<font color="#990000">,</font> y <font color="#990000">+</font> BUTTON_SIZE <font color="#990000">-</font> OFFSET<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">031: </font>               GraphPanel<font color="#990000">.</font><b><font color="#000000">drawGrabber</font></b><font color="#990000">(</font>g2<font color="#990000">,</font> x <font color="#990000">+</font> BUTTON_SIZE <font color="#990000">-</font> OFFSET<font color="#990000">,</font> y <font color="#990000">+</font> OFFSET<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">032: </font>               GraphPanel<font color="#990000">.</font><b><font color="#000000">drawGrabber</font></b><font color="#990000">(</font>g2<font color="#990000">,</font> x <font color="#990000">+</font> BUTTON_SIZE <font color="#990000">-</font> OFFSET<font color="#990000">,</font> y <font color="#990000">+</font> BUTTON_SIZE <font color="#990000">-</font> OFFSET<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">033: </font>            <font color="#FF0000">}</font>
+<font color="#000000">034: </font>         <font color="#FF0000">}</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">035: </font>      group<font color="#990000">.</font><b><font color="#000000">add</font></b><font color="#990000">(</font>grabberButton<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">036: </font>      <b><font color="#000000">add</font></b><font color="#990000">(</font>grabberButton<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">037: </font>      grabberButton<font color="#990000">.</font><b><font color="#000000">setSelected</font></b><font color="#990000">(</font><b><font color="#0000FF">true</font></b><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">038: </font>      tools<font color="#990000">.</font><b><font color="#000000">add</font></b><font color="#990000">(</font><b><font color="#0000FF">null</font></b><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">039: </font>
+<font color="#000000">040: </font>      Node<font color="#990000">[</font><font color="#990000">]</font> nodeTypes <font color="#990000">=</font> graph<font color="#990000">.</font><b><font color="#000000">getNodePrototypes</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">041: </font>      <b><font color="#0000FF">for</font></b> <font color="#990000">(</font>Node n <font color="#990000">:</font> nodeTypes<font color="#990000">)</font>
+<font color="#000000">042: </font>         <b><font color="#000000">add</font></b><font color="#990000">(</font>n<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">043: </font>      Edge<font color="#990000">[</font><font color="#990000">]</font> edgeTypes <font color="#990000">=</font> graph<font color="#990000">.</font><b><font color="#000000">getEdgePrototypes</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">044: </font>      <b><font color="#0000FF">for</font></b> <font color="#990000">(</font>Edge e <font color="#990000">:</font> edgeTypes<font color="#990000">)</font>
+<font color="#000000">045: </font>         <b><font color="#000000">add</font></b><font color="#990000">(</font>e<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">046: </font>   <font color="#FF0000">}</font>
+<font color="#000000">047: </font>
+<font color="#000000">048: </font>   <i><font color="#9A1900">/**</font></i>
+<font color="#000000">049: </font><i><font color="#9A1900">      Gets the node or edge prototype that is associated with</font></i>
+<font color="#000000">050: </font><i><font color="#9A1900">      the currently selected button</font></i>
+<font color="#000000">051: </font><i><font color="#9A1900">      @return a Node or Edge prototype</font></i>
+<font color="#000000">052: </font><i><font color="#9A1900">   */</font></i>
+<font color="#000000">053: </font>   <b><font color="#0000FF">public</font></b> Object <b><font color="#000000">getSelectedTool</font></b><font color="#990000">(</font><font color="#990000">)</font>
+<font color="#000000">054: </font>   <font color="#FF0000">{</font>
+<font color="#000000">055: </font>          <font color="#009900">int</font> i <font color="#990000">=</font> <font color="#993399">0</font><font color="#990000">;</font>
+<font color="#000000">056: </font>      <b><font color="#0000FF">for</font></b> <font color="#990000">(</font>Object o <font color="#990000">:</font> tools<font color="#990000">)</font>
+<font color="#000000">057: </font>      <font color="#FF0000">{</font>
+<font color="#000000">058: </font>         JToggleButton button <font color="#990000">=</font> <font color="#990000">(</font>JToggleButton<font color="#990000">)</font> <b><font color="#000000">getComponent</font></b><font color="#990000">(</font>i<font color="#990000">+</font><font color="#990000">+</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">059: </font>         <b><font color="#0000FF">if</font></b> <font color="#990000">(</font>button<font color="#990000">.</font><b><font color="#000000">isSelected</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">)</font> <b><font color="#0000FF">return</font></b> o<font color="#990000">;</font>
+<font color="#000000">060: </font>      <font color="#FF0000">}</font>
+<font color="#000000">061: </font>      <b><font color="#0000FF">return</font></b> <b><font color="#0000FF">null</font></b><font color="#990000">;</font>
+<font color="#000000">062: </font>   <font color="#FF0000">}</font>
+<font color="#000000">063: </font>
+<font color="#000000">064: </font>   <i><font color="#9A1900">/**</font></i>
+<font color="#000000">065: </font><i><font color="#9A1900">      Adds a node to the tool bar.</font></i>
+<font color="#000000">066: </font><i><font color="#9A1900">      @param n the node to add</font></i>
+<font color="#000000">067: </font><i><font color="#9A1900">   */</font></i>
+<font color="#000000">068: </font>   <b><font color="#0000FF">public</font></b> <font color="#009900">void</font> <b><font color="#000000">add</font></b><font color="#990000">(</font><b><font color="#0000FF">final</font></b> Node n<font color="#990000">)</font>
+<font color="#000000">069: </font>   <font color="#FF0000">{</font>
+<font color="#000000">070: </font>      JToggleButton button <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> <b><font color="#000000">JToggleButton</font></b><font color="#990000">(</font><b><font color="#0000FF">new</font></b>
+<font color="#000000">071: </font>         <b><font color="#000000">Icon</font></b><font color="#990000">(</font><font color="#990000">)</font>
+<font color="#000000">072: </font>         <font color="#FF0000">{</font>
+<font color="#000000">073: </font>            <b><font color="#0000FF">public</font></b> <font color="#009900">int</font> <b><font color="#000000">getIconHeight</font></b><font color="#990000">(</font><font color="#990000">)</font> <font color="#FF0000">{</font> <b><font color="#0000FF">return</font></b> BUTTON_SIZE<font color="#990000">;</font> <font color="#FF0000">}</font>
+<font color="#000000">074: </font>            <b><font color="#0000FF">public</font></b> <font color="#009900">int</font> <b><font color="#000000">getIconWidth</font></b><font color="#990000">(</font><font color="#990000">)</font> <font color="#FF0000">{</font> <b><font color="#0000FF">return</font></b> BUTTON_SIZE<font color="#990000">;</font> <font color="#FF0000">}</font>
+<font color="#000000">075: </font>            <b><font color="#0000FF">public</font></b> <font color="#009900">void</font> <b><font color="#000000">paintIcon</font></b><font color="#990000">(</font>Component c<font color="#990000">,</font> Graphics g<font color="#990000">,</font>
+<font color="#000000">076: </font>               <font color="#009900">int</font> x<font color="#990000">,</font> <font color="#009900">int</font> y<font color="#990000">)</font>
+<font color="#000000">077: </font>            <font color="#FF0000">{</font>
+<font color="#000000">078: </font>               <font color="#009900">double</font> width <font color="#990000">=</font> n<font color="#990000">.</font><b><font color="#000000">getBounds</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">.</font><b><font color="#000000">getWidth</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">079: </font>               <font color="#009900">double</font> height <font color="#990000">=</font> n<font color="#990000">.</font><b><font color="#000000">getBounds</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">.</font><b><font color="#000000">getHeight</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">080: </font>               Graphics2D g2 <font color="#990000">=</font> <font color="#990000">(</font>Graphics2D<font color="#990000">)</font> g<font color="#990000">;</font>
+<font color="#000000">081: </font>               <font color="#009900">double</font> scaleX <font color="#990000">=</font> <font color="#990000">(</font>BUTTON_SIZE <font color="#990000">-</font> OFFSET<font color="#990000">)</font><font color="#990000">/</font> width<font color="#990000">;</font>
+<font color="#000000">082: </font>               <font color="#009900">double</font> scaleY <font color="#990000">=</font> <font color="#990000">(</font>BUTTON_SIZE <font color="#990000">-</font> OFFSET<font color="#990000">)</font><font color="#990000">/</font> height<font color="#990000">;</font>
+<font color="#000000">083: </font>               <font color="#009900">double</font> scale <font color="#990000">=</font> Math<font color="#990000">.</font><b><font color="#000000">min</font></b><font color="#990000">(</font>scaleX<font color="#990000">,</font> scaleY<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">084: </font>
+<font color="#000000">085: </font>               AffineTransform oldTransform <font color="#990000">=</font> g2<font color="#990000">.</font><b><font color="#000000">getTransform</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">086: </font>               g2<font color="#990000">.</font><b><font color="#000000">translate</font></b><font color="#990000">(</font>x<font color="#990000">,</font> y<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">087: </font>               g2<font color="#990000">.</font><b><font color="#000000">scale</font></b><font color="#990000">(</font>scale<font color="#990000">,</font> scale<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">088: </font>               g2<font color="#990000">.</font><b><font color="#000000">translate</font></b><font color="#990000">(</font>Math<font color="#990000">.</font><b><font color="#000000">max</font></b><font color="#990000">(</font><font color="#990000">(</font>height <font color="#990000">-</font> width<font color="#990000">)</font> <font color="#990000">/</font> <font color="#993399">2</font><font color="#990000">,</font> <font color="#993399">0</font><font color="#990000">)</font><font color="#990000">,</font> Math<font color="#990000">.</font><b><font color="#000000">max</font></b><font color="#990000">(</font><font color="#990000">(</font>width <font color="#990000">-</font> height<font color="#990000">)</font> <font color="#990000">/</font> <font color="#993399">2</font><font color="#990000">,</font> <font color="#993399">0</font><font color="#990000">)</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">089: </font>               g2<font color="#990000">.</font><b><font color="#000000">setColor</font></b><font color="#990000">(</font>Color<font color="#990000">.</font>black<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">090: </font>               n<font color="#990000">.</font><b><font color="#000000">draw</font></b><font color="#990000">(</font>g2<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">091: </font>               g2<font color="#990000">.</font><b><font color="#000000">setTransform</font></b><font color="#990000">(</font>oldTransform<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">092: </font>            <font color="#FF0000">}</font>
+<font color="#000000">093: </font>         <font color="#FF0000">}</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">094: </font>      group<font color="#990000">.</font><b><font color="#000000">add</font></b><font color="#990000">(</font>button<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">095: </font>      <b><font color="#000000">add</font></b><font color="#990000">(</font>button<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">096: </font>      tools<font color="#990000">.</font><b><font color="#000000">add</font></b><font color="#990000">(</font>n<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">097: </font>   <font color="#FF0000">}</font>
+<font color="#000000">098: </font>
+<font color="#000000">099: </font>   <i><font color="#9A1900">/**</font></i>
+<font color="#000000">100: </font><i><font color="#9A1900">      Adds an edge to the tool bar.</font></i>
+<font color="#000000">101: </font><i><font color="#9A1900">      @param n the edge to add</font></i>
+<font color="#000000">102: </font><i><font color="#9A1900">   */</font></i>
+<font color="#000000">103: </font>   <b><font color="#0000FF">public</font></b> <font color="#009900">void</font> <b><font color="#000000">add</font></b><font color="#990000">(</font><b><font color="#0000FF">final</font></b> Edge e<font color="#990000">)</font>
+<font color="#000000">104: </font>   <font color="#FF0000">{</font>
+<font color="#000000">105: </font>      JToggleButton button <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> <b><font color="#000000">JToggleButton</font></b><font color="#990000">(</font><b><font color="#0000FF">new</font></b>
+<font color="#000000">106: </font>         <b><font color="#000000">Icon</font></b><font color="#990000">(</font><font color="#990000">)</font>
+<font color="#000000">107: </font>         <font color="#FF0000">{</font>
+<font color="#000000">108: </font>            <b><font color="#0000FF">public</font></b> <font color="#009900">int</font> <b><font color="#000000">getIconHeight</font></b><font color="#990000">(</font><font color="#990000">)</font> <font color="#FF0000">{</font> <b><font color="#0000FF">return</font></b> BUTTON_SIZE<font color="#990000">;</font> <font color="#FF0000">}</font>
+<font color="#000000">109: </font>            <b><font color="#0000FF">public</font></b> <font color="#009900">int</font> <b><font color="#000000">getIconWidth</font></b><font color="#990000">(</font><font color="#990000">)</font> <font color="#FF0000">{</font> <b><font color="#0000FF">return</font></b> BUTTON_SIZE<font color="#990000">;</font> <font color="#FF0000">}</font>
+<font color="#000000">110: </font>            <b><font color="#0000FF">public</font></b> <font color="#009900">void</font> <b><font color="#000000">paintIcon</font></b><font color="#990000">(</font>Component c<font color="#990000">,</font> Graphics g<font color="#990000">,</font>
+<font color="#000000">111: </font>               <font color="#009900">int</font> x<font color="#990000">,</font> <font color="#009900">int</font> y<font color="#990000">)</font>
+<font color="#000000">112: </font>            <font color="#FF0000">{</font>
+<font color="#000000">113: </font>               Graphics2D g2 <font color="#990000">=</font> <font color="#990000">(</font>Graphics2D<font color="#990000">)</font> g<font color="#990000">;</font>
+<font color="#000000">114: </font>               PointNode p <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> <b><font color="#000000">PointNode</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">115: </font>               p<font color="#990000">.</font><b><font color="#000000">translate</font></b><font color="#990000">(</font>OFFSET<font color="#990000">,</font> OFFSET<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">116: </font>               PointNode q <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> <b><font color="#000000">PointNode</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">117: </font>               q<font color="#990000">.</font><b><font color="#000000">translate</font></b><font color="#990000">(</font>BUTTON_SIZE <font color="#990000">-</font> OFFSET<font color="#990000">,</font> BUTTON_SIZE <font color="#990000">-</font> OFFSET<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">118: </font>               e<font color="#990000">.</font><b><font color="#000000">connect</font></b><font color="#990000">(</font>p<font color="#990000">,</font> q<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">119: </font>               g2<font color="#990000">.</font><b><font color="#000000">translate</font></b><font color="#990000">(</font>x<font color="#990000">,</font> y<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">120: </font>               g2<font color="#990000">.</font><b><font color="#000000">setColor</font></b><font color="#990000">(</font>Color<font color="#990000">.</font>black<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">121: </font>               e<font color="#990000">.</font><b><font color="#000000">draw</font></b><font color="#990000">(</font>g2<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">122: </font>               g2<font color="#990000">.</font><b><font color="#000000">translate</font></b><font color="#990000">(</font><font color="#990000">-</font>x<font color="#990000">,</font> <font color="#990000">-</font>y<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">123: </font>            <font color="#FF0000">}</font>
+<font color="#000000">124: </font>         <font color="#FF0000">}</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">125: </font>      group<font color="#990000">.</font><b><font color="#000000">add</font></b><font color="#990000">(</font>button<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">126: </font>      <b><font color="#000000">add</font></b><font color="#990000">(</font>button<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">127: </font>      tools<font color="#990000">.</font><b><font color="#000000">add</font></b><font color="#990000">(</font>e<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">128: </font>   <font color="#FF0000">}</font>
+<font color="#000000">129: </font>
+<font color="#000000">130: </font>   <b><font color="#0000FF">private</font></b> ButtonGroup group<font color="#990000">;</font>
+<font color="#000000">131: </font>   <b><font color="#0000FF">private</font></b> ArrayList<font color="#990000">&lt;</font>Object<font color="#990000">&gt;</font> tools<font color="#990000">;</font>
+<font color="#000000">132: </font>
+<font color="#000000">133: </font>   <b><font color="#0000FF">private</font></b> <b><font color="#0000FF">static</font></b> <b><font color="#0000FF">final</font></b> <font color="#009900">int</font> BUTTON_SIZE <font color="#990000">=</font> <font color="#993399">25</font><font color="#990000">;</font>
+<font color="#000000">134: </font>   <b><font color="#0000FF">private</font></b> <b><font color="#0000FF">static</font></b> <b><font color="#0000FF">final</font></b> <font color="#009900">int</font> OFFSET <font color="#990000">=</font> <font color="#993399">4</font><font color="#990000">;</font>
+<font color="#000000">135: </font><font color="#FF0000">}</font>
+</tt></pre>

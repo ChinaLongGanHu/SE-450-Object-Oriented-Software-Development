@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="generator"
+ content="HTML Tidy for Linux/x86 (vers 12 April 2005), see www.w3.org">
+  <title>Horstmann Chapter 7</title>
+</head>
+
+<body>
+<div onclick="document.location='slide056.html'">
+<center><small><a href="slide054.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide056.html">next</a></small></center>
+<hr></div>
+<h2>Inspecting Objects</h2>
+<ul>
+  <li>Can obtain object contents at runtime </li>
+  <li>Useful for generic debugging tools </li>
+  <li>Need to gain access to private fields<br>
+    <pre>Class c = obj.getClass(); <br>Field f = c.getDeclaredField(name); <br>f.setAccessible(true); <br></pre>
+  </li>
+  <li>Throws exception if security manager disallows access </li>
+  <li>Access field value:<br>
+    <pre>Object value = f.get(obj); <br>f.set(obj, value); <br></pre>
+  </li>
+  <li>Use wrappers for primitive types </li>
+</ul>
+
+<div onclick="document.location='slide056.html'"><hr>
+<center><small><a href="slide054.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide056.html">next</a></small></center>
+</div>
+</body>
+</html>

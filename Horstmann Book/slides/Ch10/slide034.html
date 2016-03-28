@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="generator"
+ content="HTML Tidy for Linux/x86 (vers 12 April 2005), see www.w3.org" />
+  <title>Horstmann Chapter 9</title>
+</head>
+
+<body>
+<div onclick="document.location='slide035.html'">
+<center><small><a href="slide033.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide035.html">next</a></small></center>
+<hr></div>
+<h2>Random Number Generator Singleton</h2>
+<tt>public class SingleRandom</tt><br style="font-family: monospace;" />
+<tt>{</tt><br style="font-family: monospace;" />
+<tt>&nbsp;&nbsp; private SingleRandom() { generator = new Random(); }</tt><br
+ style="font-family: monospace;" />
+<tt>&nbsp;&nbsp; public void setSeed(int seed) {
+generator.setSeed(seed); }</tt><br style="font-family: monospace;" />
+<tt>&nbsp;&nbsp; public int nextInt() { return generator.nextInt(); }</tt><br
+ style="font-family: monospace;" />
+<tt>&nbsp;&nbsp; public static SingleRandom getInstance() { return
+instance; }</tt><br style="font-family: monospace;" />
+<tt>&nbsp;&nbsp; private Random generator;</tt><br
+ style="font-family: monospace;" />
+<tt>&nbsp;&nbsp; private static SingleRandom instance = new
+SingleRandom();</tt><br style="font-family: monospace;" />
+<tt>}</tt><br />
+
+<div onclick="document.location='slide035.html'"><hr>
+<center><small><a href="slide033.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide035.html">next</a></small></center>
+</div>
+</body>
+</html>

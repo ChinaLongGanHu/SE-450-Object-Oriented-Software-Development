@@ -1,0 +1,53 @@
+<pre><tt><font color="#000000">01: </font><b><font color="#000080">import</font></b> java<font color="#990000">.</font>awt<font color="#990000">.</font><font color="#990000">*</font><font color="#990000">;</font>
+<font color="#000000">02: </font><b><font color="#000080">import</font></b> javax<font color="#990000">.</font>swing<font color="#990000">.</font><font color="#990000">*</font><font color="#990000">;</font>
+<font color="#000000">03: </font>
+<font color="#000000">04: </font><i><font color="#9A1900">/**</font></i>
+<font color="#000000">05: </font><i><font color="#9A1900">   A proxy for delayed loading of image icons.</font></i>
+<font color="#000000">06: </font><i><font color="#9A1900">*/</font></i>
+<font color="#000000">07: </font><b><font color="#0000FF">public</font></b> <b><font color="#0000FF">class</font></b> ImageProxy <b><font color="#0000FF">implements</font></b> Icon
+<font color="#000000">08: </font><font color="#FF0000">{</font>
+<font color="#000000">09: </font>   <i><font color="#9A1900">/**</font></i>
+<font color="#000000">10: </font><i><font color="#9A1900">      Constructs a proxy for delayed loading of an image file.</font></i>
+<font color="#000000">11: </font><i><font color="#9A1900">      @param name the file name</font></i>
+<font color="#000000">12: </font><i><font color="#9A1900">   */</font></i>
+<font color="#000000">13: </font>   <b><font color="#0000FF">public</font></b> <b><font color="#000000">ImageProxy</font></b><font color="#990000">(</font>String name<font color="#990000">)</font>
+<font color="#000000">14: </font>   <font color="#FF0000">{</font>
+<font color="#000000">15: </font>      <b><font color="#0000FF">this</font></b><font color="#990000">.</font>name <font color="#990000">=</font> name<font color="#990000">;</font>
+<font color="#000000">16: </font>      image <font color="#990000">=</font> <b><font color="#0000FF">null</font></b><font color="#990000">;</font>
+<font color="#000000">17: </font>   <font color="#FF0000">}</font>
+<font color="#000000">18: </font>
+<font color="#000000">19: </font>   <b><font color="#0000FF">public</font></b> <font color="#009900">void</font> <b><font color="#000000">paintIcon</font></b><font color="#990000">(</font>Component c<font color="#990000">,</font> Graphics g<font color="#990000">,</font> <font color="#009900">int</font> x<font color="#990000">,</font> <font color="#009900">int</font> y<font color="#990000">)</font>
+<font color="#000000">20: </font>   <font color="#FF0000">{</font>
+<font color="#000000">21: </font>      <b><font color="#000000">ensureImageLoaded</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">22: </font>      image<font color="#990000">.</font><b><font color="#000000">paintIcon</font></b><font color="#990000">(</font>c<font color="#990000">,</font> g<font color="#990000">,</font> x<font color="#990000">,</font> y<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">23: </font>   <font color="#FF0000">}</font>
+<font color="#000000">24: </font>
+<font color="#000000">25: </font>   <b><font color="#0000FF">public</font></b> <font color="#009900">int</font> <b><font color="#000000">getIconWidth</font></b><font color="#990000">(</font><font color="#990000">)</font>
+<font color="#000000">26: </font>   <font color="#FF0000">{</font>
+<font color="#000000">27: </font>      <b><font color="#000000">ensureImageLoaded</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">28: </font>      <b><font color="#0000FF">return</font></b> image<font color="#990000">.</font><b><font color="#000000">getIconWidth</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">29: </font>   <font color="#FF0000">}</font>
+<font color="#000000">30: </font>
+<font color="#000000">31: </font>   <b><font color="#0000FF">public</font></b> <font color="#009900">int</font> <b><font color="#000000">getIconHeight</font></b><font color="#990000">(</font><font color="#990000">)</font>
+<font color="#000000">32: </font>   <font color="#FF0000">{</font>
+<font color="#000000">33: </font>      <b><font color="#000000">ensureImageLoaded</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">34: </font>      <b><font color="#0000FF">return</font></b> image<font color="#990000">.</font><b><font color="#000000">getIconHeight</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">35: </font>   <font color="#FF0000">}</font>
+<font color="#000000">36: </font>
+<font color="#000000">37: </font>   <i><font color="#9A1900">/**</font></i>
+<font color="#000000">38: </font><i><font color="#9A1900">      Loads the image if it hasn't been loaded yet. Prints</font></i>
+<font color="#000000">39: </font><i><font color="#9A1900">      a message when the image is loaded.</font></i>
+<font color="#000000">40: </font><i><font color="#9A1900">   */</font></i>
+<font color="#000000">41: </font>   <b><font color="#0000FF">private</font></b> <font color="#009900">void</font> <b><font color="#000000">ensureImageLoaded</font></b><font color="#990000">(</font><font color="#990000">)</font>
+<font color="#000000">42: </font>   <font color="#FF0000">{</font>
+<font color="#000000">43: </font>      <b><font color="#0000FF">if</font></b> <font color="#990000">(</font>image <font color="#990000">=</font><font color="#990000">=</font> <b><font color="#0000FF">null</font></b><font color="#990000">)</font>
+<font color="#000000">44: </font>      <font color="#FF0000">{</font>
+<font color="#000000">45: </font>         System<font color="#990000">.</font>out<font color="#990000">.</font><b><font color="#000000">println</font></b><font color="#990000">(</font><font color="#FF0000">"Loading "</font> <font color="#990000">+</font> name<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">46: </font>         image <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> <b><font color="#000000">ImageIcon</font></b><font color="#990000">(</font>name<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">47: </font>      <font color="#FF0000">}</font>
+<font color="#000000">48: </font>   <font color="#FF0000">}</font>
+<font color="#000000">49: </font>
+<font color="#000000">50: </font>   <b><font color="#0000FF">private</font></b> String name<font color="#990000">;</font>
+<font color="#000000">51: </font>   <b><font color="#0000FF">private</font></b> ImageIcon image<font color="#990000">;</font>
+<font color="#000000">52: </font><font color="#FF0000">}</font>
+</tt></pre>

@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="" />
+  <title>Horstmann Chapter 6</title>
+</head>
+
+<body>
+<div onclick="document.location='slide015.html'">
+<center><small><a href="slide013.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide015.html">next</a></small></center>
+<hr></div>
+<h2>Invoking Superclass Constructors</h2>
+<ul>
+  <li>Use <tt>super</tt> keyword in subclass constructor:<br />
+    <tt>public Manager(String aName)<br />
+{<br />
+&nbsp;&nbsp; <b>super(aName);</b> // calls superclass constructor<br />
+&nbsp;&nbsp; bonus = 0;<br />
+}</tt><br />
+  </li>
+  <li>Call to <tt>super</tt> must be <i>first</i> statement in
+subclass constructor</li>
+  <li>If subclass constructor doesn't call <tt>super</tt>, superclass
+must have constructor without parameters</li>
+</ul>
+
+<div onclick="document.location='slide015.html'"><hr>
+<center><small><a href="slide013.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide015.html">next</a></small></center>
+</div>
+</body>
+</html>

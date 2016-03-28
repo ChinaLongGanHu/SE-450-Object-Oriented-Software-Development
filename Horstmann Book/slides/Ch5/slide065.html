@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+  <meta http-equiv="Content-Type" content="" />
+  <title>Horstmann Chapter 5</title></head>
+
+
+<body>
+<div onclick="document.location='slide066.html'">
+<center><small><a href="slide064.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide066.html">next</a></small></center>
+<hr></div>
+<h2>Change Listeners</h2>
+<ul>
+  <li>Display adds itself as a change listener to the invoice</li>
+  <li>Display updates itself when invoice object changes state<br />
+    <pre>final Invoice invoice = new Invoice();<br />final JTextArea textArea = new JTextArea(20, 40);<br />ChangeListener listener = new<br />   ChangeListener()<br />   {<br />      public void stateChanged(ChangeEvent event)<br />      {<br />         textArea.setText(...);<br />      }<br />   };<br /></pre>
+  </li>
+</ul>
+
+<div onclick="document.location='slide066.html'"><hr>
+<center><small><a href="slide064.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide066.html">next</a></small></center>
+</div>
+</body>
+</html>

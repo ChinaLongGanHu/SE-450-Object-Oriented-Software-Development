@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Horstmann Chapter 9</title>
+</head>
+
+<body>
+<div onclick="document.location='slide030.html'">
+<center><small><a href="slide028.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide030.html">next</a></small></center>
+<hr></div>
+<h2>Avoiding Deadlocks<br />
+</h2>
+<ul>
+  <li>Waiting thread is blocked</li>
+  <li>Condition object manages set of threads that wait for the
+condition to change<br />
+  </li>
+  <li>To unblock, another thread must call <tt>signalAll</tt> on the
+same condition object</li>
+  <li>Call when state changes<br />
+    <pre>public E remove()<br />{<br />   . . .<br />   E r = elements[head];<br />   . . .<br />   spaceAvailableCondition.signalAll(); // Unblock waiting threads<br />   return r;<br />}<br /></pre>
+    <tt /></li>
+  <li>All waiting threads removed from wait set, unblocked</li>
+  <li><a href="code/queue2/BoundedQueue.java.html">Ch9/queue2/BoundedQueue.java</a><br />
+  </li>
+</ul>
+
+<div onclick="document.location='slide030.html'"><hr>
+<center><small><a href="slide028.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide030.html">next</a></small></center>
+</div>
+</body>
+</html>

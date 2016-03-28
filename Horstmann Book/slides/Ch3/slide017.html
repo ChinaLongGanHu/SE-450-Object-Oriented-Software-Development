@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+  
+  <meta name="generator" content="HTML Tidy for Linux/x86 (vers 12 April 2005), see www.w3.org" />
+
+  
+  <title>Horstmann Chapter 3</title>
+</head>
+
+
+
+<body>
+<div onclick="document.location='slide018.html'">
+<center><small><a href="slide016.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide018.html">next</a></small></center>
+<hr></div>
+<h2>The Importance of Encapsulation</h2>
+
+<ul>
+
+  <li>Even a simple class can benefit from different implementations </li>
+
+  <li>Users are unaware of implementation </li>
+
+  <li>Public instance variables would have blocked improvement 
+    
+    <ul>
+
+      <li>Can't just use text editor to replace all<br />
+
+        
+        <pre>d.year<br /></pre>
+
+with<br />
+
+        
+        <pre>d.getYear()<br /></pre>
+
+      </li>
+
+      <li>How about<br />
+
+        
+        <pre>d.year++?<br /></pre>
+
+      </li>
+
+      <li>
+        
+        <pre>d = new Day(d.getDay(), d.getMonth(), d.getYear() + 1)<br /></pre>
+
+      </li>
+
+      <li>Ugh--that gets really inefficient in Julian representation </li>
+
+    
+    </ul>
+
+  </li>
+
+  <li>Don't use public fields, even for "simple" classes </li>
+
+</ul>
+
+
+<div onclick="document.location='slide018.html'"><hr>
+<center><small><a href="slide016.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide018.html">next</a></small></center>
+</div>
+</body>
+</html>

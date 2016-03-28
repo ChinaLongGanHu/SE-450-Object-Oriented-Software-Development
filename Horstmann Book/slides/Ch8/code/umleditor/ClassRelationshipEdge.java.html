@@ -1,0 +1,37 @@
+<pre><tt><font color="#000000">01: </font><b><font color="#000080">import</font></b> java<font color="#990000">.</font>util<font color="#990000">.</font>ArrayList<font color="#990000">;</font>
+<font color="#000000">02: </font><b><font color="#000080">import</font></b> java<font color="#990000">.</font>awt<font color="#990000">.</font>geom<font color="#990000">.</font>Point2D<font color="#990000">;</font>
+<font color="#000000">03: </font>
+<font color="#000000">04: </font><i><font color="#9A1900">/**</font></i>
+<font color="#000000">05: </font><i><font color="#9A1900">   An edge that is shaped like a line with up to</font></i>
+<font color="#000000">06: </font><i><font color="#9A1900">   three segments with an arrowhead</font></i>
+<font color="#000000">07: </font><i><font color="#9A1900">*/</font></i>
+<font color="#000000">08: </font><b><font color="#0000FF">public</font></b> <b><font color="#0000FF">class</font></b> ClassRelationshipEdge <b><font color="#0000FF">extends</font></b> SegmentedLineEdge
+<font color="#000000">09: </font><font color="#FF0000">{</font>
+<font color="#000000">10: </font>   <i><font color="#9A1900">/**</font></i>
+<font color="#000000">11: </font><i><font color="#9A1900">      Constructs a straight edge.</font></i>
+<font color="#000000">12: </font><i><font color="#9A1900">   */</font></i>
+<font color="#000000">13: </font>   <b><font color="#0000FF">public</font></b> <b><font color="#000000">ClassRelationshipEdge</font></b><font color="#990000">(</font><font color="#990000">)</font>
+<font color="#000000">14: </font>   <font color="#FF0000">{</font>
+<font color="#000000">15: </font>      bentStyle <font color="#990000">=</font> BentStyle<font color="#990000">.</font>STRAIGHT<font color="#990000">;</font>
+<font color="#000000">16: </font>   <font color="#FF0000">}</font>
+<font color="#000000">17: </font>
+<font color="#000000">18: </font>   <i><font color="#9A1900">/**</font></i>
+<font color="#000000">19: </font><i><font color="#9A1900">      Sets the bentStyle property</font></i>
+<font color="#000000">20: </font><i><font color="#9A1900">      @param newValue the bent style</font></i>
+<font color="#000000">21: </font><i><font color="#9A1900">   */</font></i>
+<font color="#000000">22: </font>   <b><font color="#0000FF">public</font></b> <font color="#009900">void</font> <b><font color="#000000">setBentStyle</font></b><font color="#990000">(</font>BentStyle newValue<font color="#990000">)</font> <font color="#FF0000">{</font> bentStyle <font color="#990000">=</font> newValue<font color="#990000">;</font> <font color="#FF0000">}</font>
+<font color="#000000">23: </font>   <i><font color="#9A1900">/**</font></i>
+<font color="#000000">24: </font><i><font color="#9A1900">      Gets the bentStyle property</font></i>
+<font color="#000000">25: </font><i><font color="#9A1900">      @return the bent style</font></i>
+<font color="#000000">26: </font><i><font color="#9A1900">   */</font></i>
+<font color="#000000">27: </font>   <b><font color="#0000FF">public</font></b> BentStyle <b><font color="#000000">getBentStyle</font></b><font color="#990000">(</font><font color="#990000">)</font> <font color="#FF0000">{</font> <b><font color="#0000FF">return</font></b> bentStyle<font color="#990000">;</font> <font color="#FF0000">}</font>
+<font color="#000000">28: </font>
+<font color="#000000">29: </font>   <b><font color="#0000FF">public</font></b> ArrayList<font color="#990000">&lt;</font>Point2D<font color="#990000">&gt;</font> <b><font color="#000000">getPoints</font></b><font color="#990000">(</font><font color="#990000">)</font>
+<font color="#000000">30: </font>   <font color="#FF0000">{</font>
+<font color="#000000">31: </font>      <b><font color="#0000FF">return</font></b> bentStyle<font color="#990000">.</font><b><font color="#000000">getPath</font></b><font color="#990000">(</font><b><font color="#000000">getStart</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">.</font><b><font color="#000000">getBounds</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">,</font>
+<font color="#000000">32: </font>         <b><font color="#000000">getEnd</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">.</font><b><font color="#000000">getBounds</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">33: </font>   <font color="#FF0000">}</font>
+<font color="#000000">34: </font>
+<font color="#000000">35: </font>   <b><font color="#0000FF">private</font></b> BentStyle bentStyle<font color="#990000">;</font>
+<font color="#000000">36: </font><font color="#FF0000">}</font>
+</tt></pre>

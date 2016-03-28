@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+  <title>Horstmann Chapter 4</title></head>
+
+<body>
+<div onclick="document.location='slide017.html'">
+<center><small><a href="slide015.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide017.html">next</a></small></center>
+<hr></div>
+<h2>The <tt>Comparator</tt> interface type</h2>
+<ul>
+  <li>How can we sort countries by name?</li>
+  <li>Can't implement <tt>Comparable</tt> twice!</li>
+  <li><tt>Comparator</tt> interface type gives added flexibility<br />
+    <pre>public interface Comparator&lt;T&gt;<br />{<br />   int compare(T obj1, T obj2);<br />}<br /></pre>
+  </li>
+  <li>Pass comparator object to <tt>sort</tt>:<br />
+    <pre>Collections.sort(list, comp);<br /></pre>
+  </li>
+</ul>
+
+<div onclick="document.location='slide017.html'"><hr>
+<center><small><a href="slide015.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide017.html">next</a></small></center>
+</div>
+</body>
+</html>

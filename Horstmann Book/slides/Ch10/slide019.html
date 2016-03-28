@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="generator"
+ content="HTML Tidy for Linux/x86 (vers 12 April 2005), see www.w3.org" />
+  <title>Horstmann Chapter 9</title>
+</head>
+
+<body>
+<div onclick="document.location='slide020.html'">
+<center><small><a href="slide018.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide020.html">next</a></small></center>
+<hr></div>
+<h2>Factory Methods<br />
+</h2>
+<ul>
+  <li>Every collection can produce an iterator<br />
+    <tt>Iterator iter = list.iterator()</tt> </li>
+  <li>Why not use constructors?<br />
+    <tt>Iterator iter = new LinkedListIterator(list);</tt> </li>
+  <li>Drawback: not generic<br />
+    <tt>Collection coll = ...;</tt><br style="font-family: monospace;" />
+    <tt>Iterator iter = new ???(coll);</tt> </li>
+  <li>Factory method works for all collections<br />
+    <tt>Iterator iter = coll.iterator();</tt> </li>
+  <li>Polymorphism! </li>
+</ul>
+
+<div onclick="document.location='slide020.html'"><hr>
+<center><small><a href="slide018.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide020.html">next</a></small></center>
+</div>
+</body>
+</html>

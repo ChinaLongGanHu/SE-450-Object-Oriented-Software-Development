@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="" />
+  <title>Horstmann Chapter 6</title>
+</head>
+
+<body>
+<div onclick="document.location='slide016.html'">
+<center><small><a href="slide014.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide016.html">next</a></small></center>
+<hr></div>
+<h2>Preconditions</h2>
+<ul>
+  <li>Precondition of redefined method <i>at most as strong</i></li>
+  <li>
+    <pre>public class Employee<br />{<br />   /**<br />      Sets the employee salary to a given value. <br />      @param aSalary the new salary <br />      @precondition aSalary &gt; 0 <br />   */ <br />   public void setSalary(double aSalary) { ... }<br />}<br /></pre>
+  </li>
+  <li>Can we redefine <tt>Manager.setSalary</tt> with precondition<br />
+    <tt>salary &gt; 100000</tt>?</li>
+  <li>No--Could be defeated:<br />
+    <pre>Manager m = new Manager();<br />Employee e = m;<br />e.setSalary(50000);<br /></pre>
+  </li>
+</ul>
+
+<div onclick="document.location='slide016.html'"><hr>
+<center><small><a href="slide014.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide016.html">next</a></small></center>
+</div>
+</body>
+</html>

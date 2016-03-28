@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="generator"
+ content="HTML Tidy for Linux/x86 (vers 12 April 2005), see www.w3.org">
+  <title>Horstmann Chapter 7</title>
+</head>
+
+<body>
+<div onclick="document.location='slide018.html'">
+<center><small><a href="slide016.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide018.html">next</a></small></center>
+<hr></div>
+<h2>The <tt>Class</tt> Class</h2>
+<ul>
+  <li><tt>getClass</tt> method gets class of any object </li>
+  <li>Returns object of type <tt>Class</tt> </li>
+  <li> <tt>Class</tt> object describes a <i>type</i>
+    <pre>Object e = new Rectangle();<br>Class c = e.getClass();<br>System.out.println(c.getName()); // prints java.awt.Rectangle<br></pre>
+  </li>
+  <li><tt>Class.forName</tt> method yields <tt>Class</tt> object:<br>
+    <tt>Class c = Class.forName("java.awt.Rectangle");</tt> </li>
+  <li><tt>.class</tt> suffix yields <tt>Class</tt> object:<br>
+    <tt>Class c = Rectangle.class; // java.awt prefix not needed</tt> </li>
+  <li><tt>Class</tt> is a misnomer: <tt>int.class</tt>, <tt>void.class</tt>,<tt>Shape.class</tt>
+  </li>
+</ul>
+
+<div onclick="document.location='slide018.html'"><hr>
+<center><small><a href="slide016.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide018.html">next</a></small></center>
+</div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="generator"
+ content="HTML Tidy for Linux/x86 (vers 12 April 2005), see www.w3.org">
+  <title>Horstmann Chapter 7</title>
+</head>
+
+<body>
+<div onclick="document.location='slide012.html'">
+<center><small><a href="slide010.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide012.html">next</a></small></center>
+<hr></div>
+<h2>The ArrayStoreException</h2>
+<ul>
+  <li><tt>Rectangle[]</tt> is a subtype of <tt>Shape[]</tt> </li>
+  <li>Can assign <tt>Rectangle[]</tt> value to <tt>Shape[]</tt>
+variable:
+    <pre>Rectangle[] r = new Rectangle[10];<br>Shape[] s = r;<br></pre>
+  </li>
+  <li>Both <tt>r</tt> and <tt>s</tt> are references to the same array
+  </li>
+  <li>That array holds rectangles </li>
+  <li>The assignment<br>
+    <tt>s[0] = new Polygon();</tt><br>
+compiles </li>
+  <li>Throws an <tt>ArrayStoreException</tt> at runtime </li>
+  <li>Each array remembers its component type </li>
+</ul>
+
+<div onclick="document.location='slide012.html'"><hr>
+<center><small><a href="slide010.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide012.html">next</a></small></center>
+</div>
+</body>
+</html>

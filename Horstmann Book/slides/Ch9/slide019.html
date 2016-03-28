@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Horstmann Chapter 9</title>
+</head>
+
+<body>
+<div onclick="document.location='slide020.html'">
+<center><small><a href="slide018.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide020.html">next</a></small></center>
+<hr></div>
+<h2>Consumer Thread</h2>
+<pre>int i = 1; <br />while (i &lt;= greetingCount) <br />{ <br />   if (!queue.isEmpty()) <br />   { <br />      Object greeting = queue.remove(); <br />      System.out.println(greeting); <br />      i++; <br />   } <br />   Thread.sleep((int)(Math.random() * DELAY)); <br />} <br /></pre>
+
+<div onclick="document.location='slide020.html'"><hr>
+<center><small><a href="slide018.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide020.html">next</a></small></center>
+</div>
+</body>
+</html>

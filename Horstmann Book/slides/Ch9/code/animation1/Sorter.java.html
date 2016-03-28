@@ -1,0 +1,48 @@
+<pre><tt><font color="#000000">01: </font><b><font color="#000080">import</font></b> java<font color="#990000">.</font>util<font color="#990000">.</font><font color="#990000">*</font><font color="#990000">;</font>
+<font color="#000000">02: </font>
+<font color="#000000">03: </font><i><font color="#9A1900">/**</font></i>
+<font color="#000000">04: </font><i><font color="#9A1900">   This runnable executes a sort algorithm.</font></i>
+<font color="#000000">05: </font><i><font color="#9A1900">   When two elements are compared, the algorithm</font></i>
+<font color="#000000">06: </font><i><font color="#9A1900">   pauses and updates a panel.</font></i>
+<font color="#000000">07: </font><i><font color="#9A1900">*/</font></i>
+<font color="#000000">08: </font><b><font color="#0000FF">public</font></b> <b><font color="#0000FF">class</font></b> Sorter <b><font color="#0000FF">implements</font></b> Runnable
+<font color="#000000">09: </font><font color="#FF0000">{</font>
+<font color="#000000">10: </font>   <i><font color="#9A1900">/**</font></i>
+<font color="#000000">11: </font><i><font color="#9A1900">      Constructs the sorter.</font></i>
+<font color="#000000">12: </font><i><font color="#9A1900">      @param values the array to sort</font></i>
+<font color="#000000">13: </font><i><font color="#9A1900">      @param panel the panel for displaying the array</font></i>
+<font color="#000000">14: </font><i><font color="#9A1900">   */</font></i>
+<font color="#000000">15: </font>   <b><font color="#0000FF">public</font></b> <b><font color="#000000">Sorter</font></b><font color="#990000">(</font>Double<font color="#990000">[</font><font color="#990000">]</font> values<font color="#990000">,</font> ArrayComponent panel<font color="#990000">)</font>
+<font color="#000000">16: </font>   <font color="#FF0000">{</font>
+<font color="#000000">17: </font>      <b><font color="#0000FF">this</font></b><font color="#990000">.</font>values <font color="#990000">=</font> values<font color="#990000">;</font>
+<font color="#000000">18: </font>      <b><font color="#0000FF">this</font></b><font color="#990000">.</font>panel <font color="#990000">=</font> panel<font color="#990000">;</font>
+<font color="#000000">19: </font>   <font color="#FF0000">}</font>
+<font color="#000000">20: </font>
+<font color="#000000">21: </font>   <b><font color="#0000FF">public</font></b> <font color="#009900">void</font> <b><font color="#000000">run</font></b><font color="#990000">(</font><font color="#990000">)</font>
+<font color="#000000">22: </font>   <font color="#FF0000">{</font>
+<font color="#000000">23: </font>      Comparator<font color="#990000">&lt;</font>Double<font color="#990000">&gt;</font> comp <font color="#990000">=</font> <b><font color="#0000FF">new</font></b>
+<font color="#000000">24: </font>         Comparator<font color="#990000">&lt;</font>Double<font color="#990000">&gt;</font><font color="#990000">(</font><font color="#990000">)</font>
+<font color="#000000">25: </font>         <font color="#FF0000">{</font>
+<font color="#000000">26: </font>            <b><font color="#0000FF">public</font></b> <font color="#009900">int</font> <b><font color="#000000">compare</font></b><font color="#990000">(</font>Double d1<font color="#990000">,</font> Double d2<font color="#990000">)</font>
+<font color="#000000">27: </font>            <font color="#FF0000">{</font>
+<font color="#000000">28: </font>               panel<font color="#990000">.</font><b><font color="#000000">setValues</font></b><font color="#990000">(</font>values<font color="#990000">,</font> d1<font color="#990000">,</font> d2<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">29: </font>               <b><font color="#0000FF">try</font></b>
+<font color="#000000">30: </font>               <font color="#FF0000">{</font>
+<font color="#000000">31: </font>                  Thread<font color="#990000">.</font><b><font color="#000000">sleep</font></b><font color="#990000">(</font>DELAY<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">32: </font>               <font color="#FF0000">}</font>
+<font color="#000000">33: </font>               <b><font color="#0000FF">catch</font></b> <font color="#990000">(</font>InterruptedException exception<font color="#990000">)</font>
+<font color="#000000">34: </font>               <font color="#FF0000">{</font>
+<font color="#000000">35: </font>                  Thread<font color="#990000">.</font><b><font color="#000000">currentThread</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">.</font><b><font color="#000000">interrupt</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">36: </font>               <font color="#FF0000">}</font>
+<font color="#000000">37: </font>               <b><font color="#0000FF">return</font></b> <font color="#990000">(</font>d1<font color="#990000">)</font><font color="#990000">.</font><b><font color="#000000">compareTo</font></b><font color="#990000">(</font>d2<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">38: </font>            <font color="#FF0000">}</font>
+<font color="#000000">39: </font>         <font color="#FF0000">}</font><font color="#990000">;</font>
+<font color="#000000">40: </font>      MergeSorter<font color="#990000">.</font><b><font color="#000000">sort</font></b><font color="#990000">(</font>values<font color="#990000">,</font> comp<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">41: </font>      panel<font color="#990000">.</font><b><font color="#000000">setValues</font></b><font color="#990000">(</font>values<font color="#990000">,</font> <b><font color="#0000FF">null</font></b><font color="#990000">,</font> <b><font color="#0000FF">null</font></b><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">42: </font>   <font color="#FF0000">}</font>
+<font color="#000000">43: </font>
+<font color="#000000">44: </font>   <b><font color="#0000FF">private</font></b> Double<font color="#990000">[</font><font color="#990000">]</font> values<font color="#990000">;</font>
+<font color="#000000">45: </font>   <b><font color="#0000FF">private</font></b> ArrayComponent panel<font color="#990000">;</font>
+<font color="#000000">46: </font>   <b><font color="#0000FF">private</font></b> <b><font color="#0000FF">static</font></b> <b><font color="#0000FF">final</font></b> <font color="#009900">int</font> DELAY <font color="#990000">=</font> <font color="#993399">100</font><font color="#990000">;</font>
+<font color="#000000">47: </font><font color="#FF0000">}</font>
+</tt></pre>

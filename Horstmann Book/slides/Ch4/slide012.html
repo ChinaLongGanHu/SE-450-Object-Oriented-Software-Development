@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+  <title>Horstmann Chapter 4</title></head>
+
+<body>
+<div onclick="document.location='slide013.html'">
+<center><small><a href="slide011.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide013.html">next</a></small></center>
+<hr></div>
+<h2>Polymorphism</h2>
+<ul>
+  <li>Which <tt>getIconWidth</tt> method is called?</li>
+  <li>Could be<br />
+    <ul>
+      <li style="font-family: monospace;">MarsIcon.getIconWidth</li>
+      <li style="font-family: monospace;">ImageIcon.getIconWidth</li>
+      <li>. . .<br />
+      </li>
+    </ul>
+  </li>
+  <li>Depends on object to which <tt>anIcon</tt> reference points, e.g.<br />
+    <pre>showMessageDialog(..., new MarsIcon(50))<br /></pre>
+  </li>
+  <li>Polymorphism: Select different methods according to actual object
+type</li>
+</ul>
+
+<div onclick="document.location='slide013.html'"><hr>
+<center><small><a href="slide011.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide013.html">next</a></small></center>
+</div>
+</body>
+</html>

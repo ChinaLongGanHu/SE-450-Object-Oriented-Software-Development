@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="generator"
+ content="HTML Tidy for Linux/x86 (vers 12 April 2005), see www.w3.org">
+  <title>Horstmann Chapter 7</title>
+</head>
+
+<body>
+<div onclick="document.location='slide032.html'">
+<center><small><a href="slide030.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide032.html">next</a></small></center>
+<hr></div>
+<h2>Fixing <tt>Employee.equals</tt></h2>
+<ul>
+  <li>Violates two rules </li>
+  <li>Add test for <tt>null</tt>:<br>
+    <tt>if (otherObject == null) return false</tt> </li>
+  <li>What happens if <tt>otherObject</tt> not an <tt>Employee</tt> </li>
+  <li>Should return <tt>false</tt> (because of symmetry) </li>
+  <li>Common error: use of <tt>instanceof<br>
+if (!(otherObject instanceof Employee)) return false;<br>
+&nbsp; &nbsp;// don't do this for non-final classes<br>
+    </tt> </li>
+  <li>Violates symmetry: Suppose <tt>e, m</tt> have same name, salary<br>
+    <tt>e.equals(m)</tt> is <tt>true</tt> (because <tt>m instanceof
+Employee</tt>)<br>
+    <tt>m.equals(e)</tt> is <tt>false</tt> (because <tt>e</tt> isn't
+an instance of <tt>Manager</tt>) </li>
+  <li>Remedy: Test for class equality<br>
+    <tt>if (getClass() != otherObject.getClass()) return false;</tt><br>
+  </li>
+</ul>
+
+<div onclick="document.location='slide032.html'"><hr>
+<center><small><a href="slide030.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide032.html">next</a></small></center>
+</div>
+</body>
+</html>

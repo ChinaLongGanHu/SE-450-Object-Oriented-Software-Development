@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="generator"
+ content="HTML Tidy for Linux/x86 (vers 12 April 2005), see www.w3.org">
+  <title>Horstmann Chapter 7</title>
+</head>
+
+<body>
+<div onclick="document.location='slide038.html'">
+<center><small><a href="slide036.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide038.html">next</a></small></center>
+<hr></div>
+<h2>Cloning<br>
+</h2>
+<ul>
+  <li><tt>Object.clone</tt> makes new object and copies all fields </li>
+  <li>Cloning is subtle </li>
+  <li><tt>Object.clone</tt> is <tt>protected</tt> </li>
+  <li>Subclass <i>must</i> redefine <tt>clone</tt> to be <tt>public</tt><br>
+    <pre>public class Employee <br>{ <br>   <b>public</b> Object clone() <br>   { <br>      return super.clone(); // not complete <br>   } <br>   ... <br>}<br></pre>
+  </li>
+</ul>
+
+<div onclick="document.location='slide038.html'"><hr>
+<center><small><a href="slide036.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide038.html">next</a></small></center>
+</div>
+</body>
+</html>

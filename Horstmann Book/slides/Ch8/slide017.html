@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="generator"
+ content="HTML Tidy for Linux/x86 (vers 12 April 2005), see www.w3.org" />
+  <title>Horstmann Chapter 8</title>
+</head>
+
+<body>
+<div onclick="document.location='slide018.html'">
+<center><small><a href="slide016.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide018.html">next</a></small></center>
+<hr></div>
+<h2><tt>AbstractCollection</tt> Class</h2>
+<ul>
+  <li><tt>Collection</tt> is a hefty interface </li>
+  <li>Convenient for clients, inconvenientfor implementors<br />
+  </li>
+  <li>Many methods can be implemented from others (Template method!) </li>
+  <li>Example: <tt>toArray<br />
+    </tt> </li>
+</ul>
+<tt>public E[] toArray()<br />
+{<br />
+&nbsp;&nbsp; E[] result = new E[size()];<br />
+&nbsp;&nbsp; Iterator e = iterator();<br />
+&nbsp;&nbsp; for (int i = 0; e.hasNext(); i++)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; result[i] = e.next();<br />
+&nbsp;&nbsp; return result;<br />
+}</tt>
+
+<div onclick="document.location='slide018.html'"><hr>
+<center><small><a href="slide016.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide018.html">next</a></small></center>
+</div>
+</body>
+</html>

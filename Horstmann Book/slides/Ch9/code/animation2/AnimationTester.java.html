@@ -1,0 +1,66 @@
+<pre><tt><font color="#000000">01: </font><b><font color="#000080">import</font></b> java<font color="#990000">.</font>awt<font color="#990000">.</font><font color="#990000">*</font><font color="#990000">;</font>
+<font color="#000000">02: </font><b><font color="#000080">import</font></b> java<font color="#990000">.</font>awt<font color="#990000">.</font>event<font color="#990000">.</font><font color="#990000">*</font><font color="#990000">;</font>
+<font color="#000000">03: </font><b><font color="#000080">import</font></b> javax<font color="#990000">.</font>swing<font color="#990000">.</font><font color="#990000">*</font><font color="#990000">;</font>
+<font color="#000000">04: </font><b><font color="#000080">import</font></b> java<font color="#990000">.</font>util<font color="#990000">.</font>concurrent<font color="#990000">.</font><font color="#990000">*</font><font color="#990000">;</font>
+<font color="#000000">05: </font>
+<font color="#000000">06: </font><i><font color="#9A1900">/**</font></i>
+<font color="#000000">07: </font><i><font color="#9A1900">   This program animates a sort algorithm.</font></i>
+<font color="#000000">08: </font><i><font color="#9A1900">*/</font></i>
+<font color="#000000">09: </font><b><font color="#0000FF">public</font></b> <b><font color="#0000FF">class</font></b> AnimationTester
+<font color="#000000">10: </font><font color="#FF0000">{</font>
+<font color="#000000">11: </font>   <b><font color="#0000FF">public</font></b> <b><font color="#0000FF">static</font></b> <font color="#009900">void</font> <b><font color="#000000">main</font></b><font color="#990000">(</font>String<font color="#990000">[</font><font color="#990000">]</font> args<font color="#990000">)</font>
+<font color="#000000">12: </font>   <font color="#FF0000">{</font>
+<font color="#000000">13: </font>      JFrame frame <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> <b><font color="#000000">JFrame</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">14: </font>      frame<font color="#990000">.</font><b><font color="#000000">setDefaultCloseOperation</font></b><font color="#990000">(</font>JFrame<font color="#990000">.</font>EXIT_ON_CLOSE<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">15: </font>
+<font color="#000000">16: </font>      ArrayComponent panel <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> <b><font color="#000000">ArrayComponent</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">17: </font>      frame<font color="#990000">.</font><b><font color="#000000">add</font></b><font color="#990000">(</font>panel<font color="#990000">,</font> BorderLayout<font color="#990000">.</font>CENTER<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">18: </font>
+<font color="#000000">19: </font>      JButton stepButton <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> <b><font color="#000000">JButton</font></b><font color="#990000">(</font><font color="#FF0000">"Step"</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">20: </font>      <b><font color="#0000FF">final</font></b> JButton runButton <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> <b><font color="#000000">JButton</font></b><font color="#990000">(</font><font color="#FF0000">"Run"</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">21: </font>
+<font color="#000000">22: </font>      JPanel buttons <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> <b><font color="#000000">JPanel</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">23: </font>      buttons<font color="#990000">.</font><b><font color="#000000">add</font></b><font color="#990000">(</font>stepButton<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">24: </font>      buttons<font color="#990000">.</font><b><font color="#000000">add</font></b><font color="#990000">(</font>runButton<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">25: </font>      frame<font color="#990000">.</font><b><font color="#000000">add</font></b><font color="#990000">(</font>buttons<font color="#990000">,</font> BorderLayout<font color="#990000">.</font>NORTH<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">26: </font>      frame<font color="#990000">.</font><b><font color="#000000">setSize</font></b><font color="#990000">(</font>FRAME_WIDTH<font color="#990000">,</font> FRAME_HEIGHT<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">27: </font>      frame<font color="#990000">.</font><b><font color="#000000">setVisible</font></b><font color="#990000">(</font><b><font color="#0000FF">true</font></b><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">28: </font>
+<font color="#000000">29: </font>      Double<font color="#990000">[</font><font color="#990000">]</font> values <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> Double<font color="#990000">[</font>VALUES_LENGTH<font color="#990000">]</font><font color="#990000">;</font>
+<font color="#000000">30: </font>      <b><font color="#0000FF">for</font></b> <font color="#990000">(</font><font color="#009900">int</font> i <font color="#990000">=</font> <font color="#993399">0</font><font color="#990000">;</font> i <font color="#990000">&lt;</font> values<font color="#990000">.</font>length<font color="#990000">;</font> i<font color="#990000">+</font><font color="#990000">+</font><font color="#990000">)</font>
+<font color="#000000">31: </font>         values<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">=</font> Math<font color="#990000">.</font><b><font color="#000000">random</font></b><font color="#990000">(</font><font color="#990000">)</font> <font color="#990000">*</font> panel<font color="#990000">.</font><b><font color="#000000">getHeight</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">32: </font>
+<font color="#000000">33: </font>      <b><font color="#0000FF">final</font></b> BlockingQueue<font color="#990000">&lt;</font>String<font color="#990000">&gt;</font> queue <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> LinkedBlockingQueue<font color="#990000">&lt;</font>String<font color="#990000">&gt;</font><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">34: </font>      queue<font color="#990000">.</font><b><font color="#000000">add</font></b><font color="#990000">(</font><font color="#FF0000">"Step"</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">35: </font>
+<font color="#000000">36: </font>      <b><font color="#0000FF">final</font></b> Sorter sorter <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> <b><font color="#000000">Sorter</font></b><font color="#990000">(</font>values<font color="#990000">,</font> panel<font color="#990000">,</font> queue<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">37: </font>
+<font color="#000000">38: </font>      stepButton<font color="#990000">.</font><b><font color="#000000">addActionListener</font></b><font color="#990000">(</font><b><font color="#0000FF">new</font></b>
+<font color="#000000">39: </font>         <b><font color="#000000">ActionListener</font></b><font color="#990000">(</font><font color="#990000">)</font>
+<font color="#000000">40: </font>         <font color="#FF0000">{</font>
+<font color="#000000">41: </font>            <b><font color="#0000FF">public</font></b> <font color="#009900">void</font> <b><font color="#000000">actionPerformed</font></b><font color="#990000">(</font>ActionEvent event<font color="#990000">)</font>
+<font color="#000000">42: </font>            <font color="#FF0000">{</font>
+<font color="#000000">43: </font>               queue<font color="#990000">.</font><b><font color="#000000">add</font></b><font color="#990000">(</font><font color="#FF0000">"Step"</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">44: </font>               runButton<font color="#990000">.</font><b><font color="#000000">setEnabled</font></b><font color="#990000">(</font><b><font color="#0000FF">true</font></b><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">45: </font>            <font color="#FF0000">}</font>
+<font color="#000000">46: </font>         <font color="#FF0000">}</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">47: </font>
+<font color="#000000">48: </font>      runButton<font color="#990000">.</font><b><font color="#000000">addActionListener</font></b><font color="#990000">(</font><b><font color="#0000FF">new</font></b>
+<font color="#000000">49: </font>         <b><font color="#000000">ActionListener</font></b><font color="#990000">(</font><font color="#990000">)</font>
+<font color="#000000">50: </font>         <font color="#FF0000">{</font>
+<font color="#000000">51: </font>            <b><font color="#0000FF">public</font></b> <font color="#009900">void</font> <b><font color="#000000">actionPerformed</font></b><font color="#990000">(</font>ActionEvent event<font color="#990000">)</font>
+<font color="#000000">52: </font>            <font color="#FF0000">{</font>
+<font color="#000000">53: </font>               runButton<font color="#990000">.</font><b><font color="#000000">setEnabled</font></b><font color="#990000">(</font><b><font color="#0000FF">false</font></b><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">54: </font>               queue<font color="#990000">.</font><b><font color="#000000">add</font></b><font color="#990000">(</font><font color="#FF0000">"Run"</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">55: </font>            <font color="#FF0000">}</font>
+<font color="#000000">56: </font>         <font color="#FF0000">}</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">57: </font>
+<font color="#000000">58: </font>      Thread sorterThread <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> <b><font color="#000000">Thread</font></b><font color="#990000">(</font>sorter<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">59: </font>      sorterThread<font color="#990000">.</font><b><font color="#000000">start</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">60: </font>   <font color="#FF0000">}</font>
+<font color="#000000">61: </font>
+<font color="#000000">62: </font>   <b><font color="#0000FF">private</font></b> <b><font color="#0000FF">static</font></b> <b><font color="#0000FF">final</font></b> <font color="#009900">int</font> FRAME_WIDTH <font color="#990000">=</font> <font color="#993399">300</font><font color="#990000">;</font>
+<font color="#000000">63: </font>   <b><font color="#0000FF">private</font></b> <b><font color="#0000FF">static</font></b> <b><font color="#0000FF">final</font></b> <font color="#009900">int</font> FRAME_HEIGHT <font color="#990000">=</font> <font color="#993399">300</font><font color="#990000">;</font>
+<font color="#000000">64: </font>   <b><font color="#0000FF">private</font></b> <b><font color="#0000FF">static</font></b> <b><font color="#0000FF">final</font></b> <font color="#009900">int</font> VALUES_LENGTH <font color="#990000">=</font> <font color="#993399">30</font><font color="#990000">;</font>
+<font color="#000000">65: </font><font color="#FF0000">}</font>
+</tt></pre>

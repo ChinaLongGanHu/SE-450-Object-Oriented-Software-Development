@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="generator"
+ content="HTML Tidy for Linux/x86 (vers 12 April 2005), see www.w3.org" />
+  <title>Horstmann Chapter 1</title>
+</head>
+
+<body>
+<div onclick="document.location='slide018.html'">
+<center><small><a href="slide016.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide018.html">next</a></small></center>
+<hr></div>
+<h2>Object References</h2>
+<ul>
+  <li>Object variable holds a <i>reference</i><br />
+    <pre>Greeter worldGreeter = new Greeter("World");<br /><br /><img
+ src="images/Ch1_06.jpg" title="" alt="."
+ style="width: 563px; height: 135px;" /> <br /><br /></pre>
+  </li>
+  <li>Can have multiple references
+to the same object<br />
+    <pre>Greeter anotherGreeter = worldGreeter;<br /><br /><img
+ src="images/Ch1_07.jpg" title="" alt="."
+ style="width: 590px; height: 137px;" /><br /></pre>
+  </li>
+  <li>After applying mutator
+method, all references access modified
+object<br />
+    <pre>anotherGreeter.setName("Dave");<br />// now worldGreeter.sayHello() returns "Hello, Dave!"<br /></pre>
+  </li>
+</ul>
+
+<div onclick="document.location='slide018.html'"><hr>
+<center><small><a href="slide016.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide018.html">next</a></small></center>
+</div>
+</body>
+</html>

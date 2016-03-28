@@ -1,0 +1,26 @@
+<pre><tt><font color="#000000">01: </font><i><font color="#9A1900">/**</font></i>
+<font color="#000000">02: </font><i><font color="#9A1900">   This program runs two threads in parallel.</font></i>
+<font color="#000000">03: </font><i><font color="#9A1900">*/</font></i>
+<font color="#000000">04: </font><b><font color="#0000FF">public</font></b> <b><font color="#0000FF">class</font></b> ThreadTester
+<font color="#000000">05: </font><font color="#FF0000">{</font>
+<font color="#000000">06: </font>   <b><font color="#0000FF">public</font></b> <b><font color="#0000FF">static</font></b> <font color="#009900">void</font> <b><font color="#000000">main</font></b><font color="#990000">(</font>String<font color="#990000">[</font><font color="#990000">]</font> args<font color="#990000">)</font>
+<font color="#000000">07: </font>   <font color="#FF0000">{</font>
+<font color="#000000">08: </font>      BoundedQueue<font color="#990000">&lt;</font>String<font color="#990000">&gt;</font> queue <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> BoundedQueue<font color="#990000">&lt;</font>String<font color="#990000">&gt;</font><font color="#990000">(</font><font color="#993399">10</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">09: </font>      <b><font color="#0000FF">final</font></b> <font color="#009900">int</font> GREETING_COUNT <font color="#990000">=</font> <font color="#993399">100</font><font color="#990000">;</font>
+<font color="#000000">10: </font>      Runnable run1 <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> <b><font color="#000000">Producer</font></b><font color="#990000">(</font><font color="#FF0000">"Hello, World!"</font><font color="#990000">,</font> 
+<font color="#000000">11: </font>            queue<font color="#990000">,</font> GREETING_COUNT<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">12: </font>      Runnable run2 <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> <b><font color="#000000">Producer</font></b><font color="#990000">(</font><font color="#FF0000">"Goodbye, World!"</font><font color="#990000">,</font> 
+<font color="#000000">13: </font>            queue<font color="#990000">,</font> GREETING_COUNT<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">14: </font>      Runnable run3 <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> <b><font color="#000000">Consumer</font></b><font color="#990000">(</font>queue<font color="#990000">,</font> <font color="#993399">2</font> <font color="#990000">*</font> GREETING_COUNT<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">15: </font>      
+<font color="#000000">16: </font>      Thread thread1 <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> <b><font color="#000000">Thread</font></b><font color="#990000">(</font>run1<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">17: </font>      Thread thread2 <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> <b><font color="#000000">Thread</font></b><font color="#990000">(</font>run2<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">18: </font>      Thread thread3 <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> <b><font color="#000000">Thread</font></b><font color="#990000">(</font>run3<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">19: </font>
+<font color="#000000">20: </font>      thread1<font color="#990000">.</font><b><font color="#000000">start</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">21: </font>      thread2<font color="#990000">.</font><b><font color="#000000">start</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">22: </font>      thread3<font color="#990000">.</font><b><font color="#000000">start</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">23: </font>   <font color="#FF0000">}</font>
+<font color="#000000">24: </font><font color="#FF0000">}</font>
+<font color="#000000">25: </font>
+</tt></pre>

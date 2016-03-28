@@ -1,0 +1,45 @@
+<pre><tt><font color="#000000">01: </font><b><font color="#000080">import</font></b> java<font color="#990000">.</font>beans<font color="#990000">.</font><font color="#990000">*</font><font color="#990000">;</font>
+<font color="#000000">02: </font>
+<font color="#000000">03: </font><i><font color="#9A1900">/**</font></i>
+<font color="#000000">04: </font><i><font color="#9A1900">   A property editor for enumerated types.</font></i>
+<font color="#000000">05: </font><i><font color="#9A1900">*/</font></i>
+<font color="#000000">06: </font><b><font color="#0000FF">public</font></b> <b><font color="#0000FF">class</font></b> EnumEditor <b><font color="#0000FF">extends</font></b> PropertyEditorSupport
+<font color="#000000">07: </font><font color="#FF0000">{</font>
+<font color="#000000">08: </font>   <i><font color="#9A1900">/**</font></i>
+<font color="#000000">09: </font><i><font color="#9A1900">      Constructs a property editor for an enumerated type</font></i>
+<font color="#000000">10: </font><i><font color="#9A1900">      @param cl the class object for the enumerated type</font></i>
+<font color="#000000">11: </font><i><font color="#9A1900">   */</font></i>
+<font color="#000000">12: </font>   <b><font color="#0000FF">public</font></b> <b><font color="#000000">EnumEditor</font></b><font color="#990000">(</font>Class cl<font color="#990000">)</font>
+<font color="#000000">13: </font>   <font color="#FF0000">{</font>
+<font color="#000000">14: </font>      <b><font color="#0000FF">this</font></b><font color="#990000">.</font>cl <font color="#990000">=</font> cl<font color="#990000">;</font>
+<font color="#000000">15: </font>   <font color="#FF0000">}</font>
+<font color="#000000">16: </font>
+<font color="#000000">17: </font>   <b><font color="#0000FF">public</font></b> String<font color="#990000">[</font><font color="#990000">]</font> <b><font color="#000000">getTags</font></b><font color="#990000">(</font><font color="#990000">)</font>
+<font color="#000000">18: </font>   <font color="#FF0000">{</font>
+<font color="#000000">19: </font>      <b><font color="#0000FF">try</font></b>
+<font color="#000000">20: </font>      <font color="#FF0000">{</font>
+<font color="#000000">21: </font>         Object<font color="#990000">[</font><font color="#990000">]</font> values <font color="#990000">=</font> <font color="#990000">(</font>Object<font color="#990000">[</font><font color="#990000">]</font><font color="#990000">)</font> cl<font color="#990000">.</font><b><font color="#000000">getMethod</font></b><font color="#990000">(</font><font color="#FF0000">"values"</font><font color="#990000">)</font><font color="#990000">.</font><b><font color="#000000">invoke</font></b><font color="#990000">(</font><b><font color="#0000FF">null</font></b><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">22: </font>         String<font color="#990000">[</font><font color="#990000">]</font> result <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> String<font color="#990000">[</font>values<font color="#990000">.</font>length<font color="#990000">]</font><font color="#990000">;</font>
+<font color="#000000">23: </font>         <b><font color="#0000FF">for</font></b> <font color="#990000">(</font><font color="#009900">int</font> i <font color="#990000">=</font> <font color="#993399">0</font><font color="#990000">;</font> i <font color="#990000">&lt;</font> values<font color="#990000">.</font>length<font color="#990000">;</font> i<font color="#990000">+</font><font color="#990000">+</font><font color="#990000">)</font>
+<font color="#000000">24: </font>            result<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">=</font> values<font color="#990000">[</font>i<font color="#990000">]</font><font color="#990000">.</font><b><font color="#000000">toString</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">25: </font>         <b><font color="#0000FF">return</font></b> result<font color="#990000">;</font>
+<font color="#000000">26: </font>      <font color="#FF0000">}</font>
+<font color="#000000">27: </font>      <b><font color="#0000FF">catch</font></b> <font color="#990000">(</font>Exception ex<font color="#990000">)</font>
+<font color="#000000">28: </font>      <font color="#FF0000">{</font>
+<font color="#000000">29: </font>         <b><font color="#0000FF">return</font></b> <b><font color="#0000FF">null</font></b><font color="#990000">;</font>
+<font color="#000000">30: </font>      <font color="#FF0000">}</font>
+<font color="#000000">31: </font>   <font color="#FF0000">}</font>
+<font color="#000000">32: </font>
+<font color="#000000">33: </font>   <b><font color="#0000FF">public</font></b> String <b><font color="#000000">getAsText</font></b><font color="#990000">(</font><font color="#990000">)</font>
+<font color="#000000">34: </font>   <font color="#FF0000">{</font>
+<font color="#000000">35: </font>      <b><font color="#0000FF">return</font></b> <b><font color="#000000">getValue</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">.</font><b><font color="#000000">toString</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">36: </font>   <font color="#FF0000">}</font>
+<font color="#000000">37: </font>
+<font color="#000000">38: </font>   <b><font color="#0000FF">public</font></b> <font color="#009900">void</font> <b><font color="#000000">setAsText</font></b><font color="#990000">(</font>String s<font color="#990000">)</font>
+<font color="#000000">39: </font>   <font color="#FF0000">{</font>
+<font color="#000000">40: </font>      <b><font color="#000000">setValue</font></b><font color="#990000">(</font>Enum<font color="#990000">.</font><b><font color="#000000">valueOf</font></b><font color="#990000">(</font>cl<font color="#990000">,</font> s<font color="#990000">)</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">41: </font>   <font color="#FF0000">}</font>
+<font color="#000000">42: </font>
+<font color="#000000">43: </font>   <b><font color="#0000FF">private</font></b> Class cl<font color="#990000">;</font>
+<font color="#000000">44: </font><font color="#FF0000">}</font>
+</tt></pre>

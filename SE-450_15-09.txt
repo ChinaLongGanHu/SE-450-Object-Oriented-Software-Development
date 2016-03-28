@@ -1,0 +1,20 @@
+//Installation Guide
+http://fpl.cs.depaul.edu/jriely/450/notes/notes-tools-004.html
+
+//To add 4 Tools for Java
+http://fpl.cs.depaul.edu/jriely/450/lectures/class-01-019.html
+
+// Lectures and Homeworks Pages 
+http://fpl.cs.depaul.edu/jriely/450/lectures/
+
+// Course Homepage
+http://fpl.cs.depaul.edu/jriely/450/index.html
+
+// Extra Notes 
+http://fpl.cs.depaul.edu/jriely/450/extras/
+
+// Guidelines for Homeworks
+http://fpl.cs.depaul.edu/jriely/450/lectures/hw-01.html#slide003
+
+//Link to upload our Homework
+http://fpl.cs.depaul.edu/jriely/450/notes/notes-tools-005.html

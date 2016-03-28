@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="generator"
+ content="HTML Tidy for Linux/x86 (vers 12 April 2005), see www.w3.org">
+  <title>Horstmann Chapter 7</title>
+</head>
+
+<body>
+<div onclick="document.location='slide068.html'">
+<center><small><a href="slide066.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide068.html">next</a></small></center>
+<hr></div>
+<h2>Limitations of Generics</h2>
+<ul>
+  <li>Cannot replace type variables with primitive types <br>
+  </li>
+  <li>Cannot construct new objects of generic type<br>
+    <tt>a.add(new E()); // Error--would erase to new Object()</tt></li>
+  <li>Workaround: Use class literals<br>
+    <pre>public static &lt;E&gt; void fillWithDefaults(ArrayList&lt;E&gt;,<br>   <b>Class&lt;? extends E&gt; cl</b>, int count)<br>   throws InstantiationException, IllegalAccessException<br>{<br>   for (int i = 0; i &lt; count; i++)<br>      a.add(<b>cl.newInstance()</b>);<br>}</pre>
+  </li>
+  <li>Call as <tt>fillWithDefaults(a, Rectangle.class, count)</tt><br>
+  </li>
+</ul>
+
+<div onclick="document.location='slide068.html'"><hr>
+<center><small><a href="slide066.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide068.html">next</a></small></center>
+</div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+TimeServerInterface = CarServerInterface
+TimeServerLinked = CarServerEdge
+TimeServerTEST = CarServerTEST-----------------------------I removed from mine
+LightStateGreen = LightTurnsGreen
+LightStateYelNS = LightTurnsYellowNorthSouth
+LightStateYellow = LightTurnsYellow
+LightStateRed = LightTurnsRed
+LightState = LightStateControl
+Factory = Inventory
+CarSource = CarShowCase
+CarAcceptor = CarDirections
+RoadSegment = Road
+RoadSegmentEW = RoadDirectionEastWest
+RoadSegmentNS = RoadDirectionNorthSouth
+CarSink = CarFailure
+
+RoadSegmentTest-----------------------------I removed from mine

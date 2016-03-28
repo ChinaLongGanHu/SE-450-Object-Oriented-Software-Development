@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Horstmann Chapter 9</title>
+</head>
+
+<body>
+<div onclick="document.location='slide035.html'">
+<center><small><a href="slide033.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide035.html">next</a></small></center>
+<hr></div>
+<h2>Algorithm Animation</h2>
+<ul>
+  <li>Use thread to make progress in algorithm</li>
+  <li>Display algorithm state</li>
+  <li>Example: Animate <a href="code/animation1/MergeSorter.java.html">Ch9/animation/Sorter.java</a><br />
+  </li>
+  <li>Sleeps inside <tt>compare</tt> method</li>
+  <li>Pass custom comparator<br />
+    <tt>Comparator&lt;Double&gt; comp = new<br />
+&nbsp;&nbsp; Comparator&lt;Double&gt;()<br />
+&nbsp;&nbsp; {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void compare(Double d1, Double d2)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br />
+    </tt><tt><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sleep</i><br />
+    </tt><tt><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return
+comparison result</i><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br />
+&nbsp;&nbsp; };<br />
+    </tt></li>
+</ul>
+
+<div onclick="document.location='slide035.html'"><hr>
+<center><small><a href="slide033.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide035.html">next</a></small></center>
+</div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+  <title>Horstmann Chapter 4</title></head>
+
+<body>
+<div onclick="document.location='slide019.html'">
+<center><small><a href="slide017.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide019.html">next</a></small></center>
+<hr></div>
+<h2>Anonymous Classes<br />
+</h2>
+<ul>
+  <li>No need to name objects that are used only once<br />
+    <pre>Collections.sort(countries,<br />   <b>new CountryComparatorByName()</b>);<br /></pre>
+  </li>
+  <li>No need to name classes that are used only once<br />
+    <pre>Comparator&lt;Country&gt; comp = new<br />   <b>Comparator&lt;Country&gt;()<br />   {</b><br />      public int compare(Country country1, Country country2)<br />      { <br />         return country1.getName().compareTo(country2.getName());<br />      } <br /><b>   }</b>;<br /></pre>
+  </li>
+</ul>
+
+<div onclick="document.location='slide019.html'"><hr>
+<center><small><a href="slide017.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide019.html">next</a></small></center>
+</div>
+</body>
+</html>

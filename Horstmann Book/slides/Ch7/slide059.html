@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="generator"
+ content="HTML Tidy for Linux/x86 (vers 12 April 2005), see www.w3.org">
+  <title>Horstmann Chapter 7</title>
+</head>
+
+<body>
+<div onclick="document.location='slide060.html'">
+<center><small><a href="slide058.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide060.html">next</a></small></center>
+<hr></div>
+<h2>Generic Methods</h2>
+<ul>
+  <li>Generic method = method with type parameter(s)</li>
+  <li>
+    <pre>public class Utils<br>{<br>   public static &lt;E&gt; void fill(ArrayList&lt;E&gt; a, E value, int count)<br>   {<br>      for (int i = 0; i &lt; count; i++)<br>         a.add(value);<br>   }  <br>}</pre>
+  </li>
+  <li>A generic method in an ordinary (non-generic) class</li>
+  <li>Type parameters are inferred in call<br>
+    <pre>ArrayList&lt;String&gt; ids = new ArrayList&lt;String&gt;();<br>Utils.fill(ids, "default", 10); // calls Utils.&lt;String&gt;fill<br></pre>
+  </li>
+</ul>
+
+<div onclick="document.location='slide060.html'"><hr>
+<center><small><a href="slide058.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide060.html">next</a></small></center>
+</div>
+</body>
+</html>

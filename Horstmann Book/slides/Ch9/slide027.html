@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Horstmann Chapter 9</title>
+</head>
+
+<body>
+<div onclick="document.location='slide028.html'">
+<center><small><a href="slide026.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide028.html">next</a></small></center>
+<hr></div>
+<h2>Deadlocks</h2>
+<ul>
+  <li>Not enough to synchronize <tt>add</tt>,<tt> remove</tt></li>
+  <li><tt>if (!queue.isFull()) queue.add(...);</tt> &nbsp;<br />
+can still be interrupted</li>
+  <li>Must move test inside <tt>add</tt> method<br />
+    <pre>public void add(E newValue)<br />{<br />   queueLock.lock();<br />   try<br />   {<br />      while (<i>queue is full</i>)<br />         <i>wait for more space</i><br />      . . .<br />   }<br />   finally { qeueLock.unlock(); }<br />}<br /></pre>
+  </li>
+  <li>Problem: nobody else can call <tt>remove</tt></li>
+</ul>
+
+<div onclick="document.location='slide028.html'"><hr>
+<center><small><a href="slide026.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide028.html">next</a></small></center>
+</div>
+</body>
+</html>

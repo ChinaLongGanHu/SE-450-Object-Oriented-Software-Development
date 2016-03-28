@@ -1,0 +1,352 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Horstmann Chapter 9</title>
+</head>
+<body>
+<h2>Object-Oriented Design &amp; Patterns</h2>
+<h4>Cay S. Horstmann</h4>
+<h3>Chapter 9</h3>
+<h3>Multithreading</h3>
+<img alt="" src="images/oodp2.jpg" height="500" width="404" />
+<h2>Chapter Topics</h2>
+<ul>
+  <li>Thread Basics</li>
+  <li>Thread Synchronization</li>
+  <li>Animations</li>
+</ul>
+<h2>Threads<br />
+</h2>
+<ul>
+  <li>Thread: program unit that is executed independently</li>
+  <li>Multiple threads run simultaneously</li>
+  <li>Virtual machine executes each thread for short time slice</li>
+  <li>Thread scheduler activates, deactivates threads</li>
+  <li>Illusion of threads running in parallel</li>
+  <li>Multiprocessor computers: threads actually run in parallel</li>
+</ul>
+<h2>Running Threads</h2>
+<ul>
+  <li>Define class that implements <tt>Runnable</tt></li>
+  <li><tt><tt>Runnable</tt></tt> has one method<br />
+    <tt>void run()</tt></li>
+  <li>Place thread action into <tt>run</tt> method</li>
+  <li>Construct object of runnable class</li>
+  <li>Construct thread from that object</li>
+  <li>Start thread</li>
+</ul>
+<h2>Running Threads</h2>
+<pre>public class MyRunnable implements Runnable<br />{<br />   public void run()<br />   {<br /><i>      thread action</i>
+   }
+}
+...
+Runnable r = new MyRunnable();
+Thread t = new Thread(t);
+t.start();</pre>
+<h2>Thread Example<br />
+</h2>
+<ul>
+  <li>Run two threads in parallel</li>
+  <li>Each thread prints 10 greetings<br />
+    <pre>for (int i = 1; i &lt;= 10; i++)<br />{<br />   System.out.println(i + ": " + greeting);<br />   Thread.sleep(100);<br />}<br /></pre>
+  </li>
+  <li>After each printout, sleep for 100 millisec</li>
+  <li>All threads should occasionally yield control</li>
+  <li><tt>sleep</tt> throws <tt>InterruptedException</tt></li>
+</ul>
+<h2>Thread Example</h2>
+<ul>
+  <li><a href="code/greeting/GreetingProducer.java.html">Ch9/greeting/GreetingProducer.java</a></li>
+  <li><a href="code/greeting/ThreadTester.java.html">Ch9/greeting/ThreadTester.java</a></li>
+</ul>
+<img src="images/Ch9_01.jpg" title="" alt="."
+ style="width: 446px; height: 348px;" /><br />
+<h2>Thread Example</h2>
+<ul>
+  <li>Note: output not exactly interleaved<br />
+  </li>
+</ul>
+<pre>1: Hello, World! <br />1: Goodbye, World! <br />2: Hello, World! <br />2: Goodbye, World! <br />3: Hello, World! <br />3: Goodbye, World! <br />4: Hello, World! <br />4: Goodbye, World! <br />5: Hello, World! <br />5: Goodbye, World! <br />6: Hello, World! <br />6: Goodbye, World! <br />7: Hello, World! <br />7: Goodbye, World! <br />8: Goodbye, World! <br />8: Hello, World! <br />9: Goodbye, World! <br />9: Hello, World! <br />10: Goodbye, World! <br />10: Hello, World!<br /></pre>
+<h2>Starting Two Threads</h2>
+<img src="images/Ch9_02.jpg" title="" alt="."
+ style="width: 657px; height: 482px;" /><br />
+<br />
+<h2>Thread States</h2>
+<ul>
+  <li>Each thread has
+    <ul>
+      <li>thread state</li>
+    </ul>
+    <ul>
+      <li>priority</li>
+    </ul>
+  </li>
+  <li>Thread states:
+    <ul>
+      <li>new (before <tt>start</tt> called)</li>
+    </ul>
+    <ul>
+      <li>runnable</li>
+    </ul>
+    <ul>
+      <li>blocked</li>
+    </ul>
+    <ul>
+      <li>dead (after <tt>run</tt> method exits)<br />
+      </li>
+    </ul>
+  </li>
+</ul>
+<h2>Thread States</h2>
+<img src="images/Ch9_03.jpg" title="" alt="."
+ style="width: 694px; height: 473px;" /><br />
+<h2>Blocked Thread State</h2>
+<ul>
+  <li>Reasons for blocked state:
+    <ul>
+      <li>Sleeping</li>
+    </ul>
+    <ul>
+      <li>Waiting for I/O</li>
+    </ul>
+    <ul>
+      <li>Waiting to acquire lock (later)</li>
+    </ul>
+    <ul>
+      <li>Waiting for condition (later)</li>
+    </ul>
+  </li>
+  <li>Unblocks only if reason for block goes away</li>
+</ul>
+<h2>Scheduling Threads</h2>
+<ul>
+  <li>Scheduler activates new thread if
+    <ul>
+      <li>a thread has completed its time slice</li>
+      <li>a thread has blocked itself</li>
+      <li>a thread with higher priority has become runnable<br />
+      </li>
+    </ul>
+  </li>
+  <li>Scheduler determines new thread to run
+    <ul>
+      <li>looks only at runnable threads</li>
+      <li>picks one with max priority</li>
+    </ul>
+  </li>
+</ul>
+<h2>Terminating Threads</h2>
+<ul>
+  <li>Thread terminates when <tt>run</tt> exits</li>
+  <li>Sometimes necessary to terminate running thread<br />
+  </li>
+  <li>Don't use deprecated <tt>stop</tt> method</li>
+  <li>Interrupt thread by calling <tt>interrupt</tt></li>
+  <li>Calling <tt>t.interrupt()</tt> doesn't actually interrupt <tt>t</tt>;
+just sets a flag<br />
+  </li>
+  <li>Interrupted thread must sense interruption and exit its <tt>run</tt>
+method<br />
+  </li>
+  <li>Interrupted thread has chance to clean up</li>
+</ul>
+<h2>Sensing Interruptions</h2>
+<ul>
+  <li>Thread could occasionally call<br />
+    <tt>Thread.currentThread().isInterrupted()</tt></li>
+  <li><tt><tt>sleep</tt></tt>, <tt>wait</tt> throw <tt>InterruptedException</tt>
+when thread interrupted</li>
+  <li>. . . and then the interruption status is cleared!<br />
+  </li>
+  <li>More robust: Sleep occasionally, catch exception and react to
+interruption</li>
+  <li>Recommendation: Terminate <tt>run</tt> when sensing interruption</li>
+</ul>
+<h2>Sensing Interruptions</h2>
+<pre>public class MyRunnable implements Runnable<br />{<br />   public void run()<br />   {<br />      try<br />      {<br />         while (...)<br />         {<br /><i>            do work</i>            <br />            Thread.sleep(...);<br />         }<i>      <br />      </i>}<br />      catch (InterruptedException e) {}<br />      <i>clean up</i><i> </i>
+   }
+}</pre>
+<h2>Thread Synchronization</h2>
+<ul>
+  <li>Use bounded queue from chapter 3<br />
+  </li>
+  <li>Each producer thread inserts greetings</li>
+  <li>Each consumer thread removes greetings</li>
+  <li>Two producers, one consumer</li>
+</ul>
+<h2>Producer Thread</h2>
+<pre>int i = 1; <br />while (i &lt;= greetingCount) <br />{ <br />   if (!queue.isFull()) <br />   { <br />      queue.add(i + ": " + greeting); <br />      i++; <br />   } <br />   Thread.sleep((int)(Math.random() * DELAY)); <br />} <br /><br /></pre>
+<h2>Consumer Thread</h2>
+<pre>int i = 1; <br />while (i &lt;= greetingCount) <br />{ <br />   if (!queue.isEmpty()) <br />   { <br />      Object greeting = queue.remove(); <br />      System.out.println(greeting); <br />      i++; <br />   } <br />   Thread.sleep((int)(Math.random() * DELAY)); <br />} <br /></pre>
+<h2>Expected Program Output</h2>
+<pre>1: Hello, World! <br />1: Goodbye, World! <br />2: Hello, World! <br />3: Hello, World! <br />... <br />99: Goodbye, World! <br />100: Goodbye, World! <br /><br /></pre>
+<h2>Why is Output Corrupted?</h2>
+<ul>
+  <li>Sometimes program gets stuck and doesn't complete</li>
+  <li>Can see problem better when turning debugging on<br />
+    <tt>queue.setDebug(true);</tt></li>
+</ul>
+<ul>
+  <li><a href="code/queue1/ThreadTester.java.html">Ch9/queue1/ThreadTester.java</a></li>
+  <li><a href="code/queue1/Producer.java.html">Ch9/queue1/Producer.java</a></li>
+  <li><a href="code/queue1/Consumer.java.html">Ch9/queue1/Consumer.java</a></li>
+  <li><a href="code/queue1/BoundedQueue.java.html">Ch9/queue1/BoundedQueue.java</a></li>
+</ul>
+<h2>Race Condition Scenario</h2>
+<ul>
+  <li>First thread calls <tt>add</tt> and executes<br />
+    <tt>elements[tail] = anObject;</tt></li>
+  <li>First thread at end of time slice</li>
+  <li>Second thread calls <tt>add</tt> and executes<br />
+    <tt>elements[tail] = anObject;</tt><br />
+    <tt>tail++;</tt></li>
+  <li>Second thread at end of time slice</li>
+  <li>First thread executes<br />
+    <tt>tail++;</tt></li>
+</ul>
+<h2>Race Condition Scenario</h2>
+<img src="images/Ch9_04.jpg" alt="." height="588" width="329" /><br />
+<h2>Locks</h2>
+<ul>
+  <li>Thread can <i>acquire</i> lock</li>
+  <li>When another thread tries to acquire same lock, it blocks</li>
+  <li>When first thread <i>releases</i> lock, other thread is
+unblocked and tries again</li>
+  <li>Two kinds of locks</li>
+  <ul>
+    <li>Objects of class implementing <tt>java.util.concurrent.Lock</tt>
+interface type, usually <tt>ReentrantLock</tt></li>
+    <li>Locks that are built into every Java object</li>
+  </ul>
+</ul>
+<h2>Reentrant Locks</h2>
+<pre>aLock = new ReentrantLock();<br />. . .<br />aLock.lock();<br />try<br />{<br />   <i>protected code</i><br />}<br />finally<br />{<br />   aLock.unlock();<br />}<br /></pre>
+<h2>Scenario with Locks</h2>
+<ul>
+</ul>
+<ol>
+  <li>First thread calls <tt>add</tt> and acquires lock, then executes<br />
+    <tt>elements[tail] = anObject;</tt></li>
+  <li>Second thread calls <tt>add</tt> and tries to acquire lock, but
+it is blocked<br />
+  </li>
+  <li>First thread executes<br />
+    <tt>tail++;</tt></li>
+  <li>First thread completes <tt>add</tt>, releases lock<br />
+  </li>
+  <li>Second thread unblocked</li>
+  <li>Second thread acquires lock, starts executing protected code<br />
+  </li>
+</ol>
+<ul>
+</ul>
+<h2>Deadlocks</h2>
+<ul>
+  <li>Not enough to synchronize <tt>add</tt>,<tt> remove</tt></li>
+  <li><tt>if (!queue.isFull()) queue.add(...);</tt> &nbsp;<br />
+can still be interrupted</li>
+  <li>Must move test inside <tt>add</tt> method<br />
+    <pre>public void add(E newValue)<br />{<br />   queueLock.lock();<br />   try<br />   {<br />      while (<i>queue is full</i>)<br />         <i>wait for more space</i><br />      . . .<br />   }<br />   finally { qeueLock.unlock(); }<br />}<br /></pre>
+  </li>
+  <li>Problem: nobody else can call <tt>remove</tt></li>
+</ul>
+<h2>Avoiding Deadlocks</h2>
+<ul>
+  <li>Use <i>condiiton</i> object to manage "space available" condition<br />
+    <pre>private Lock queueLock = new ReentrantLock();<br />private Condition spaceAvailableCondition<br />   = queueLock.newCondition();<br /></pre>
+  </li>
+  <li>Call <tt>await</tt> when condition is not fulfilled:<br />
+    <pre>public void add(E newValue)<br />{<br />   . . .<br />   while (size == elements.length)<br />      spaceAvailableCondition.await();<br />   . . .<br />}</pre>
+  </li>
+</ul>
+<h2>Avoiding Deadlocks<br />
+</h2>
+<ul>
+  <li>Waiting thread is blocked</li>
+  <li>Condition object manages set of threads that wait for the
+condition to change<br />
+  </li>
+  <li>To unblock, another thread must call <tt>signalAll</tt> on the
+same condition object</li>
+  <li>Call when state changes<br />
+    <pre>public E remove()<br />{<br />   . . .<br />   E r = elements[head];<br />   . . .<br />   spaceAvailableCondition.signalAll(); // Unblock waiting threads<br />   return r;<br />}<br /></pre>
+    <tt /></li>
+  <li>All waiting threads removed from wait set, unblocked</li>
+  <li><a href="code/queue2/BoundedQueue.java.html">Ch9/queue2/BoundedQueue.java</a><br />
+  </li>
+</ul>
+<h2>Object Locks</h2>
+<ul>
+  <li>Each object has a lock</li>
+  <li>Calling a <tt>synchronized</tt> method acquires lock of implicit
+parameter</li>
+  <li>Leaving the <tt>synchronized</tt> method releases lock</li>
+  <li>Easier than explicit <tt>Lock</tt> objects<br />
+    <pre>public class BoundedQueue&lt;E&gt;<br />{<br />   public synchronized void add(E newValue) { . . . }<br />   public synchronized E remove() { . . . }<br />   . . .<br />}</pre>
+  </li>
+</ul>
+<h2>Object Locks<br />
+</h2>
+<ul>
+  <li>Each implicit lock has one associated (anonymous) condition object</li>
+  <li><tt>Object.wait</tt> blocks current thread and adds it to wait set<br />
+  </li>
+  <li><tt>Object.notifyAll</tt> unblocks waiting threads <br />
+    <pre>public synchronized void add(E newValue)<br />   throws InterruptedException<br />{<br />   while (size == elements.length) <b>wait();</b><br />   elements[tail] = anObject;<br />   . . .<br />   <b>notifyAll();</b> // notifies threads waiting to remove elements<br />}</pre>
+  </li>
+  <li><a href="code/queue3/BoundedQueue.java.html">Ch9/queue3/BoundedQueue.java</a></li>
+</ul>
+<h2>Visualizing Locks</h2>
+<ul>
+  <li>Object = phone booth<br />
+  </li>
+  <li>Thread = person</li>
+  <li>Locked object = closed booth<br />
+  </li>
+  <li>Blocked thread = person waiting for booth to open<br />
+  </li>
+</ul>
+<h2>Visualizing Locks</h2>
+<img src="images/Ch9_05.jpg" title="" alt="."
+ style="width: 433px; height: 720px;" /><br />
+<br />
+<h2>Algorithm Animation</h2>
+<ul>
+  <li>Use thread to make progress in algorithm</li>
+  <li>Display algorithm state</li>
+  <li>Example: Animate <a href="code/animation1/MergeSorter.java.html">Ch9/animation/Sorter.java</a><br />
+  </li>
+  <li>Sleeps inside <tt>compare</tt> method</li>
+  <li>Pass custom comparator<br />
+    <tt>Comparator&lt;Double&gt; comp = new<br />
+&nbsp;&nbsp; Comparator&lt;Double&gt;()<br />
+&nbsp;&nbsp; {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void compare(Double d1, Double d2)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br />
+    </tt><tt><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sleep</i><br />
+    </tt><tt><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return
+comparison result</i><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br />
+&nbsp;&nbsp; };<br />
+    </tt></li>
+</ul>
+<h2>Algorithm Animation</h2>
+<img alt="" src="images/Ch9_06.png" height="302" width="302" /><br />
+<ul>
+  <li><a href="code/animation1/ArrayComponent.java.html">Ch9/animation1/ArrayComponent.java</a></li>
+  <li><a href="code/animation1/AnimationTester.java.html">Ch9/animation1/AnimationTester.java</a></li>
+</ul>
+<h2>Pausing and Running the Animation</h2>
+<ul>
+  <li>Want to pause animation until "Run" or "Step" button is clicked</li>
+  <li>Need to coordinate UI thread, animation thread</li>
+  <li>Try to use built-in thread-safe construct in <tt>java.util.concurrent</tt></li>
+  <li>Trick: Use a blocking queue</li>
+  <li>Button click adds string<cite> </cite>"Run" or "Step" to queue</li>
+  <li>Animation thread calls <tt>take</tt> on the&nbsp;queue, blocks
+if no string inserted</li>
+  <li><a href="code/animation2/Sorter.java.html">Ch9/animation2/Sorter.java</a></li>
+  <li><a href="code/animation2/AnimationTester.java.html">Ch9/animation2/AnimationTester.java</a></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Horstmann Chapter 9</title>
+</head>
+
+<body>
+<div onclick="document.location='slide007.html'">
+<center><small><a href="slide005.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide007.html">next</a></small></center>
+<hr></div>
+<h2>Thread Example<br />
+</h2>
+<ul>
+  <li>Run two threads in parallel</li>
+  <li>Each thread prints 10 greetings<br />
+    <pre>for (int i = 1; i &lt;= 10; i++)<br />{<br />   System.out.println(i + ": " + greeting);<br />   Thread.sleep(100);<br />}<br /></pre>
+  </li>
+  <li>After each printout, sleep for 100 millisec</li>
+  <li>All threads should occasionally yield control</li>
+  <li><tt>sleep</tt> throws <tt>InterruptedException</tt></li>
+</ul>
+
+<div onclick="document.location='slide007.html'"><hr>
+<center><small><a href="slide005.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide007.html">next</a></small></center>
+</div>
+</body>
+</html>

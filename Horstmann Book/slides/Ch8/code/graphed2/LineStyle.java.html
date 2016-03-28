@@ -1,0 +1,31 @@
+<pre><tt><font color="#000000">01: </font><b><font color="#000080">import</font></b> java<font color="#990000">.</font>awt<font color="#990000">.</font><font color="#990000">*</font><font color="#990000">;</font>
+<font color="#000000">02: </font><b><font color="#000080">import</font></b> java<font color="#990000">.</font>io<font color="#990000">.</font><font color="#990000">*</font><font color="#990000">;</font>
+<font color="#000000">03: </font>
+<font color="#000000">04: </font><i><font color="#9A1900">/**</font></i>
+<font color="#000000">05: </font><i><font color="#9A1900">   This class defines line styles of various shapes.</font></i>
+<font color="#000000">06: </font><i><font color="#9A1900">*/</font></i>
+<font color="#000000">07: </font><b><font color="#0000FF">public</font></b> enum LineStyle
+<font color="#000000">08: </font><font color="#FF0000">{</font>
+<font color="#000000">09: </font>   SOLID<font color="#990000">,</font> DOTTED<font color="#990000">;</font>
+<font color="#000000">10: </font>
+<font color="#000000">11: </font>   <i><font color="#9A1900">/**</font></i>
+<font color="#000000">12: </font><i><font color="#9A1900">      Gets a stroke with which to draw this line style.</font></i>
+<font color="#000000">13: </font><i><font color="#9A1900">      @return the stroke object that strokes this line style</font></i>
+<font color="#000000">14: </font><i><font color="#9A1900">   */</font></i>
+<font color="#000000">15: </font>   <b><font color="#0000FF">public</font></b> Stroke <b><font color="#000000">getStroke</font></b><font color="#990000">(</font><font color="#990000">)</font>
+<font color="#000000">16: </font>   <font color="#FF0000">{</font>
+<font color="#000000">17: </font>      <b><font color="#0000FF">if</font></b> <font color="#990000">(</font><b><font color="#0000FF">this</font></b> <font color="#990000">=</font><font color="#990000">=</font> DOTTED<font color="#990000">)</font> <b><font color="#0000FF">return</font></b> DOTTED_STROKE<font color="#990000">;</font>
+<font color="#000000">18: </font>      <b><font color="#0000FF">if</font></b> <font color="#990000">(</font><b><font color="#0000FF">this</font></b> <font color="#990000">=</font><font color="#990000">=</font> SOLID<font color="#990000">)</font> <b><font color="#0000FF">return</font></b> SOLID_STROKE<font color="#990000">;</font>
+<font color="#000000">19: </font>      <b><font color="#0000FF">return</font></b> <b><font color="#0000FF">null</font></b><font color="#990000">;</font>
+<font color="#000000">20: </font>   <font color="#FF0000">}</font>
+<font color="#000000">21: </font>
+<font color="#000000">22: </font>   <b><font color="#0000FF">private</font></b> <b><font color="#0000FF">static</font></b> Stroke SOLID_STROKE <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> <b><font color="#000000">BasicStroke</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">23: </font>   <b><font color="#0000FF">private</font></b> <b><font color="#0000FF">static</font></b> Stroke DOTTED_STROKE <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> <b><font color="#000000">BasicStroke</font></b><font color="#990000">(</font>
+<font color="#000000">24: </font>      <font color="#993399">1.0</font>f<font color="#990000">,</font> 
+<font color="#000000">25: </font>      BasicStroke<font color="#990000">.</font>CAP_SQUARE<font color="#990000">,</font> 
+<font color="#000000">26: </font>      BasicStroke<font color="#990000">.</font>JOIN_MITER<font color="#990000">,</font> 
+<font color="#000000">27: </font>      <font color="#993399">10.0</font>f<font color="#990000">,</font> 
+<font color="#000000">28: </font>      <b><font color="#0000FF">new</font></b> <font color="#009900">float</font><font color="#990000">[</font><font color="#990000">]</font> <font color="#FF0000">{</font> <font color="#993399">3.0</font>f<font color="#990000">,</font> <font color="#993399">3.0</font>f <font color="#FF0000">}</font><font color="#990000">,</font> 
+<font color="#000000">29: </font>      <font color="#993399">0.0</font>f<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">30: </font><font color="#FF0000">}</font>
+</tt></pre>

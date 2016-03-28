@@ -1,0 +1,14 @@
+// For Java APIs'
+grepcode.com
+
+// For Mid Term Exam
+http://fpl.cs.depaul.edu/jriely/450/extras/midterm-practice.html
+
+http://fpl.cs.depaul.edu/jriely/450/lectures/class-04-001.html
+
+http://fpl.cs.depaul.edu/jriely/450/lectures/hw-04.html
+
+// Diagram
+http://fpl.cs.depaul.edu/jriely/450/lectures/class-04-010.html
+
+http://www.holub.com/goodies/uml/index.html

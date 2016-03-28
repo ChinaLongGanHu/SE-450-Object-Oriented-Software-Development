@@ -1,0 +1,430 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+  <title>Horstmann Chapter 4</title></head>
+<body>
+<h2>Object-Oriented Design &amp; Patterns</h2>
+<h4>Cay S. Horstmann</h4>
+<h3>Chapter 4</h3>
+<h3>Interfaces and Polymorphism<br />
+</h3>
+<img alt="" src="images/oodp2.jpg" height="500" width="404" />
+<h2>Chapter Topics</h2>
+<ul>
+  <li>Displaying an Image&nbsp;<br />
+  </li>
+  <li>Polymorphism<br />
+  </li>
+  
+  <li>The <tt>Comparable</tt> Interface</li>
+  <li>The <tt>Comparator</tt> Interface</li>
+  <li>Anonymous Classes</li>
+  <li>Frames and User Interface Components</li>
+  <li>User Interface Actions&nbsp;</li>
+  <li>Timers</li>
+  <li>Drawing Shapes</li>
+  <li>Designing an Interface</li>
+</ul>
+<h2>Displaying an Image</h2>
+<ul>
+  <li>Use <tt>JOptionPane</tt> to display message:<br />
+    <pre>JOptionPane.showMessageDialog(null, "Hello, World!");<br /></pre>
+  </li>
+  <li>Note icon to the left</li>
+</ul>
+<img alt="." src="images/Ch4_01.png" /><br />
+<h2>Displaying an Image</h2>
+<ul>
+  <li>Can specify arbitrary image file<br />
+    <pre>JOptionPane.showMessageDialog(<br /> null, <br /> "Hello, World!",<br /> "Message",<br /> JOptionPane.INFORMATION_MESSAGE,<br /> <b>new ImageIcon("globe.gif")</b>);<br /></pre>
+  </li>
+</ul>
+<img src="images/Ch4_02.png" title="" alt="." /><br />
+<h2>Displaying an Image<br />
+</h2>
+<ul>
+  <li>What if we don't want to generate an image <i>file</i>?</li>
+  <li>Fortunately, can use any class that implements <tt>Icon</tt> <i>interface
+type<br />
+    </i></li>
+  <li><tt>ImageIcon</tt> is one such class</li>
+  <li>Easy to supply your own class</li>
+</ul>
+<img src="images/Ch4_03.png" title="" alt="." /><br />
+<h2>The <tt>Icon</tt> Interface Type<br />
+</h2>
+<pre>public interface Icon<br />{<br /> int getIconWidth();<br /> int getIconHeight();<br /> void paintIcon(Component c, Graphics g, int x, int y);<br />}<br /></pre>
+<h2>Interface Types<br />
+</h2>
+<ul>
+  <li>No implementation</li>
+  <li>Implementing class must supply implementation of all methods</li>
+  <li><a href="code/icon2/MarsIcon.java.html">Ch4/icon2/MarsIcon.java</a></li>
+  <li><tt>showMessageDialog</tt> expects <tt>Icon</tt> object</li>
+  <li>Ok to pass <tt>MarsIcon</tt></li>
+  <li><a href="code/icon2/IconTester.java.html">Ch4/icon2/IconTester.java</a></li>
+</ul>
+<h2>The <tt>Icon</tt> Interface Type and Implementing Classes</h2>
+<img src="images/Ch4_04.jpg" title="" alt="." style="width: 625px; height: 331px;" /><br />
+<br />
+<h2>Polymorphism</h2>
+<ul>
+  <li><tt>public static void showMessageDialog(...<b>Icon anIcon</b>)</tt></li>
+  <li><tt>showMessageDialog</tt> shows<br />
+    <ul>
+      <li>icon</li>
+      <li>message</li>
+      <li>OK button</li>
+    </ul>
+  </li>
+  <li><tt>showMessageDialog</tt> must compute size of dialog</li>
+  <li>width = icon width + message size + blank size</li>
+  <li>How do we know the icon width?<br />
+    <pre>int width = anIcon.getIconWidth();<br /></pre>
+  </li>
+</ul>
+<h2>Polymorphism</h2>
+<ul>
+  <li><tt>showMessageDialog</tt> doesn't know <i>which</i> icon is
+passed<br />
+    <ul>
+      <li><tt>ImageIcon</tt>?</li>
+      <li><tt>MarsIcon</tt>?</li>
+      <li>. . .?<br />
+      </li>
+    </ul>
+  </li>
+  <li>The actual type of <tt>anIcon</tt> is <i>not</i> <tt>Icon</tt></li>
+  <li>There are no objects of type <tt>Icon</tt></li>
+  <li><tt>anIcon</tt> belongs to a <i>class</i> that implements <tt>Icon</tt></li>
+  <li>That class defines a <tt>getIconWidth</tt> method</li>
+</ul>
+<h2>A Variable of Interface Type</h2>
+<p><img src="images/Ch4_05.jpg" title="" alt="." style="width: 665px; height: 177px;" /></p>
+<h2>Polymorphism</h2>
+<ul>
+  <li>Which <tt>getIconWidth</tt> method is called?</li>
+  <li>Could be<br />
+    <ul>
+      <li style="font-family: monospace;">MarsIcon.getIconWidth</li>
+      <li style="font-family: monospace;">ImageIcon.getIconWidth</li>
+      <li>. . .<br />
+      </li>
+    </ul>
+  </li>
+  <li>Depends on object to which <tt>anIcon</tt> reference points, e.g.<br />
+    <pre>showMessageDialog(..., new MarsIcon(50))<br /></pre>
+  </li>
+  <li>Polymorphism: Select different methods according to actual object
+type</li>
+</ul>
+<h2>Benefits of Polymorphism<br />
+</h2>
+<ul>
+  <li>Loose coupling
+    <ul>
+      <li><tt>showMessageDialog</tt> decoupled from <tt>ImageIcon</tt></li>
+      <li>Doesn't need to know about image processing<br />
+      </li>
+    </ul>
+  </li>
+  <li>Extensibility
+    <ul>
+      <li>Client can supply new icon types</li>
+    </ul>
+  </li>
+</ul>
+<h2>The <tt>Comparable</tt> Interface Type<br />
+</h2>
+<ul>
+  <li><tt>Collections</tt>&nbsp; has static <tt>sort</tt> method:<br />
+    <pre>ArrayList&lt;E&gt; a = . . .<br />Collections.sort(a);<br /></pre>
+  </li>
+  <li>Objects in list must implement the <tt>Comparable</tt> interface
+type<br />
+    <pre>public interface Comparable&lt;T&gt;<br />{<br /> int compareTo(T other);<br />}<br /></pre>
+  </li>
+  <li>Interface is parameterized (like <tt>ArrayList</tt>)</li>
+  <li>Type parameter is type of <tt>other</tt><br />
+  </li>
+</ul>
+<h2>The <tt>Comparable</tt> Interface Type<br />
+</h2>
+<ul>
+  <li><tt>object1.compareTo(object2)</tt> returns
+    <ul>
+      <li>Negative number if <tt>object1</tt> less than <tt>object2</tt></li>
+      <li>0 if objects identical</li>
+      <li>Positive number if <tt>object1</tt> greater than <tt>object2</tt></li>
+    </ul>
+  </li>
+  <li><tt>sort</tt> method compares and rearranges elements<br />
+    <tt>if (object1.compareTo(object2) &gt; 0) . . .</tt></li>
+  <li><tt>String</tt> class implements <tt>Comparable&lt;String&gt;</tt>
+interface type: lexicographic (dictionary) order</li>
+  <li><tt>Country</tt> class: compare countries by area<br />
+    <a href="code/sort1/Country.java.html">Ch4/sort1/Country.java</a><br />
+    <a href="code/sort1/CountrySortTester.java.html">Ch4/sort1/CountrySortTester.java</a><br />
+  </li>
+</ul>
+<h2>The <tt>Comparator</tt> interface type</h2>
+<ul>
+  <li>How can we sort countries by name?</li>
+  <li>Can't implement <tt>Comparable</tt> twice!</li>
+  <li><tt>Comparator</tt> interface type gives added flexibility<br />
+    <pre>public interface Comparator&lt;T&gt;<br />{<br />   int compare(T obj1, T obj2);<br />}<br /></pre>
+  </li>
+  <li>Pass comparator object to <tt>sort</tt>:<br />
+    <pre>Collections.sort(list, comp);<br /></pre>
+  </li>
+</ul>
+<h2>The <tt>Comparator</tt> interface type</h2>
+<ul>
+  <li><a href="code/sort2/CountryComparatorByName.java.html">Ch4/sort2/CountryComparatorByName.java</a><br />
+    <a href="code/sort2/ComparatorTester.java.html">Ch4/sort2/ComparatorTester.java</a></li>
+  <li>Comparator object is a <i>function object</i></li>
+  <li>This particular comparator object has no state</li>
+  <li>State can be useful, e.g. flag to sort in ascending or descending
+order</li>
+</ul>
+<h2>Anonymous Classes<br />
+</h2>
+<ul>
+  <li>No need to name objects that are used only once<br />
+    <pre>Collections.sort(countries,<br />   <b>new CountryComparatorByName()</b>);<br /></pre>
+  </li>
+  <li>No need to name classes that are used only once<br />
+    <pre>Comparator&lt;Country&gt; comp = new<br />   <b>Comparator&lt;Country&gt;()<br />   {</b><br />      public int compare(Country country1, Country country2)<br />      { <br />         return country1.getName().compareTo(country2.getName());<br />      } <br /><b>   }</b>;<br /></pre>
+  </li>
+</ul>
+<h2>Anonymous Classes</h2>
+<ul>
+  <li>anonymous <b>new</b> expression:
+    <ul>
+      <li>defines anonymous class that implements <tt>Comparator</tt></li>
+      <li>defines <tt>compare</tt> method of that class</li>
+      <li>constructs one object of that class</li>
+    </ul>
+  </li>
+  <li>Cryptic syntax for very useful feature</li>
+</ul>
+<h2>Anonymous Classes</h2>
+<ul>
+  <li>Commonly used in factory methods:<br />
+    <pre>public static Comparator&lt;Country&gt; comparatorByName()<tt><br /></tt>{<tt><br /></tt>&nbsp;&nbsp; return new Comparator&lt;Country&gt;()<tt><br /></tt>&nbsp;&nbsp; {<tt><br /></tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public int compare(Country country1, Country country2)</pre>
+    <pre>      { . . . }<tt><br /></tt>&nbsp;&nbsp; };<tt><br /></tt>}</pre>
+  </li>
+  <li><tt>Collections.sort(a, Country.comparatorByName());</tt></li>
+  <li>Neat arrangement if multiple comparators make sense<br />
+(by name, by area, ...)<br />
+  </li>
+</ul>
+<h2>Frames</h2>
+<ul>
+  <li>Frame window has <i>decorations</i>
+    <ul>
+      <li>title bar</li>
+      <li>close box</li>
+      <li>provided by windowing system</li>
+    </ul>
+  </li>
+  <li>
+    <pre>JFrame frame = new JFrame();<br />frame.pack();<br />frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);<br />frame.setVisible(true);<br /></pre>
+  </li>
+</ul>
+<h2>Adding Components<br />
+</h2>
+<ul>
+  <li>Construct components<br />
+    <pre>JButton helloButton = new JButton("Say Hello");<br /></pre>
+  </li>
+  <li>Set frame layout<br />
+    <pre>frame.setLayout(new FlowLayout());<br /></pre>
+  </li>
+  <li>Add components to frame<br />
+    <pre>frame.add(helloButton);<br /></pre>
+  </li>
+  <li><a href="code/frame/FrameTester.java.html">Ch4/frame/FrameTester.java</a></li>
+</ul>
+<img src="images/Ch4_10.png" alt="." /><br />
+<h2>User Interface Actions</h2>
+<ul>
+  <li>Previous program's buttons don't have any effect</li>
+  <li>Add <i>listener object(s)</i> to button</li>
+  <li>Belong to class implementing <tt>ActionListener</tt> interface
+type
+    <pre>public interface ActionListener<br />{<br />   int actionPerformed(ActionEvent event);<br />}<br /></pre>
+  </li>
+  <li>Listeners are notified when button is clicked</li>
+</ul>
+<h2>User Interface Actions</h2>
+<ul>
+  <li>Add action code into&nbsp; <tt>actionPerformed</tt> method<br />
+  </li>
+  <li>Gloss over routine code<br />
+  </li>
+</ul>
+<pre>helloButton.addActionListener(<span style="color: rgb(153, 153, 153);">new<br /><span style="color: rgb(153, 153, 153);">   ActionListener()<br /><span style="color: rgb(153, 153, 153);">   {<br /><span style="color: rgb(153, 153, 153);">      public void actionPerformed(ActionEvent event)<br /><span style="color: rgb(153, 153, 153);">      {<br />         <b> textField.setText("Hello, World");</b><br /><span style="color: rgb(153, 153, 153);">     }<br /><span style="color: rgb(153, 153, 153);">   });<br /></span></span></span></span></span></span></span></pre>
+<ul>
+  <li>When button is clicked, text field is set<br />
+  </li>
+</ul>
+<h2>Accessing Variables from Enclosing Scope</h2>
+<ul>
+  <li>Remarkable: Inner class can access variables from enclosing scope<br />
+e.g. <tt>textField</tt></li>
+  <li>Can access enclosing instance fields, local variables<br />
+  </li>
+  <li>Local variables must be marked final<tt><tt><tt><br />
+    <tt>final JTextField textField = ...;<br />
+    </tt></tt></tt></tt></li>
+</ul>
+<tt><tt><tt></tt></tt>
+</tt><h2>User Interface Actions</h2>
+<ul>
+  <li>Constructor attaches listener:<br />
+    <pre>helloButton.addActionListener(listener);<br /></pre>
+  </li>
+  <li>Button remembers all listeners</li>
+  <li>When button clicked, button notifies listeners<br />
+    <pre>listener.actionPerformed(event);<br /></pre>
+  </li>
+  <li>Listener sets text of text field<br />
+    <pre>textField.setText("Hello, World!");<br /></pre>
+  </li>
+</ul>
+<ul>
+  <li><a href="code/action1/ActionTester.java.html">Ch4/action1/ActionTester.java</a></li>
+</ul>
+<h2>Constructing Related Actions<br />
+</h2>
+<ul>
+  <li>Write helper method that constructs objects</li>
+  <li>Pass variable information as parameters</li>
+  <li>Declare parameters final</li>
+</ul>
+<pre>public static ActionListener createGreetingButtonListener(<br />   final String message)<br />{<br /> return new<br />    ActionListener()<br />    {<br />       public void actionPerformed(ActionEvent event)<br />       {<br />          textField.setText(message);<br />       }<br />    };<br />}<br /></pre>
+<h2>Timers</h2>
+<ul>
+  <li>Supply delay, action listener<br />
+    ActionListener listener = ...; <br />
+final int DELAY = 1000; // 1000 millisec = 1 sec <br />
+Timer t = new Timer(DELAY, listener); <br />
+t.start();</li>
+  <li>Action listener called when delay elapsed</li>
+  <li><a href="code/timer/TimerTester.java.html">Ch4/timer/TimerTester.java</a><br />
+  </li>
+</ul>
+<img src="images/Ch4_11.png" title="" alt="." /><br />
+<h2>Drawing Shapes<br />
+</h2>
+<ul>
+  <li>paintIcon method receives graphics context of
+type Graphics</li>
+  <li>Actually a Graphics2D object in modern Java versions<br />
+    <pre>public void paintIcon(Component c, Graphics g, int x, int y)<br />{<br /> Graphics2D g2 = (Graphics2D)g;<br /> . . .<br />}<br /></pre>
+  </li>
+  <li>Can draw any object that implements Shape interface<br />
+    <pre>Shape s = . . .;<br />g2.draw(s);<br /></pre>
+  </li>
+</ul>
+<h2>Drawing Rectangles and Ellipses</h2>
+<ul>
+  <li>Rectangle2D.Double constructed with
+    <ul>
+      <li>top left corner</li>
+      <li>width</li>
+      <li>height<br />
+      </li>
+    </ul>
+  </li>
+  <li>g2.draw(new Rectangle2D.Double(x, y, width, height));</li>
+</ul>
+<ul>
+  <li>For Ellipse2D.Double, specify bounding box</li>
+</ul>
+<h2>Drawing Ellipses</h2>
+<img src="images/Ch4_06.jpg" title="" alt="." style="width: 674px; height: 545px;" /><br />
+<br />
+<h2>Drawing Line Segments<br />
+</h2>
+<ul>
+  <li>Point2D.Double is a point in the plane</li>
+  <li>Line2D.Double joins to points<br />
+    <pre>Point2D.Double start = new Point2D.Double(x1, y1);<br />Point2D.Double end = new Point2D.Double(x2, y2);<br />Shape segment = new Line2D.Double(start, end);<br />g2.draw(segment);<br /></pre>
+  </li>
+</ul>
+<h2>Relationship Between Shape Classes</h2>
+<img src="images/Ch4_07.jpg" title="" alt="." style="width: 714px; height: 671px;" /><br />
+<h2>Drawing Text</h2>
+<ul>
+  <li style="font-family: monospace;">g2.drawString(text, x, y);</li>
+  <li>x, y are base point coordinates</li>
+</ul>
+<img src="images/Ch4_08.jpg" title="" alt="." style="width: 967px; height: 237px;" /><br />
+<h2>Filling Shapes<br />
+</h2>
+<ul>
+  <li>Fill interior of shape<br />
+    <pre>g2.fill(shape);<br /></pre>
+  </li>
+  <li>Set color for fills or strokes:<br />
+    <tt>g2.setColor(Color.red);</tt></li>
+  <li>Program that draws car<br />
+    <a href="code/icon3/CarIcon.java.html">Ch4/icon3/CarIcon.java</a></li>
+</ul>
+<img src="images/Ch4_09.png" title="" alt="." />
+<h2>Defining a New Interface Type</h2>
+<ul>
+  <li>Use timer to move car shapes</li>
+  <li>Draw car with CarShape</li>
+  <li>Two responsibilities:
+    <ul>
+      <li>Draw shape</li>
+      <li>Move shape</li>
+    </ul>
+  </li>
+  <li>Define new interface type MoveableShape</li>
+</ul>
+<img src="images/Ch4_12.png" title="" alt="." /><br />
+<h2>CRC Card for the MoveableShape Interface Type</h2>
+<img src="images/Ch4_13.jpg" title="" alt="." style="width: 563px; height: 338px;" /><br />
+<br />
+<h2>Defining a New Interface Type</h2>
+<ul>
+  <li>Name the methods to conform to standard library</li>
+  <li><tt>public interface MoveableShape<br />
+{<br />
+&nbsp;&nbsp; void draw(Graphics2D g2);<br />
+&nbsp;&nbsp; void translate(int dx, int dy);<br />
+}</tt></li>
+  <li><tt>CarShape</tt> class implements <tt>MoveableShape</tt><br />
+    <tt>public class CarShape implements MoveableShape<br />
+{<br />
+&nbsp;&nbsp; public void translate(int dx, int dy)<br />
+&nbsp;&nbsp; { x += dx; y += dy; }<br />
+&nbsp;&nbsp; . . .<br />
+}</tt><br />
+  </li>
+</ul>
+<h2>Implementing the Animation<br />
+</h2>
+<ul>
+  <li>Label contains icon that draws shape<br />
+  </li>
+  <li>Timer action moves shape, calls repaint on label</li>
+  <li>Label needs <tt>Icon</tt>, we have <tt>MoveableShape</tt></li>
+  <li>Supply <tt>ShapeIcon</tt> adapter class</li>
+  <li><tt>ShapeIcon.paintIcon</tt> calls <tt>MoveableShape.draw</tt></li>
+</ul>
+<h2>Implementing the Animation</h2>
+<ul>
+  <li><a href="code/animation/MoveableShape.java.html">Ch4/animation/MoveableShape.java</a></li>
+  <li><a href="code/animation/ShapeIcon.java.html">Ch4/animation/ShapeIcon.java</a></li>
+  <li><a href="code/animation/AnimationTester.java.html">Ch4/animation/AnimationTester.java</a></li>
+  <li><a href="code/animation/CarShape.java.html">Ch4/animation/CarShape.java</a></li>
+</ul>
+<h2>Implementing the Animation</h2>
+<img src="images/Ch4_14.jpg" title="" alt="." style="width: 968px; height: 491px;" /><br />
+<tt><br />
+</tt></body></html>

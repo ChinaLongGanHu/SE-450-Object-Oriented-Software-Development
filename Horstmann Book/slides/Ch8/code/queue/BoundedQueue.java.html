@@ -1,0 +1,105 @@
+<pre><tt><font color="#000000">001: </font><b><font color="#000080">import</font></b> java<font color="#990000">.</font>util<font color="#990000">.</font><font color="#990000">*</font><font color="#990000">;</font>
+<font color="#000000">002: </font>
+<font color="#000000">003: </font><i><font color="#9A1900">/**</font></i>
+<font color="#000000">004: </font><i><font color="#9A1900">    A first-in, first-out bounded collection of objects.</font></i>
+<font color="#000000">005: </font><i><font color="#9A1900">*/</font></i>
+<font color="#000000">006: </font><b><font color="#0000FF">public</font></b> <b><font color="#0000FF">class</font></b> BoundedQueue<font color="#990000">&lt;</font>E<font color="#990000">&gt;</font> <b><font color="#0000FF">extends</font></b> AbstractCollection<font color="#990000">&lt;</font>E<font color="#990000">&gt;</font>
+<font color="#000000">007: </font><font color="#FF0000">{</font>
+<font color="#000000">008: </font>   <i><font color="#9A1900">/**</font></i>
+<font color="#000000">009: </font><i><font color="#9A1900">       Constructs an empty queue.</font></i>
+<font color="#000000">010: </font><i><font color="#9A1900">       @param capacity the maximum capacity of the queue</font></i>
+<font color="#000000">011: </font><i><font color="#9A1900">       @precondition capacity &gt; 0</font></i>
+<font color="#000000">012: </font><i><font color="#9A1900">   */</font></i>
+<font color="#000000">013: </font>   <b><font color="#0000FF">public</font></b> <b><font color="#000000">BoundedQueue</font></b><font color="#990000">(</font><font color="#009900">int</font> capacity<font color="#990000">)</font>
+<font color="#000000">014: </font>   <font color="#FF0000">{</font>
+<font color="#000000">015: </font>      elements <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> Object<font color="#990000">[</font>capacity<font color="#990000">]</font><font color="#990000">;</font>
+<font color="#000000">016: </font>      count <font color="#990000">=</font> <font color="#993399">0</font><font color="#990000">;</font>
+<font color="#000000">017: </font>      head <font color="#990000">=</font> <font color="#993399">0</font><font color="#990000">;</font>
+<font color="#000000">018: </font>      tail <font color="#990000">=</font> <font color="#993399">0</font><font color="#990000">;</font>
+<font color="#000000">019: </font>   <font color="#FF0000">}</font>
+<font color="#000000">020: </font>
+<font color="#000000">021: </font>   <b><font color="#0000FF">public</font></b> Iterator<font color="#990000">&lt;</font>E<font color="#990000">&gt;</font> <b><font color="#000000">iterator</font></b><font color="#990000">(</font><font color="#990000">)</font>
+<font color="#000000">022: </font>   <font color="#FF0000">{</font>
+<font color="#000000">023: </font>      <b><font color="#0000FF">return</font></b> <b><font color="#0000FF">new</font></b>
+<font color="#000000">024: </font>         Iterator<font color="#990000">&lt;</font>E<font color="#990000">&gt;</font><font color="#990000">(</font><font color="#990000">)</font>
+<font color="#000000">025: </font>         <font color="#FF0000">{</font>
+<font color="#000000">026: </font>            <b><font color="#0000FF">public</font></b> <font color="#009900">boolean</font> <b><font color="#000000">hasNext</font></b><font color="#990000">(</font><font color="#990000">)</font>
+<font color="#000000">027: </font>            <font color="#FF0000">{</font>
+<font color="#000000">028: </font>               <b><font color="#0000FF">return</font></b> visited <font color="#990000">&lt;</font> count<font color="#990000">;</font>
+<font color="#000000">029: </font>            <font color="#FF0000">}</font>
+<font color="#000000">030: </font>
+<font color="#000000">031: </font>            <b><font color="#0000FF">public</font></b> E <b><font color="#000000">next</font></b><font color="#990000">(</font><font color="#990000">)</font>
+<font color="#000000">032: </font>            <font color="#FF0000">{</font>
+<font color="#000000">033: </font>               <font color="#009900">int</font> index <font color="#990000">=</font> <font color="#990000">(</font>head <font color="#990000">+</font> visited<font color="#990000">)</font> <font color="#990000">%</font> elements<font color="#990000">.</font>length<font color="#990000">;</font>
+<font color="#000000">034: </font>               E r <font color="#990000">=</font> <font color="#990000">(</font>E<font color="#990000">)</font> elements<font color="#990000">[</font>index<font color="#990000">]</font><font color="#990000">;</font>
+<font color="#000000">035: </font>               visited<font color="#990000">+</font><font color="#990000">+</font><font color="#990000">;</font>
+<font color="#000000">036: </font>               <b><font color="#0000FF">return</font></b> r<font color="#990000">;</font>
+<font color="#000000">037: </font>            <font color="#FF0000">}</font>
+<font color="#000000">038: </font>
+<font color="#000000">039: </font>            <b><font color="#0000FF">public</font></b> <font color="#009900">void</font> <b><font color="#000000">remove</font></b><font color="#990000">(</font><font color="#990000">)</font>
+<font color="#000000">040: </font>            <font color="#FF0000">{</font>
+<font color="#000000">041: </font>               <b><font color="#0000FF">throw</font></b> <b><font color="#0000FF">new</font></b> <b><font color="#000000">UnsupportedOperationException</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">042: </font>            <font color="#FF0000">}</font>
+<font color="#000000">043: </font>
+<font color="#000000">044: </font>            <b><font color="#0000FF">private</font></b> <font color="#009900">int</font> visited <font color="#990000">=</font> <font color="#993399">0</font><font color="#990000">;</font>
+<font color="#000000">045: </font>         <font color="#FF0000">}</font><font color="#990000">;</font>
+<font color="#000000">046: </font>   <font color="#FF0000">}</font>
+<font color="#000000">047: </font>
+<font color="#000000">048: </font>   <i><font color="#9A1900">/**</font></i>
+<font color="#000000">049: </font><i><font color="#9A1900">       Remove object at head.</font></i>
+<font color="#000000">050: </font><i><font color="#9A1900">       @return the object that has been removed from the queue</font></i>
+<font color="#000000">051: </font><i><font color="#9A1900">       @precondition size() &gt; 0</font></i>
+<font color="#000000">052: </font><i><font color="#9A1900">   */</font></i>
+<font color="#000000">053: </font>   <b><font color="#0000FF">public</font></b> E <b><font color="#000000">remove</font></b><font color="#990000">(</font><font color="#990000">)</font>
+<font color="#000000">054: </font>   <font color="#FF0000">{</font>
+<font color="#000000">055: </font>      E r <font color="#990000">=</font> <font color="#990000">(</font>E<font color="#990000">)</font> elements<font color="#990000">[</font>head<font color="#990000">]</font><font color="#990000">;</font>
+<font color="#000000">056: </font>      head <font color="#990000">=</font> <font color="#990000">(</font>head <font color="#990000">+</font> <font color="#993399">1</font><font color="#990000">)</font> <font color="#990000">%</font> elements<font color="#990000">.</font>length<font color="#990000">;</font>
+<font color="#000000">057: </font>      count<font color="#990000">-</font><font color="#990000">-</font><font color="#990000">;</font>
+<font color="#000000">058: </font>      <b><font color="#0000FF">return</font></b> r<font color="#990000">;</font>
+<font color="#000000">059: </font>   <font color="#FF0000">}</font>
+<font color="#000000">060: </font>
+<font color="#000000">061: </font>   <i><font color="#9A1900">/**</font></i>
+<font color="#000000">062: </font><i><font color="#9A1900">       Append an object at tail.</font></i>
+<font color="#000000">063: </font><i><font color="#9A1900">       @param anObject the object to be appended</font></i>
+<font color="#000000">064: </font><i><font color="#9A1900">       @return true since this operation modifies the queue.</font></i>
+<font color="#000000">065: </font><i><font color="#9A1900">       (This is a requirement of the collections framework.)</font></i>
+<font color="#000000">066: </font><i><font color="#9A1900">       @precondition !isFull()</font></i>
+<font color="#000000">067: </font><i><font color="#9A1900">   */</font></i>
+<font color="#000000">068: </font>   <b><font color="#0000FF">public</font></b> <font color="#009900">boolean</font> <b><font color="#000000">add</font></b><font color="#990000">(</font>E anObject<font color="#990000">)</font>
+<font color="#000000">069: </font>   <font color="#FF0000">{</font>
+<font color="#000000">070: </font>      elements<font color="#990000">[</font>tail<font color="#990000">]</font> <font color="#990000">=</font> anObject<font color="#990000">;</font>
+<font color="#000000">071: </font>      tail <font color="#990000">=</font> <font color="#990000">(</font>tail <font color="#990000">+</font> <font color="#993399">1</font><font color="#990000">)</font> <font color="#990000">%</font> elements<font color="#990000">.</font>length<font color="#990000">;</font>
+<font color="#000000">072: </font>      count<font color="#990000">+</font><font color="#990000">+</font><font color="#990000">;</font>
+<font color="#000000">073: </font>      <b><font color="#0000FF">return</font></b> <b><font color="#0000FF">true</font></b><font color="#990000">;</font>
+<font color="#000000">074: </font>   <font color="#FF0000">}</font>
+<font color="#000000">075: </font>
+<font color="#000000">076: </font>   <b><font color="#0000FF">public</font></b> <font color="#009900">int</font> <b><font color="#000000">size</font></b><font color="#990000">(</font><font color="#990000">)</font>
+<font color="#000000">077: </font>   <font color="#FF0000">{</font>
+<font color="#000000">078: </font>      <b><font color="#0000FF">return</font></b> count<font color="#990000">;</font>
+<font color="#000000">079: </font>   <font color="#FF0000">}</font>
+<font color="#000000">080: </font>
+<font color="#000000">081: </font>   <i><font color="#9A1900">/**</font></i>
+<font color="#000000">082: </font><i><font color="#9A1900">       Checks whether this queue is full.</font></i>
+<font color="#000000">083: </font><i><font color="#9A1900">       @return true if the queue is full</font></i>
+<font color="#000000">084: </font><i><font color="#9A1900">   */</font></i>
+<font color="#000000">085: </font>   <b><font color="#0000FF">public</font></b> <font color="#009900">boolean</font> <b><font color="#000000">isFull</font></b><font color="#990000">(</font><font color="#990000">)</font>
+<font color="#000000">086: </font>   <font color="#FF0000">{</font>
+<font color="#000000">087: </font>      <b><font color="#0000FF">return</font></b> count <font color="#990000">=</font><font color="#990000">=</font> elements<font color="#990000">.</font>length<font color="#990000">;</font>
+<font color="#000000">088: </font>   <font color="#FF0000">}</font>
+<font color="#000000">089: </font>
+<font color="#000000">090: </font>   <i><font color="#9A1900">/**</font></i>
+<font color="#000000">091: </font><i><font color="#9A1900">       Gets object at head.</font></i>
+<font color="#000000">092: </font><i><font color="#9A1900">       @return the object that is at the head of the queue</font></i>
+<font color="#000000">093: </font><i><font color="#9A1900">       @precondition size() &gt; 0</font></i>
+<font color="#000000">094: </font><i><font color="#9A1900">   */</font></i>
+<font color="#000000">095: </font>   <b><font color="#0000FF">public</font></b> E <b><font color="#000000">peek</font></b><font color="#990000">(</font><font color="#990000">)</font>
+<font color="#000000">096: </font>   <font color="#FF0000">{</font>
+<font color="#000000">097: </font>      <b><font color="#0000FF">return</font></b> <font color="#990000">(</font>E<font color="#990000">)</font> elements<font color="#990000">[</font>head<font color="#990000">]</font><font color="#990000">;</font>
+<font color="#000000">098: </font>   <font color="#FF0000">}</font>
+<font color="#000000">099: </font>
+<font color="#000000">100: </font>   <b><font color="#0000FF">private</font></b> Object<font color="#990000">[</font><font color="#990000">]</font> elements<font color="#990000">;</font>
+<font color="#000000">101: </font>   <b><font color="#0000FF">private</font></b> <font color="#009900">int</font> head<font color="#990000">;</font>
+<font color="#000000">102: </font>   <b><font color="#0000FF">private</font></b> <font color="#009900">int</font> tail<font color="#990000">;</font>
+<font color="#000000">103: </font>   <b><font color="#0000FF">private</font></b> <font color="#009900">int</font> count<font color="#990000">;</font>
+<font color="#000000">104: </font><font color="#FF0000">}</font>
+</tt></pre>

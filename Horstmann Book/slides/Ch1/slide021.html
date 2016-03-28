@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="generator"
+ content="HTML Tidy for Linux/x86 (vers 12 April 2005), see www.w3.org" />
+  <title>Horstmann Chapter 1</title>
+</head>
+
+<body>
+<div onclick="document.location='slide022.html'">
+<center><small><a href="slide020.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide022.html">next</a></small></center>
+<hr></div>
+<h2>No Reference Parameters</h2>
+<ul>
+  <li>Java has no "call by
+reference" </li>
+  <li>
+    <pre>public void copyLengthTo(int n)<br />{<br /> n = name.length(); <br />} <br />public void copyGreeterTo(Greeter other)<br />{<br /> other = new Greeter(name);<br />}<br /></pre>
+  </li>
+  <li>Neither call has any effect
+after the method returns<br />
+    <pre>int length = 0;<br />worldGreeter.copyLengthTo(length); // length still 0<br />worldGreeter.copyGreeterTo(daveGreeter) // daveGreeter unchanged<br /></pre>
+  </li>
+</ul>
+
+<div onclick="document.location='slide022.html'"><hr>
+<center><small><a href="slide020.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide022.html">next</a></small></center>
+</div>
+</body>
+</html>

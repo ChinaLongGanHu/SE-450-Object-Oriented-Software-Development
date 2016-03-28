@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="" />
+  <title>Horstmann Chapter 6</title>
+</head>
+
+<body>
+<center><small><a href="slide064.html">previous</a> | 
+<a href="slide001.html">start</a></small></center>
+<hr>
+<h2>When Not to Use Inheritance</h2>
+<ul>
+  <li>Java standard library:<br />
+    <pre>public class Stack&lt;T&gt; extends Vector&lt;T&gt; // DON'T<br />{<br />   T pop() { ... }<br />   void push(T item) { ... }<br />   ...<br />}<br /></pre>
+  </li>
+  <li>Bad idea: Inherit all <tt>Vector</tt> methods</li>
+  <li>Can insert/remove in the middle of the stack</li>
+  <li>Remedy: Use aggregation<br />
+    <pre>public class Stack&lt;T&gt;<br />{<br />   ...<br />   private ArrayList&lt;T&gt; elements;<br />}<br /></pre>
+  </li>
+</ul>
+
+<hr>
+<center><small><a href="slide064.html">previous</a> | 
+<a href="slide001.html">start</a></small></center> 
+
+</body>
+</html>

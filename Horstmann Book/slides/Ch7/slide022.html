@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="generator"
+ content="HTML Tidy for Linux/x86 (vers 12 April 2005), see www.w3.org">
+  <title>Horstmann Chapter 7</title>
+</head>
+
+<body>
+<div onclick="document.location='slide023.html'">
+<center><small><a href="slide021.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide023.html">next</a></small></center>
+<hr></div>
+<h2>The <tt>toString</tt> Method</h2>
+<ul>
+  <li>Returns a string representation of the object </li>
+  <li>Useful for debugging </li>
+  <li>Example: <tt>Rectangle.toString</tt> returns something like<br>
+    <tt>java.awt.Rectangle[x=5,y=10,width=20,height=30]</tt> </li>
+  <li><tt>toString</tt> used by concatenation operator </li>
+  <li><tt>aString + anObject</tt><br>
+means<br>
+    <tt>aString + anObject<b>.toString()</b></tt> </li>
+  <li><tt>Object.toString</tt> prints class name and object address<br>
+    <tt>System.out.println(System.out)<br>
+    </tt> yields<br>
+    <tt>java.io.PrintStream@d2460bf</tt> </li>
+  <li>Implementor of <tt>PrintStream</tt> didn't override <tt>toString</tt>:
+  </li>
+</ul>
+
+<div onclick="document.location='slide023.html'"><hr>
+<center><small><a href="slide021.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide023.html">next</a></small></center>
+</div>
+</body>
+</html>

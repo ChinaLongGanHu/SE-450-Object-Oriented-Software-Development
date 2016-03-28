@@ -1,0 +1,19 @@
+<pre><tt><font color="#000000">01: </font><b><font color="#000080">import</font></b> java<font color="#990000">.</font>io<font color="#990000">.</font><font color="#990000">*</font><font color="#990000">;</font>
+<font color="#000000">02: </font>
+<font color="#000000">03: </font><b><font color="#0000FF">public</font></b> <b><font color="#0000FF">class</font></b> FileNode <b><font color="#0000FF">implements</font></b> FileSystemNode
+<font color="#000000">04: </font><font color="#FF0000">{</font>
+<font color="#000000">05: </font>   <b><font color="#0000FF">public</font></b> <b><font color="#000000">FileNode</font></b><font color="#990000">(</font>File file<font color="#990000">)</font>
+<font color="#000000">06: </font>   <font color="#FF0000">{</font>
+<font color="#000000">07: </font>      <b><font color="#0000FF">this</font></b><font color="#990000">.</font>file <font color="#990000">=</font> file<font color="#990000">;</font>
+<font color="#000000">08: </font>   <font color="#FF0000">}</font>
+<font color="#000000">09: </font>
+<font color="#000000">10: </font>   <b><font color="#0000FF">public</font></b> File <b><font color="#000000">getFile</font></b><font color="#990000">(</font><font color="#990000">)</font> <font color="#FF0000">{</font> <b><font color="#0000FF">return</font></b> file<font color="#990000">;</font> <font color="#FF0000">}</font>
+<font color="#000000">11: </font>
+<font color="#000000">12: </font>   <b><font color="#0000FF">public</font></b> <font color="#009900">void</font> <b><font color="#000000">accept</font></b><font color="#990000">(</font>FileSystemVisitor v<font color="#990000">)</font> 
+<font color="#000000">13: </font>   <font color="#FF0000">{</font> 
+<font color="#000000">14: </font>      v<font color="#990000">.</font><b><font color="#000000">visitFileNode</font></b><font color="#990000">(</font><b><font color="#0000FF">this</font></b><font color="#990000">)</font><font color="#990000">;</font> 
+<font color="#000000">15: </font>   <font color="#FF0000">}</font>
+<font color="#000000">16: </font>
+<font color="#000000">17: </font>   <b><font color="#0000FF">private</font></b> File file<font color="#990000">;</font>
+<font color="#000000">18: </font><font color="#FF0000">}</font>
+</tt></pre>

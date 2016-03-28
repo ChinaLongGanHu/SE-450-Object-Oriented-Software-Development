@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Horstmann Chapter 9</title>
+</head>
+
+<body>
+<div onclick="document.location='slide032.html'">
+<center><small><a href="slide030.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide032.html">next</a></small></center>
+<hr></div>
+<h2>Object Locks<br />
+</h2>
+<ul>
+  <li>Each implicit lock has one associated (anonymous) condition object</li>
+  <li><tt>Object.wait</tt> blocks current thread and adds it to wait set<br />
+  </li>
+  <li><tt>Object.notifyAll</tt> unblocks waiting threads <br />
+    <pre>public synchronized void add(E newValue)<br />   throws InterruptedException<br />{<br />   while (size == elements.length) <b>wait();</b><br />   elements[tail] = anObject;<br />   . . .<br />   <b>notifyAll();</b> // notifies threads waiting to remove elements<br />}</pre>
+  </li>
+  <li><a href="code/queue3/BoundedQueue.java.html">Ch9/queue3/BoundedQueue.java</a></li>
+</ul>
+
+<div onclick="document.location='slide032.html'"><hr>
+<center><small><a href="slide030.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide032.html">next</a></small></center>
+</div>
+</body>
+</html>

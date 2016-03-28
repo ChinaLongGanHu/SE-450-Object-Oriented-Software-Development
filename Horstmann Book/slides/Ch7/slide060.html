@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="generator"
+ content="HTML Tidy for Linux/x86 (vers 12 April 2005), see www.w3.org">
+  <title>Horstmann Chapter 7</title>
+</head>
+
+<body>
+<div onclick="document.location='slide061.html'">
+<center><small><a href="slide059.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide061.html">next</a></small></center>
+<hr></div>
+<h2>Type Bounds</h2>
+<ul>
+  <li>Type variables can be constrained with type bounds</li>
+  <li>Constraints can make a method more useful</li>
+  <li>The following method is limited:<br>
+    <pre>public static &lt;E&gt; void append(ArrayList&lt;E&gt; a, ArrayList&lt;E&gt; b, int count)<br>{<br>   for (int i = 0; i &lt; count &amp;&amp; i &lt; b.size(); i++)<br>      a.add(b.get(i));<br>}<br></pre>
+Cannot append an <tt>ArrayList&lt;Rectangle&gt;</tt> to an <tt>ArrayList&lt;Shape&gt;</tt></li>
+</ul>
+
+<div onclick="document.location='slide061.html'"><hr>
+<center><small><a href="slide059.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide061.html">next</a></small></center>
+</div>
+</body>
+</html>

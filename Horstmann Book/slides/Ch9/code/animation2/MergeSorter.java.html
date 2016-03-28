@@ -1,0 +1,105 @@
+<pre><tt><font color="#000000">001: </font><b><font color="#000080">import</font></b> java<font color="#990000">.</font>util<font color="#990000">.</font><font color="#990000">*</font><font color="#990000">;</font>
+<font color="#000000">002: </font>
+<font color="#000000">003: </font><i><font color="#9A1900">/**</font></i>
+<font color="#000000">004: </font><i><font color="#9A1900">   This class carries out the merge sort algorithm.</font></i>
+<font color="#000000">005: </font><i><font color="#9A1900">*/</font></i>
+<font color="#000000">006: </font><b><font color="#0000FF">public</font></b> <b><font color="#0000FF">class</font></b> MergeSorter
+<font color="#000000">007: </font><font color="#FF0000">{</font>
+<font color="#000000">008: </font>   <i><font color="#9A1900">/**</font></i>
+<font color="#000000">009: </font><i><font color="#9A1900">      Sorts an array, using the merge sort algorithm.</font></i>
+<font color="#000000">010: </font><i><font color="#9A1900">      @param a the array to sort</font></i>
+<font color="#000000">011: </font><i><font color="#9A1900">      @param comp the comparator to compare array elements</font></i>
+<font color="#000000">012: </font><i><font color="#9A1900">   */</font></i>
+<font color="#000000">013: </font>   <b><font color="#0000FF">public</font></b> <b><font color="#0000FF">static</font></b> <font color="#990000">&lt;</font>E<font color="#990000">&gt;</font> <font color="#009900">void</font> <b><font color="#000000">sort</font></b><font color="#990000">(</font>E<font color="#990000">[</font><font color="#990000">]</font> a<font color="#990000">,</font> Comparator<font color="#990000">&lt;</font><font color="#990000">?</font> <b><font color="#0000FF">super</font></b> E<font color="#990000">&gt;</font> comp<font color="#990000">)</font>
+<font color="#000000">014: </font>   <font color="#FF0000">{</font>
+<font color="#000000">015: </font>      <b><font color="#000000">mergeSort</font></b><font color="#990000">(</font>a<font color="#990000">,</font> <font color="#993399">0</font><font color="#990000">,</font> a<font color="#990000">.</font>length <font color="#990000">-</font> <font color="#993399">1</font><font color="#990000">,</font> comp<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">016: </font>   <font color="#FF0000">}</font>
+<font color="#000000">017: </font>
+<font color="#000000">018: </font>   <i><font color="#9A1900">/**</font></i>
+<font color="#000000">019: </font><i><font color="#9A1900">      Sorts a range of an array, using the merge sort</font></i>
+<font color="#000000">020: </font><i><font color="#9A1900">      algorithm.</font></i>
+<font color="#000000">021: </font><i><font color="#9A1900">      @param a the array to sort</font></i>
+<font color="#000000">022: </font><i><font color="#9A1900">      @param from the first index of the range to sort</font></i>
+<font color="#000000">023: </font><i><font color="#9A1900">      @param to the last index of the range to sort</font></i>
+<font color="#000000">024: </font><i><font color="#9A1900">      @param comp the comparator to compare array elements</font></i>
+<font color="#000000">025: </font><i><font color="#9A1900">   */</font></i>
+<font color="#000000">026: </font>   <b><font color="#0000FF">private</font></b> <b><font color="#0000FF">static</font></b> <font color="#990000">&lt;</font>E<font color="#990000">&gt;</font> <font color="#009900">void</font> <b><font color="#000000">mergeSort</font></b><font color="#990000">(</font>E<font color="#990000">[</font><font color="#990000">]</font> a<font color="#990000">,</font> <font color="#009900">int</font> from<font color="#990000">,</font> <font color="#009900">int</font> to<font color="#990000">,</font>
+<font color="#000000">027: </font>      Comparator<font color="#990000">&lt;</font><font color="#990000">?</font> <b><font color="#0000FF">super</font></b> E<font color="#990000">&gt;</font> comp<font color="#990000">)</font>
+<font color="#000000">028: </font>   <font color="#FF0000">{</font>
+<font color="#000000">029: </font>      <b><font color="#0000FF">if</font></b> <font color="#990000">(</font>from <font color="#990000">=</font><font color="#990000">=</font> to<font color="#990000">)</font> <b><font color="#0000FF">return</font></b><font color="#990000">;</font>
+<font color="#000000">030: </font>      <font color="#009900">int</font> mid <font color="#990000">=</font> <font color="#990000">(</font>from <font color="#990000">+</font> to<font color="#990000">)</font> <font color="#990000">/</font> <font color="#993399">2</font><font color="#990000">;</font>
+<font color="#000000">031: </font>      <i><font color="#9A1900">// Sort the first and the second half</font></i>
+<font color="#000000">032: </font>      <b><font color="#000000">mergeSort</font></b><font color="#990000">(</font>a<font color="#990000">,</font> from<font color="#990000">,</font> mid<font color="#990000">,</font> comp<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">033: </font>      <b><font color="#000000">mergeSort</font></b><font color="#990000">(</font>a<font color="#990000">,</font> mid <font color="#990000">+</font> <font color="#993399">1</font><font color="#990000">,</font> to<font color="#990000">,</font> comp<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">034: </font>      <b><font color="#000000">merge</font></b><font color="#990000">(</font>a<font color="#990000">,</font> from<font color="#990000">,</font> mid<font color="#990000">,</font> to<font color="#990000">,</font> comp<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">035: </font>   <font color="#FF0000">}</font>
+<font color="#000000">036: </font>
+<font color="#000000">037: </font>   <i><font color="#9A1900">/**</font></i>
+<font color="#000000">038: </font><i><font color="#9A1900">      Merges two adjacent subranges of an array</font></i>
+<font color="#000000">039: </font><i><font color="#9A1900">      @param a the array with entries to be merged</font></i>
+<font color="#000000">040: </font><i><font color="#9A1900">      @param from the index of the first element of the</font></i>
+<font color="#000000">041: </font><i><font color="#9A1900">         first range</font></i>
+<font color="#000000">042: </font><i><font color="#9A1900">      @param mid the index of the last element of the</font></i>
+<font color="#000000">043: </font><i><font color="#9A1900">         first range</font></i>
+<font color="#000000">044: </font><i><font color="#9A1900">      @param to the index of the last element of the</font></i>
+<font color="#000000">045: </font><i><font color="#9A1900">         second range</font></i>
+<font color="#000000">046: </font><i><font color="#9A1900">      @param comp the comparator to compare array elements</font></i>
+<font color="#000000">047: </font><i><font color="#9A1900">   */</font></i>
+<font color="#000000">048: </font>   <b><font color="#0000FF">private</font></b> <b><font color="#0000FF">static</font></b> <font color="#990000">&lt;</font>E<font color="#990000">&gt;</font> <font color="#009900">void</font> <b><font color="#000000">merge</font></b><font color="#990000">(</font>E<font color="#990000">[</font><font color="#990000">]</font> a<font color="#990000">,</font>
+<font color="#000000">049: </font>      <font color="#009900">int</font> from<font color="#990000">,</font> <font color="#009900">int</font> mid<font color="#990000">,</font> <font color="#009900">int</font> to<font color="#990000">,</font> Comparator<font color="#990000">&lt;</font><font color="#990000">?</font> <b><font color="#0000FF">super</font></b> E<font color="#990000">&gt;</font> comp<font color="#990000">)</font>
+<font color="#000000">050: </font>   <font color="#FF0000">{</font>
+<font color="#000000">051: </font>      <font color="#009900">int</font> n <font color="#990000">=</font> to <font color="#990000">-</font> from <font color="#990000">+</font> <font color="#993399">1</font><font color="#990000">;</font>
+<font color="#000000">052: </font>         <i><font color="#9A1900">// Size of the range to be merged</font></i>
+<font color="#000000">053: </font>
+<font color="#000000">054: </font>      <i><font color="#9A1900">// Merge both halves into a temporary array b</font></i>
+<font color="#000000">055: </font>      Object<font color="#990000">[</font><font color="#990000">]</font> b <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> Object<font color="#990000">[</font>n<font color="#990000">]</font><font color="#990000">;</font>
+<font color="#000000">056: </font>
+<font color="#000000">057: </font>      <font color="#009900">int</font> i1 <font color="#990000">=</font> from<font color="#990000">;</font>
+<font color="#000000">058: </font>         <i><font color="#9A1900">// Next element to consider in the first range</font></i>
+<font color="#000000">059: </font>      <font color="#009900">int</font> i2 <font color="#990000">=</font> mid <font color="#990000">+</font> <font color="#993399">1</font><font color="#990000">;</font>
+<font color="#000000">060: </font>         <i><font color="#9A1900">// Next element to consider in the second range</font></i>
+<font color="#000000">061: </font>      <font color="#009900">int</font> j <font color="#990000">=</font> <font color="#993399">0</font><font color="#990000">;</font>
+<font color="#000000">062: </font>         <i><font color="#9A1900">// Next open position in b</font></i>
+<font color="#000000">063: </font>
+<font color="#000000">064: </font>      <i><font color="#9A1900">// As long as neither i1 nor i2 past the end, move</font></i>
+<font color="#000000">065: </font>      <i><font color="#9A1900">// the smaller element into b</font></i>
+<font color="#000000">066: </font>      <b><font color="#0000FF">while</font></b> <font color="#990000">(</font>i1 <font color="#990000">&lt;</font><font color="#990000">=</font> mid <font color="#990000">&amp;</font><font color="#990000">&amp;</font> i2 <font color="#990000">&lt;</font><font color="#990000">=</font> to<font color="#990000">)</font>
+<font color="#000000">067: </font>      <font color="#FF0000">{</font>
+<font color="#000000">068: </font>         <b><font color="#0000FF">if</font></b> <font color="#990000">(</font>comp<font color="#990000">.</font><b><font color="#000000">compare</font></b><font color="#990000">(</font>a<font color="#990000">[</font>i1<font color="#990000">]</font><font color="#990000">,</font> a<font color="#990000">[</font>i2<font color="#990000">]</font><font color="#990000">)</font> <font color="#990000">&lt;</font> <font color="#993399">0</font><font color="#990000">)</font>
+<font color="#000000">069: </font>         <font color="#FF0000">{</font>
+<font color="#000000">070: </font>            b<font color="#990000">[</font>j<font color="#990000">]</font> <font color="#990000">=</font> a<font color="#990000">[</font>i1<font color="#990000">]</font><font color="#990000">;</font>
+<font color="#000000">071: </font>            i1<font color="#990000">+</font><font color="#990000">+</font><font color="#990000">;</font>
+<font color="#000000">072: </font>         <font color="#FF0000">}</font>
+<font color="#000000">073: </font>         <b><font color="#0000FF">else</font></b>
+<font color="#000000">074: </font>         <font color="#FF0000">{</font>
+<font color="#000000">075: </font>            b<font color="#990000">[</font>j<font color="#990000">]</font> <font color="#990000">=</font> a<font color="#990000">[</font>i2<font color="#990000">]</font><font color="#990000">;</font>
+<font color="#000000">076: </font>            i2<font color="#990000">+</font><font color="#990000">+</font><font color="#990000">;</font>
+<font color="#000000">077: </font>         <font color="#FF0000">}</font>
+<font color="#000000">078: </font>         j<font color="#990000">+</font><font color="#990000">+</font><font color="#990000">;</font>
+<font color="#000000">079: </font>      <font color="#FF0000">}</font>
+<font color="#000000">080: </font>
+<font color="#000000">081: </font>      <i><font color="#9A1900">// Note that only one of the two while loops</font></i>
+<font color="#000000">082: </font>      <i><font color="#9A1900">// below is executed</font></i>
+<font color="#000000">083: </font>
+<font color="#000000">084: </font>      <i><font color="#9A1900">// Copy any remaining entries of the first half</font></i>
+<font color="#000000">085: </font>      <b><font color="#0000FF">while</font></b> <font color="#990000">(</font>i1 <font color="#990000">&lt;</font><font color="#990000">=</font> mid<font color="#990000">)</font>
+<font color="#000000">086: </font>      <font color="#FF0000">{</font>
+<font color="#000000">087: </font>         b<font color="#990000">[</font>j<font color="#990000">]</font> <font color="#990000">=</font> a<font color="#990000">[</font>i1<font color="#990000">]</font><font color="#990000">;</font>
+<font color="#000000">088: </font>         i1<font color="#990000">+</font><font color="#990000">+</font><font color="#990000">;</font>
+<font color="#000000">089: </font>         j<font color="#990000">+</font><font color="#990000">+</font><font color="#990000">;</font>
+<font color="#000000">090: </font>      <font color="#FF0000">}</font>
+<font color="#000000">091: </font>
+<font color="#000000">092: </font>      <i><font color="#9A1900">// Copy any remaining entries of the second half</font></i>
+<font color="#000000">093: </font>      <b><font color="#0000FF">while</font></b> <font color="#990000">(</font>i2 <font color="#990000">&lt;</font><font color="#990000">=</font> to<font color="#990000">)</font>
+<font color="#000000">094: </font>      <font color="#FF0000">{</font>
+<font color="#000000">095: </font>         b<font color="#990000">[</font>j<font color="#990000">]</font> <font color="#990000">=</font> a<font color="#990000">[</font>i2<font color="#990000">]</font><font color="#990000">;</font>
+<font color="#000000">096: </font>         i2<font color="#990000">+</font><font color="#990000">+</font><font color="#990000">;</font>
+<font color="#000000">097: </font>         j<font color="#990000">+</font><font color="#990000">+</font><font color="#990000">;</font>
+<font color="#000000">098: </font>      <font color="#FF0000">}</font>
+<font color="#000000">099: </font>
+<font color="#000000">100: </font>      <i><font color="#9A1900">// Copy back from the temporary array</font></i>
+<font color="#000000">101: </font>      <b><font color="#0000FF">for</font></b> <font color="#990000">(</font>j <font color="#990000">=</font> <font color="#993399">0</font><font color="#990000">;</font> j <font color="#990000">&lt;</font> n<font color="#990000">;</font> j<font color="#990000">+</font><font color="#990000">+</font><font color="#990000">)</font>
+<font color="#000000">102: </font>         a<font color="#990000">[</font>from <font color="#990000">+</font> j<font color="#990000">]</font> <font color="#990000">=</font> <font color="#990000">(</font>E<font color="#990000">)</font> b<font color="#990000">[</font>j<font color="#990000">]</font><font color="#990000">;</font>
+<font color="#000000">103: </font>   <font color="#FF0000">}</font>
+<font color="#000000">104: </font><font color="#FF0000">}</font>
+</tt></pre>

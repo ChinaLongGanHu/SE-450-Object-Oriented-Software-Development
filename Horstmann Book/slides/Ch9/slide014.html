@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Horstmann Chapter 9</title>
+</head>
+
+<body>
+<div onclick="document.location='slide015.html'">
+<center><small><a href="slide013.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide015.html">next</a></small></center>
+<hr></div>
+<h2>Terminating Threads</h2>
+<ul>
+  <li>Thread terminates when <tt>run</tt> exits</li>
+  <li>Sometimes necessary to terminate running thread<br />
+  </li>
+  <li>Don't use deprecated <tt>stop</tt> method</li>
+  <li>Interrupt thread by calling <tt>interrupt</tt></li>
+  <li>Calling <tt>t.interrupt()</tt> doesn't actually interrupt <tt>t</tt>;
+just sets a flag<br />
+  </li>
+  <li>Interrupted thread must sense interruption and exit its <tt>run</tt>
+method<br />
+  </li>
+  <li>Interrupted thread has chance to clean up</li>
+</ul>
+
+<div onclick="document.location='slide015.html'"><hr>
+<center><small><a href="slide013.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide015.html">next</a></small></center>
+</div>
+</body>
+</html>

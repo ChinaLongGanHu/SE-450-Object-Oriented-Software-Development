@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Horstmann Chapter 9</title>
+</head>
+
+<body>
+<div onclick="document.location='slide025.html'">
+<center><small><a href="slide023.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide025.html">next</a></small></center>
+<hr></div>
+<h2>Locks</h2>
+<ul>
+  <li>Thread can <i>acquire</i> lock</li>
+  <li>When another thread tries to acquire same lock, it blocks</li>
+  <li>When first thread <i>releases</i> lock, other thread is
+unblocked and tries again</li>
+  <li>Two kinds of locks</li>
+  <ul>
+    <li>Objects of class implementing <tt>java.util.concurrent.Lock</tt>
+interface type, usually <tt>ReentrantLock</tt></li>
+    <li>Locks that are built into every Java object</li>
+  </ul>
+</ul>
+
+<div onclick="document.location='slide025.html'"><hr>
+<center><small><a href="slide023.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide025.html">next</a></small></center>
+</div>
+</body>
+</html>

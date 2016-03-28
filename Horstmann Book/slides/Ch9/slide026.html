@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Horstmann Chapter 9</title>
+</head>
+
+<body>
+<div onclick="document.location='slide027.html'">
+<center><small><a href="slide025.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide027.html">next</a></small></center>
+<hr></div>
+<h2>Scenario with Locks</h2>
+<ul>
+</ul>
+<ol>
+  <li>First thread calls <tt>add</tt> and acquires lock, then executes<br />
+    <tt>elements[tail] = anObject;</tt></li>
+  <li>Second thread calls <tt>add</tt> and tries to acquire lock, but
+it is blocked<br />
+  </li>
+  <li>First thread executes<br />
+    <tt>tail++;</tt></li>
+  <li>First thread completes <tt>add</tt>, releases lock<br />
+  </li>
+  <li>Second thread unblocked</li>
+  <li>Second thread acquires lock, starts executing protected code<br />
+  </li>
+</ol>
+<ul>
+</ul>
+
+<div onclick="document.location='slide027.html'"><hr>
+<center><small><a href="slide025.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide027.html">next</a></small></center>
+</div>
+</body>
+</html>

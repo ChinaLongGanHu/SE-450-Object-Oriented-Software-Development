@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="" />
+  <title>Horstmann Chapter 6</title>
+</head>
+
+<body>
+<div onclick="document.location='slide029.html'">
+<center><small><a href="slide027.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide029.html">next</a></small></center>
+<hr></div>
+<h2>Abstract Classes</h2>
+<ul>
+  <li>Factor out common behavior<br />
+(<tt>setSelected</tt>, <tt>isSelected</tt>)</li>
+  <li>Subclasses inherit common behavior<br />
+  </li>
+  <li>Some methods still undefined<br />
+(<tt>draw</tt>, <tt>drawSelection</tt>, <tt>translate</tt>, <tt>contains</tt>)</li>
+</ul>
+<pre>public class SelectableShape implements Item <br />{ <br />   public void setSelected(boolean b) { selected = b; } <br />   public boolean isSelected() { return selected; }<br />   private boolean selected; <br />} <br /><br /></pre>
+
+<div onclick="document.location='slide029.html'"><hr>
+<center><small><a href="slide027.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide029.html">next</a></small></center>
+</div>
+</body>
+</html>

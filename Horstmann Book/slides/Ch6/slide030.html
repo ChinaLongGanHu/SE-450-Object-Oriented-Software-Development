@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="" />
+  <title>Horstmann Chapter 6</title>
+</head>
+
+<body>
+<div onclick="document.location='slide031.html'">
+<center><small><a href="slide029.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide031.html">next</a></small></center>
+<hr></div>
+<h2>Abstract Classes</h2>
+<ul>
+  <li><tt>SelectableShape</tt>&nbsp; doesn't define all <tt>SceneShape</tt>
+methods</li>
+  <li>It's <i>abstract</i></li>
+  <li><tt>public <b>abstract</b> class SelectableShape implements
+SceneShape</tt></li>
+  <li><tt>HouseShape</tt> and <tt>CarShape</tt> are <i>concrete</i></li>
+  <li>Can't instantiate abstract class:<br />
+    <pre>SelectableShape s = new SelectableShape(); // NO<br /></pre>
+  </li>
+  <li>Ok to have <i>variables</i> of abstract class type:<br />
+    <pre>SelectableShape s = new HouseShape(); // OK<br /></pre>
+  </li>
+</ul>
+
+<div onclick="document.location='slide031.html'"><hr>
+<center><small><a href="slide029.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide031.html">next</a></small></center>
+</div>
+</body>
+</html>

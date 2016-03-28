@@ -1,0 +1,822 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="generator"
+ content="HTML Tidy for Linux/x86 (vers 12 April 2005), see www.w3.org" />
+  <title>Horstmann Chapter 9</title>
+</head>
+<body>
+<h2>Object-Oriented Design &amp; Patterns</h2>
+<h4>Cay S. Horstmann</h4>
+<h3>Chapter 10<br />
+</h3>
+<h3>More Design Patterns<br />
+</h3>
+<img alt="" src="images/oodp2.jpg" height="500" width="404" />
+<h2>Chapter Topics</h2>
+<ul>
+  <li>The ADAPTER Pattern </li>
+  <li>Actions and the COMMAND Pattern&nbsp;&nbsp;<br />
+  </li>
+  <li>The FACTORY METHOD Pattern </li>
+  <li>The PROXY Pattern </li>
+  <li>The SINGLETON Pattern </li>
+  <li>The VISITOR Pattern </li>
+  <li>Other Design Patterns </li>
+</ul>
+<h2>Adapters</h2>
+<ul>
+  <li>Cable adapter: adapts plug to foreign wall outlet </li>
+  <li>OO Programming; Want to adapt class to foreign interface type </li>
+  <li>Example: Add <tt>CarIcon</tt> to container </li>
+  <li>Problem: Containers take components, not icons </li>
+  <li>Solution: Create an adapter that adapts <tt>Icon</tt> to <tt>Component</tt>
+  </li>
+  <li><a href="code/adapter/IconAdapter.java.html">Ch10/adapter/IconAdapter.java</a>
+  </li>
+  <li><a href="code/adapter/IconAdapterTester.java.html">Ch10/adapter/IconAdapterTester.java</a><br />
+  </li>
+</ul>
+<h2>The ADAPTER Pattern</h2>
+<h3>Context</h3>
+<ol>
+  <li>You want to use an existing class (adaptee) without modifying it.<br />
+  </li>
+  <li>The context in which you want to use the class requires target
+interface that is different from that of the adaptee.<br />
+  </li>
+  <li>The target interface and the adaptee interface are conceptually
+related. </li>
+</ol>
+<h2>The ADAPTER Pattern</h2>
+<h3>Solution</h3>
+<ol>
+  <li>Define an adapter class that implements the target interface.<br />
+  </li>
+  <li>The adapter class holds a reference to the adaptee. It translates
+target methods to adaptee methods.<br />
+  </li>
+  <li>The client wraps the adaptee into an adapter class object. </li>
+</ol>
+<h2>The ADAPTER Pattern</h2>
+<img src="images/Ch10_un01.jpg" title="" alt="."
+ style="width: 782px; height: 461px;" /><br />
+<br />
+<h2>The ADAPTER Pattern</h2>
+<table style="text-align: left; width: 100%;" border="1" cellpadding="2"
+ cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top; font-weight: bold;">Name in
+Design Pattern<br />
+      </td>
+      <td style="vertical-align: top; font-weight: bold;">Actual Name
+(Icon-&gt;Component)<br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; font-family: monospace;"> Adaptee<br />
+      </td>
+      <td style="vertical-align: top; font-family: monospace;"> Icon<br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; font-family: monospace;"> Target<br />
+      </td>
+      <td style="vertical-align: top; font-family: monospace;">
+JComponent<br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; font-family: monospace;"> Adapter<br />
+      </td>
+      <td style="vertical-align: top; font-family: monospace;">
+IconAdapter<br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; font-family: monospace;"> Client<br />
+      </td>
+      <td style="vertical-align: top;">The class that wants to add
+icons into a container<br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; font-family: monospace;">
+targetMethod()<br />
+      </td>
+      <td style="vertical-align: top; font-family: monospace;">
+paintComponent(), getPreferredSize()<br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; font-family: monospace;">
+adapteeMethod()<br />
+      </td>
+      <td style="vertical-align: top; font-family: monospace;">
+paintIcon(), getIconWidth(), getIconHeight()</td>
+    </tr>
+  </tbody>
+</table>
+<h2>The ADAPTER Pattern</h2>
+<ul>
+  <li>In stream library </li>
+  <li>Input streams read bytes </li>
+  <li>Readers read characters </li>
+  <li>Non-ASCII encoding: multiple bytes per char </li>
+  <li>System.in is a stream </li>
+  <li>What if you want to read characters? </li>
+  <li>Adapt stream to reader </li>
+  <li><tt>InputStreamReader</tt> </li>
+</ul>
+<h2>The ADAPTER Pattern</h2>
+<table style="text-align: left; width: 100%;" border="1" cellpadding="2"
+ cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top; font-weight: bold;">Name in
+Design Pattern<br />
+      </td>
+      <td style="vertical-align: top; font-weight: bold;">Actual Name
+(Stream-&gt;Reader)<br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; font-family: monospace;"> Adaptee<br />
+      </td>
+      <td style="vertical-align: top; font-family: monospace;">
+InputStream</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; font-family: monospace;"> Target<br />
+      </td>
+      <td style="vertical-align: top; font-family: monospace;"> Reader</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; font-family: monospace;"> Adapter<br />
+      </td>
+      <td style="vertical-align: top; font-family: monospace;">
+InputStreamReader</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; font-family: monospace;"> Client<br />
+      </td>
+      <td style="vertical-align: top;">The class that wants to read
+text from an input stream<br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; font-family: monospace;">
+targetMethod()<br />
+      </td>
+      <td style="vertical-align: top; font-family: monospace;">read
+(reading a character)<br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; font-family: monospace;">
+adapteeMethod()<br />
+      </td>
+      <td style="vertical-align: top; font-family: monospace;">read
+(reading a byte)</td>
+    </tr>
+  </tbody>
+</table>
+<h2>User Interface Actions</h2>
+<ul>
+  <li>Multiple routes to the same action </li>
+  <li>Example: Cut a block of text
+
+    <ul>
+      <li>Select Edit-&gt;Cut from menu </li>
+      <li>Click toolbar button </li>
+      <li>Hit Ctrl+X </li>
+    </ul>
+  </li>
+  <li>Action can be disabled (if nothing is selected) </li>
+  <li>Action has <i>state</i> </li>
+  <li>Action should be an <i>object</i> </li>
+</ul>
+<h2>User Interface Actions</h2>
+<img alt="" src="images/Ch10_01.png" height="242" width="442" /><br />
+<h2>The <tt>Action</tt> Interface Type</h2>
+<ul>
+  <li>Extends <tt>ActionListener</tt> </li>
+  <li>Can be enabled/disabled </li>
+  <li>Additional state, including
+
+    <ul>
+      <li>Action name </li>
+    </ul>
+    <ul>
+      <li>Icon </li>
+    </ul>
+  </li>
+  <li style="font-family: monospace;">helloAction.putValue(Action.NAME,
+"Hello"); </li>
+  <li><tt>menu.add(helloAction);</tt> </li>
+  <li>Extend <tt>AbstractAction</tt> convenience class </li>
+</ul>
+<h2>The <tt>Action</tt> Interface Type</h2>
+<img src="images/Ch10_02.jpg" title="" alt="."
+ style="width: 166px; height: 497px;" /><br />
+<br />
+<h2>Action Example</h2>
+<ul>
+  <li><a href="code/command/CommandTester.java.html">Ch10/command/CommandTester.java</a>
+  </li>
+  <li><a href="code/command/GreetingAction.java.html">Ch10/command/GreetingAction.java</a><br />
+  </li>
+</ul>
+<h2>The COMMAND Pattern</h2>
+<h3>Context</h3>
+<ol>
+  <li>You want to implement commands that behave like objects<br />
+    <ul>
+      <li>because you need to store additional information with
+commands </li>
+      <li>because you want to collect commands.&nbsp;&nbsp;<br />
+      </li>
+    </ul>
+  </li>
+</ol>
+<h2>The COMMAND Pattern</h2>
+<h3>Solution</h3>
+<ol>
+  <li>Define a command interface type with a method to execute the
+command.<br />
+  </li>
+  <li>Supply methods in the command interface type to manipulate the
+state of command objects.<br />
+  </li>
+  <li>Each concrete command class implements the command interface type.<br />
+  </li>
+  <li>To invoke the command, call the execute method. </li>
+</ol>
+<h2>The COMMAND Pattern</h2>
+<img src="images/Ch10_un02.jpg" title="" alt="."
+ style="width: 510px; height: 397px;" /><br />
+<br />
+<h2>The COMMAND Pattern</h2>
+<table style="text-align: left; width: 100%;" border="1" cellpadding="2"
+ cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top; font-weight: bold;">Name in
+Design Pattern<br />
+      </td>
+      <td style="vertical-align: top; font-weight: bold;">Actual Name
+(Swing actions)<br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; font-family: monospace;"> Command<br />
+      </td>
+      <td style="vertical-align: top;"><tt>Action</tt><br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; font-family: monospace;">
+ConcreteCommand<br />
+      </td>
+      <td style="vertical-align: top;">subclass of <tt>AbstractAction</tt><br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; font-family: monospace;">
+execute()<br />
+      </td>
+      <td style="vertical-align: top;"><tt>actionPerformed()</tt><br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; font-family: monospace;"> state<br />
+      </td>
+      <td style="vertical-align: top;"><tt>name</tt> and <tt>icon</tt><br />
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br />
+<h2>Factory Methods<br />
+</h2>
+<ul>
+  <li>Every collection can produce an iterator<br />
+    <tt>Iterator iter = list.iterator()</tt> </li>
+  <li>Why not use constructors?<br />
+    <tt>Iterator iter = new LinkedListIterator(list);</tt> </li>
+  <li>Drawback: not generic<br />
+    <tt>Collection coll = ...;</tt><br style="font-family: monospace;" />
+    <tt>Iterator iter = new ???(coll);</tt> </li>
+  <li>Factory method works for all collections<br />
+    <tt>Iterator iter = coll.iterator();</tt> </li>
+  <li>Polymorphism! </li>
+</ul>
+<h2>The FACTORY METHOD Pattern</h2>
+<h3>Context</h3>
+<ol>
+  <li>A type (the creator) creates objects of another type (the
+product).<br />
+  </li>
+  <li>Subclasses of the creator type need to create different kinds of
+product objects.<br />
+  </li>
+  <li>Clients do not need to know the exact type of product objects. </li>
+</ol>
+<h2>The FACTORY METHOD Pattern</h2>
+<h3>Solution</h3>
+<ol>
+  <li>Define a creator type that expresses the commonality of all
+creators.<br />
+  </li>
+  <li>Define a product type that expresses the commonality of all
+products.<br />
+  </li>
+  <li>Define a method, called the factory method, in the creator type.<br />
+The factory method yields a product object.<br />
+  </li>
+  <li>Each concrete creator class implements the factory method so that
+it returns an object of a concrete product class. </li>
+</ol>
+<h2>The FACTORY METHOD Pattern</h2>
+<img src="images/Ch10_un03.jpg" title="" alt="."
+ style="width: 593px; height: 380px;" /><br />
+<br />
+<h2>The FACTORY METHOD Pattern</h2>
+<table style="text-align: left; width: 100%;" border="1" cellpadding="2"
+ cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top; font-weight: bold;">Name in
+Design Pattern<br />
+      </td>
+      <td style="vertical-align: top; font-weight: bold;">Actual Name
+(iterator)<br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; font-family: monospace;"> Creator<br />
+      </td>
+      <td style="vertical-align: top; font-family: monospace;">
+Collection<br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; font-family: monospace;">
+ConcreteCreator<br />
+      </td>
+      <td style="vertical-align: top;">A subclass of <tt>Collection</tt><br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; font-family: monospace;">
+factoryMethod()<br />
+      </td>
+      <td style="vertical-align: top; font-family: monospace;">
+iterator()<br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; font-family: monospace;"> Product<br />
+      </td>
+      <td style="vertical-align: top; font-family: monospace;"> Iterator<br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; font-family: monospace;">
+ConcreteProduct<br />
+      </td>
+      <td style="vertical-align: top;">A subclass of <tt>Iterator</tt>
+(which is often anonymous)<br />
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h2>Not a FACTORY METHOD</h2>
+<ul>
+  <li>Not all "factory-like" methods are instances of this pattern </li>
+  <li>Create <tt>DateFormat</tt> instances<br />
+    <tt>DateFormat formatter = DateFormat.getDateInstance();</tt><br
+ style="font-family: monospace;" />
+    <tt>Date now = new Date();</tt><br style="font-family: monospace;" />
+    <tt>String formattedDate = formatter.format(now);</tt> </li>
+  <li><tt>getDateInstance</tt> is a <i>static</i> method </li>
+  <li>No polymorphic creation </li>
+</ul>
+<h2>Proxies</h2>
+<ul>
+  <li>Proxy: a person who is authorized to act on another person s
+behalf </li>
+  <li>Example: Delay instantiation of object </li>
+  <li>Expensive to load image </li>
+  <li>Not necessary to load image that user doesn't look at </li>
+  <li>Proxy defers loading until user clicks on tab<br />
+  </li>
+</ul>
+<h2>Deferred Image Loading</h2>
+<img alt="" src="images/Ch10_03.png" height="302" width="502" /><br />
+<br />
+<h2>Deferred Image Loading</h2>
+<ul>
+  <li>Normally, programmer uses image for label:<br />
+    <tt>JLabel label = new JLabel(new ImageIcon(imageName));</tt> </li>
+  <li>Use proxy instead:<br />
+    <tt>JLabel label = new JLabel(new ImageProxy(imageName));</tt> </li>
+  <li><tt>paintIcon</tt> loads image if not previously loaded<br />
+    <tt>public void paintIcon(Component c, Graphics g, int x, int y)</tt><br
+ style="font-family: monospace;" />
+    <tt>{</tt><br style="font-family: monospace;" />
+    <tt>&nbsp;&nbsp; if (image == null) image = new ImageIcon(name);</tt><br
+ style="font-family: monospace;" />
+    <tt>&nbsp;&nbsp; image.paintIcon(c, g, x, y);</tt><br
+ style="font-family: monospace;" />
+    <tt>}</tt> </li>
+</ul>
+<h2>Proxies</h2>
+<ul>
+  <li><a href="code/proxy/ImageProxy.java.html">Ch10/proxy/ImageProxy.java</a>
+  </li>
+  <li><a href="code/proxy/ProxyTester.java.html">Ch10/proxy/ProxyTester.java</a>
+  </li>
+  <li>"Every problem in computer science can be solved by an additional
+level of indirection" </li>
+  <li>Another use for proxies: remote method invocation </li>
+</ul>
+<h2>The PROXY Pattern</h2>
+<h3>Context</h3>
+<ol>
+  <li>A class (the real subject) provides a service that is specified
+by an interface type (the subject type) </li>
+  <li>There is a need to modify the service in order to make it more
+versatile.<br />
+  </li>
+  <li>Neither the client nor the real subject should be affected by the
+modification. </li>
+</ol>
+<h2>The PROXY Pattern</h2>
+<h3>Solution</h3>
+<ol>
+  <li>Define a proxy class that implements the subject interface type.<br />
+The proxy holds a reference to the real subject, or otherwise knows how
+to locate it.<br />
+  </li>
+  <li>The client uses a proxy object.<br />
+  </li>
+  <li>Each proxy method invokes the same method on the real subject and
+provides the necessary modifications. </li>
+</ol>
+<h2>The PROXY Pattern</h2>
+<img src="images/Ch10_un04.jpg" title="" alt="."
+ style="width: 772px; height: 492px;" /><br />
+<br />
+<h2>The PROXY Pattern</h2>
+<table style="text-align: left; width: 100%;" border="1" cellpadding="2"
+ cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top; font-weight: bold;">Name in
+Design Pattern<br />
+      </td>
+      <td style="vertical-align: top; font-weight: bold;">Actual Name
+(image proxy)<br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; font-family: monospace;"> Subject<br />
+      </td>
+      <td style="vertical-align: top; font-family: monospace;"> Icon<br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; font-family: monospace;">
+RealSubject<br />
+      </td>
+      <td style="vertical-align: top; font-family: monospace;">
+ImageIcon<br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; font-family: monospace;"> Proxy<br />
+      </td>
+      <td style="vertical-align: top; font-family: monospace;">
+ImageProxy<br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; font-family: monospace;">
+request()<br />
+      </td>
+      <td style="vertical-align: top;">The methods of the <tt>Icon</tt>
+interface type<br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; font-family: monospace;"> Client<br />
+      </td>
+      <td style="vertical-align: top; font-family: monospace;"> JLabel<br />
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h2>Singletons</h2>
+<ul>
+  <li>"Random" number generator generates predictable stream of numbers
+  </li>
+  <li>Example: seed = (seed * 25214903917 + 11) % 2<sup>48</sup> </li>
+  <li>Convenient for debugging: can reproduce number sequence </li>
+  <li>Only if all clients use <i>the same random number generator</i> </li>
+  <li>Singleton class = class with one instance </li>
+</ul>
+<h2>Random Number Generator Singleton</h2>
+<tt>public class SingleRandom</tt><br style="font-family: monospace;" />
+<tt>{</tt><br style="font-family: monospace;" />
+<tt>&nbsp;&nbsp; private SingleRandom() { generator = new Random(); }</tt><br
+ style="font-family: monospace;" />
+<tt>&nbsp;&nbsp; public void setSeed(int seed) {
+generator.setSeed(seed); }</tt><br style="font-family: monospace;" />
+<tt>&nbsp;&nbsp; public int nextInt() { return generator.nextInt(); }</tt><br
+ style="font-family: monospace;" />
+<tt>&nbsp;&nbsp; public static SingleRandom getInstance() { return
+instance; }</tt><br style="font-family: monospace;" />
+<tt>&nbsp;&nbsp; private Random generator;</tt><br
+ style="font-family: monospace;" />
+<tt>&nbsp;&nbsp; private static SingleRandom instance = new
+SingleRandom();</tt><br style="font-family: monospace;" />
+<tt>}</tt><br />
+<h2>The SINGLETON Pattern</h2>
+<h3>Context</h3>
+<ol>
+  <li>All clients need to access a single shared instance of a class.<br />
+  </li>
+  <li>You want to ensure that no additional instances can be created
+accidentally. </li>
+</ol>
+<h2>The SINGLETON Pattern</h2>
+<h3>Solution<br />
+</h3>
+<ol>
+  <li>Define a class with a private constructor.<br />
+  </li>
+  <li>The class constructs a single instance of itself.<br />
+  </li>
+  <li>Supply a static method that returns a reference to the single
+instance. </li>
+</ol>
+<h2>Not a SINGLETON</h2>
+<ul>
+  <li>Toolkit used for determining screen size, other window system
+parameters<br />
+  </li>
+  <li><tt>Toolkit</tt> class returns default toolkit<br />
+    <tt>Toolkit kit = Toolkit.getDefaultToolkit();</tt><br />
+  </li>
+  <li>Not a singleton--can get other instances of <tt>Toolkit</tt> </li>
+  <li><tt><tt>Math</tt></tt> class not example of singleton pattern </li>
+  <li><i>No</i> objects of class <tt>Math</tt> are created </li>
+</ul>
+<h2>Inflexible Hierarchies</h2>
+<ul>
+  <li>How can one add operations to compound hierarchies? </li>
+  <li>Example: AWT <tt>Component,</tt> <tt>Container,</tt> etc. form
+hierarchy </li>
+  <li>Lots of operations: <tt>getPreferredSize</tt>,<tt>repaint</tt> </li>
+  <li>Can't add new methods without modifying <tt>Component</tt> class
+  </li>
+  <li>VISITOR pattern solves this problem </li>
+  <li>Each class must support one method<br />
+    <tt>void accept(Visitor v)</tt> </li>
+</ul>
+<h2>Inflexible Hierarchies</h2>
+<img src="images/Ch10_04.jpg" title="" alt="."
+ style="width: 752px; height: 380px;" /><br />
+<br />
+<h2>Visitors</h2>
+<ul>
+  <li><tt>Visitor</tt> is an interface type </li>
+  <li>Supply a separate class for each new operation </li>
+  <li>Most basic form of <tt>accept</tt> method:<br />
+    <tt>public void accept(Visitor v) { v.visit(this); }</tt> </li>
+  <li>Programmer must implement <tt>visit</tt> </li>
+</ul>
+<h2>Visitors</h2>
+<ul>
+  <li>Problem: Operation may be different for different element types </li>
+  <li>Can't rely on polymorphism </li>
+  <li>Polymorphism assumes fixed set of methods, defined in superclass<br />
+  </li>
+  <li>Trick: Can use variable set of methods <i>if set of classes is
+fixed</i> </li>
+  <li>Supply separate visitor methods:<br />
+    <tt>public interface Visitor</tt><br style="font-family: monospace;" />
+    <tt>{</tt><br style="font-family: monospace;" />
+    <tt>&nbsp;&nbsp; void visitElementType1(ElementType1 element);</tt><br
+ style="font-family: monospace;" />
+    <tt>&nbsp;&nbsp; void visitElementType2(ElementType2 element);</tt><br
+ style="font-family: monospace;" />
+    <tt>&nbsp;&nbsp; ...</tt><br style="font-family: monospace;" />
+    <tt>&nbsp;&nbsp; void visitElementTypen(ElementTypen element);</tt><br
+ style="font-family: monospace;" />
+    <tt>}</tt> </li>
+</ul>
+<h2>Visitors</h2>
+<ul>
+  <li>Example: Directory tree </li>
+  <li>Two kinds of elements: <tt>DirectoryNode</tt>,<tt>FileNode</tt> </li>
+  <li>Two methods in visitor interface type:<br />
+    <tt>void visitDirectoryNode(DirectoryNode node)</tt><br
+ style="font-family: monospace;" />
+    <tt>void visitFileNode(FileNode node)</tt> </li>
+</ul>
+<h2>Double Dispatch</h2>
+<ul>
+  <li>Each element type provides methods:<br />
+    <tt>public class ElementType<sub>i</sub></tt><br
+ style="font-family: monospace;" />
+    <tt>{</tt><br style="font-family: monospace;" />
+    <tt>&nbsp;&nbsp; public void accept(Visitor v) { v.visitElementType<sub>i</sub>(this);
+}</tt><br style="font-family: monospace;" />
+    <tt>&nbsp;&nbsp; ...</tt><br style="font-family: monospace;" />
+    <tt>}</tt> </li>
+  <li>Completely mechanical </li>
+  <li>Example:<br />
+    <tt>public class DirectoryNode</tt><br
+ style="font-family: monospace;" />
+    <tt>{</tt><br style="font-family: monospace;" />
+    <tt>&nbsp;&nbsp; public void accept(Visitor v) {
+v.visitDirectoryNode(this); }</tt><br style="font-family: monospace;" />
+    <tt>&nbsp;&nbsp; ...</tt><br style="font-family: monospace;" />
+    <tt>}</tt><br />
+  </li>
+</ul>
+<h2>Visitor Example</h2>
+<ul>
+  <li>Standard <tt>File</tt> class denotes both files and directories </li>
+  <li>Improved design: <tt>FileNode</tt>,<tt>DirectoryNode</tt> </li>
+  <li>Common interface type: <tt>FileSystemNode</tt> </li>
+  <li>Accepts <tt>FileSystemVisitor</tt> </li>
+  <li>Visitor methods:<br />
+    <tt>visitFileNode</tt><br style="font-family: monospace;" />
+    <tt>visitDirectoryNode</tt> </li>
+</ul>
+<h2>Visitor Example</h2>
+<img src="images/Ch10_05.jpg" title="" alt="."
+ style="width: 876px; height: 552px;" /><br />
+<br />
+<h2>Visitor Example</h2>
+<ul>
+  <li>Actual visitor: <tt>PrintVisitor</tt> </li>
+  <li>Prints names of files (in <tt>visitFileNode</tt>)<br />
+  </li>
+  <li>Lists contents of directories (in <tt>visitDirectoryNode</tt>)<br />
+  </li>
+  <li>Maintains indentation level<br style="font-family: monospace;" />
+    <tt>..</tt><br style="font-family: monospace;" />
+    <tt>&nbsp;&nbsp; command</tt><br style="font-family: monospace;" />
+    <tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CommandTester.java</tt><br
+ style="font-family: monospace;" />
+    <tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GreetingAction.java</tt><br
+ style="font-family: monospace;" />
+    <tt>&nbsp;&nbsp; visitor</tt><br style="font-family: monospace;" />
+    <tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileNode.java</tt><br
+ style="font-family: monospace;" />
+    <tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DirectoryNode.java</tt> </li>
+</ul>
+<h2>Visitor Example</h2>
+<ul>
+  <li><a href="code/visitor/FileSystemNode.java.html">ch10/visitor/FileSystemNode.java</a>
+  </li>
+  <li><a href="code/visitor/FileNode.java.html">ch10/visitor/FileNode.java</a>
+  </li>
+  <li><a href="code/visitor/DirectoryNode.java.html">ch10/visitor/DirectoryNode.java</a>
+  </li>
+  <li><a href="code/visitor/FileSystemVisitor.java.html">ch10/visitor/FileSystemVisitor.java</a>
+  </li>
+  <li><a href="code/visitor/PrintVisitor.java.html">ch10/visitor/PrintVisitor.java</a>
+  </li>
+  <li><a href="code/visitor/VisitorTester.java.html">ch10/visitor/VisitorTester.java</a>
+  </li>
+</ul>
+<h2>Double Dispatch Example</h2>
+<ul>
+  <li><tt>DirectoryNode node = new DirectoryNode(new File(".."));<br />
+node.accept(new PrintVisitor());<br />
+    </tt> </li>
+  <li><tt>node</tt> is a <tt>DirectoryNode</tt> </li>
+  <li>Polymorphism: <tt><tt>node.accept</tt></tt> calls <tt>DirectoryNode.accept</tt>
+  </li>
+  <li>That method calls <tt>v.visitDirectoryNode</tt> </li>
+  <li><tt>v</tt> is a <tt>PrintVisitor</tt> </li>
+  <li>Polymorphism: calls <tt>PrintVisitor.visitDirectoryNode</tt> </li>
+  <li>Two polymorphic calls determine </li>
+  <li>
+    <ul>
+      <li>node type </li>
+      <li>visitor type </li>
+    </ul>
+  </li>
+</ul>
+<h2>Double Dispatch Example</h2>
+<img src="images/Ch10_06.jpg" title="" alt="."
+ style="width: 709px; height: 416px;" /><br />
+<br />
+<h2>The VISITOR Pattern</h2>
+<h3>Context</h3>
+<ol>
+  <li>An object structure contains element classes of multiple types,
+and you want to carry out operations that depend on the object types.<br />
+  </li>
+  <li>The set of operations should be extensible over time.<br />
+  </li>
+  <li>The set of element classes is fixed. </li>
+</ol>
+<h2>The VISITOR Pattern</h2>
+<h3>Solution</h3>
+<ol>
+  <li>Define a visitor interface type that has methods for visiting
+elements of each of the given types.<br />
+  </li>
+  <li>Each element class defines an accept method that invokes the
+matching element visitation method on the visitor parameter.<br />
+  </li>
+  <li>To implement an operation, define a class that implements the
+visitor interface type and supplies the operation s action for each
+element type. </li>
+</ol>
+<h2>The VISITOR Pattern</h2>
+<img src="images/Ch10_un05.jpg" title="" alt="."
+ style="width: 974px; height: 737px;" /><br />
+<br />
+<h2>The VISITOR Pattern</h2>
+<table style="text-align: left; width: 100%;" border="1" cellpadding="2"
+ cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top; font-weight: bold;">Name in
+Design Pattern<br />
+      </td>
+      <td style="vertical-align: top;"><b>Actual Name (file system
+visitor)</b><br style="font-family: monospace;" />
+      </td>
+    </tr>
+    <tr style="font-family: monospace;">
+      <td style="vertical-align: top;">Element<br />
+      </td>
+      <td style="vertical-align: top;">FileSystemNode<br />
+      </td>
+    </tr>
+    <tr style="font-family: monospace;">
+      <td style="vertical-align: top;">ConcreteElement<br />
+      </td>
+      <td style="vertical-align: top;">FileNode, DirectoryNode<br />
+      </td>
+    </tr>
+    <tr style="font-family: monospace;">
+      <td style="vertical-align: top;">Visitor<br />
+      </td>
+      <td style="vertical-align: top;">FileSystemVisitor<br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; font-family: monospace;">
+ConcreteVisitor<br />
+      </td>
+      <td style="vertical-align: top;"><tt>PrintVisitor</tt><br />
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h2>Other Design Patterns</h2>
+<ul>
+  <li>Abstract Factory </li>
+  <li>Bridge </li>
+  <li>Builder </li>
+  <li>Chain of Responsibility </li>
+  <li>Flyweight </li>
+  <li>Interpreter </li>
+  <li>Mediator </li>
+  <li>Memento </li>
+  <li>State<br />
+  </li>
+</ul>
+<h2>Conclusion: What You Learned</h2>
+<ol>
+  <li>Object-oriented design&nbsp;&nbsp;<br />
+The design methodology&nbsp;&nbsp;<br />
+CRC cards and UML diagrams&nbsp;&nbsp;<br />
+Design patterns<br />
+  </li>
+  <li>Advanced Java&nbsp;&nbsp;<br />
+Interface types, polymorphism, and inheritance&nbsp;&nbsp;<br />
+Inner classes&nbsp;&nbsp;<br />
+Reflection&nbsp;&nbsp;<br />
+Multithreading&nbsp;&nbsp;<br />
+Collections<br />
+  </li>
+  <li>User interface programming&nbsp;&nbsp;<br />
+Building Swing applications&nbsp;&nbsp;<br />
+Event handling&nbsp;&nbsp;<br />
+Graphics programming<br />
+  </li>
+</ol>
+</body>
+</html>

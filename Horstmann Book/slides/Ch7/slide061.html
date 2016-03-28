@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="generator"
+ content="HTML Tidy for Linux/x86 (vers 12 April 2005), see www.w3.org">
+  <title>Horstmann Chapter 7</title>
+</head>
+
+<body>
+<div onclick="document.location='slide062.html'">
+<center><small><a href="slide060.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide062.html">next</a></small></center>
+<hr></div>
+<h2>Type Bounds<br>
+</h2>
+<ul>
+  <li>Overcome limitation with type bound:<br>
+    <pre>public static &lt;E, F<b> extends E</b>&gt; void append(<br>   ArrayList&lt;E&gt; a, ArrayList&lt;F&gt; b, int count)<br>{<br>   for (int i = 0; i &lt; count &amp;&amp; i &lt; b.size(); i++)<br>      a.add(b.get(i));<br>}</pre>
+  </li>
+  <li><tt>extends</tt> means "subtype", i.e. extends or implements</li>
+  <li>Can specify multiple bounds:<br>
+    <tt>E extends Cloneable &amp; Serializable</tt></li>
+</ul>
+
+<div onclick="document.location='slide062.html'"><hr>
+<center><small><a href="slide060.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide062.html">next</a></small></center>
+</div>
+</body>
+</html>

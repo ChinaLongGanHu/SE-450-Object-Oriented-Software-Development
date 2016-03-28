@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+  <title>Horstmann Chapter 2</title></head>
+
+
+<body>
+<div onclick="document.location='slide066.html'">
+<center><small><a href="slide064.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide066.html">next</a></small></center>
+<hr></div>
+<h2>Analyse Use Case: Retrieve messages</h2>
+<ol>
+  <li>User types in passcode. <tt>Telephone</tt> notifies <tt>Connection</tt>
+  </li>
+  <li><tt>Connection</tt> asks <tt>Mailbox</tt> to check passcode.<br />
+(Add responsibility "manage passcode" to <tt>Mailbox</tt>) </li>
+  <li><tt>Connection</tt> sets current mailbox and asks <tt>Telephone</tt>
+to speak menu </li>
+  <li>User selects "retrieve messages". <tt>Telephone</tt> passes key
+to <tt>Connection</tt> </li>
+  <li><tt>Connection</tt> asks <tt>Telephone</tt> to speak menu </li>
+  <li>User selects "listen to current message". <tt>Telephone</tt>
+passes key to <tt>Connection</tt> </li>
+  <li><tt>Connection</tt> gets first message from current mailbox.<br />
+(Add "retrieve messages" to responsibility of <tt>Mailbox</tt>).<br />
+    <tt>Connection</tt> asks <tt>Telephone</tt> to speak message </li>
+  <li><tt>Connection</tt> asks <tt>Telephone</tt> to speak menu </li>
+  <li>User selects "save current message". <tt>Telephone</tt> passes
+key to <tt>Connection</tt> </li>
+  <li><tt>Connection</tt> tells <tt>Mailbox</tt> to save message<br />
+(Modify responsibility of <tt>Mailbox</tt> to "retrieve,save,delete
+messages") </li>
+  <li><tt>Connection</tt> asks <tt>Telephone</tt> to speak menu </li>
+</ol>
+
+<div onclick="document.location='slide066.html'"><hr>
+<center><small><a href="slide064.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide066.html">next</a></small></center>
+</div>
+</body>
+</html>

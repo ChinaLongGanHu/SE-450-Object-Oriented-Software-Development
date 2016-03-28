@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="generator"
+ content="HTML Tidy for Linux/x86 (vers 12 April 2005), see www.w3.org" />
+  <title>Horstmann Chapter 8</title>
+</head>
+
+<body>
+<div onclick="document.location='slide053.html'">
+<center><small><a href="slide051.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide053.html">next</a></small></center>
+<hr></div>
+<h2>Add New Edge</h2>
+<ul>
+  <li>First check if mouse was pressed inside existing node<br />
+    <tt>public Node findNode(Point2D p)</tt><br
+ style="font-family: monospace;" />
+    <tt>{</tt><br style="font-family: monospace;" />
+    <tt>&nbsp;&nbsp; for (int i = 0; i &lt; nodes.size(); i++)</tt><br
+ style="font-family: monospace;" />
+    <tt>&nbsp;&nbsp; {</tt><br style="font-family: monospace;" />
+    <tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Node n = (Node) nodes.get(i);</tt><br
+ style="font-family: monospace;" />
+    <tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (n.contains(p)) return n;</tt><br
+ style="font-family: monospace;" />
+    <tt>&nbsp;&nbsp; }</tt><br style="font-family: monospace;" />
+    <tt>&nbsp;&nbsp; return null;</tt><br
+ style="font-family: monospace;" />
+    <tt>}</tt><br style="font-family: monospace;" />
+  </li>
+</ul>
+
+<div onclick="document.location='slide053.html'"><hr>
+<center><small><a href="slide051.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide053.html">next</a></small></center>
+</div>
+</body>
+</html>

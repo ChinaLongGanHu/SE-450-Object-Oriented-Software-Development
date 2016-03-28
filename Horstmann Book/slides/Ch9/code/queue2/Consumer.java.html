@@ -1,0 +1,40 @@
+<pre><tt><font color="#000000">01: </font><i><font color="#9A1900">/**</font></i>
+<font color="#000000">02: </font><i><font color="#9A1900">   An action that repeatedly removes a greeting from a queue.</font></i>
+<font color="#000000">03: </font><i><font color="#9A1900">*/</font></i>
+<font color="#000000">04: </font><b><font color="#0000FF">public</font></b> <b><font color="#0000FF">class</font></b> Consumer <b><font color="#0000FF">implements</font></b> Runnable
+<font color="#000000">05: </font><font color="#FF0000">{</font>
+<font color="#000000">06: </font>   <i><font color="#9A1900">/**</font></i>
+<font color="#000000">07: </font><i><font color="#9A1900">      Constructs the consumer object.</font></i>
+<font color="#000000">08: </font><i><font color="#9A1900">      @param aQueue the queue from which to retrieve greetings</font></i>
+<font color="#000000">09: </font><i><font color="#9A1900">      @param count the number of greetings to consume</font></i>
+<font color="#000000">10: </font><i><font color="#9A1900">   */</font></i>
+<font color="#000000">11: </font>   <b><font color="#0000FF">public</font></b> <b><font color="#000000">Consumer</font></b><font color="#990000">(</font>BoundedQueue<font color="#990000">&lt;</font>String<font color="#990000">&gt;</font> aQueue<font color="#990000">,</font> <font color="#009900">int</font> count<font color="#990000">)</font>
+<font color="#000000">12: </font>   <font color="#FF0000">{</font>
+<font color="#000000">13: </font>      queue <font color="#990000">=</font> aQueue<font color="#990000">;</font>
+<font color="#000000">14: </font>      greetingCount <font color="#990000">=</font> count<font color="#990000">;</font>
+<font color="#000000">15: </font>   <font color="#FF0000">}</font>
+<font color="#000000">16: </font>
+<font color="#000000">17: </font>   <b><font color="#0000FF">public</font></b> <font color="#009900">void</font> <b><font color="#000000">run</font></b><font color="#990000">(</font><font color="#990000">)</font>
+<font color="#000000">18: </font>   <font color="#FF0000">{</font>
+<font color="#000000">19: </font>      <b><font color="#0000FF">try</font></b>
+<font color="#000000">20: </font>      <font color="#FF0000">{</font>
+<font color="#000000">21: </font>         <font color="#009900">int</font> i <font color="#990000">=</font> <font color="#993399">1</font><font color="#990000">;</font>
+<font color="#000000">22: </font>         <b><font color="#0000FF">while</font></b> <font color="#990000">(</font>i <font color="#990000">&lt;</font><font color="#990000">=</font> greetingCount<font color="#990000">)</font>
+<font color="#000000">23: </font>         <font color="#FF0000">{</font>
+<font color="#000000">24: </font>            String greeting <font color="#990000">=</font> queue<font color="#990000">.</font><b><font color="#000000">remove</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">25: </font>            System<font color="#990000">.</font>out<font color="#990000">.</font><b><font color="#000000">println</font></b><font color="#990000">(</font>greeting<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">26: </font>            i<font color="#990000">+</font><font color="#990000">+</font><font color="#990000">;</font>
+<font color="#000000">27: </font>            Thread<font color="#990000">.</font><b><font color="#000000">sleep</font></b><font color="#990000">(</font><font color="#990000">(</font><font color="#009900">int</font><font color="#990000">)</font> <font color="#990000">(</font>Math<font color="#990000">.</font><b><font color="#000000">random</font></b><font color="#990000">(</font><font color="#990000">)</font> <font color="#990000">*</font> DELAY<font color="#990000">)</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">28: </font>         <font color="#FF0000">}</font>
+<font color="#000000">29: </font>      <font color="#FF0000">}</font>
+<font color="#000000">30: </font>      <b><font color="#0000FF">catch</font></b> <font color="#990000">(</font>InterruptedException exception<font color="#990000">)</font>
+<font color="#000000">31: </font>      <font color="#FF0000">{</font>
+<font color="#000000">32: </font>      <font color="#FF0000">}</font>
+<font color="#000000">33: </font>   <font color="#FF0000">}</font>
+<font color="#000000">34: </font>
+<font color="#000000">35: </font>   <b><font color="#0000FF">private</font></b> BoundedQueue<font color="#990000">&lt;</font>String<font color="#990000">&gt;</font> queue<font color="#990000">;</font>
+<font color="#000000">36: </font>   <b><font color="#0000FF">private</font></b> <font color="#009900">int</font> greetingCount<font color="#990000">;</font>
+<font color="#000000">37: </font>
+<font color="#000000">38: </font>   <b><font color="#0000FF">private</font></b> <b><font color="#0000FF">static</font></b> <b><font color="#0000FF">final</font></b> <font color="#009900">int</font> DELAY <font color="#990000">=</font> <font color="#993399">10</font><font color="#990000">;</font>
+<font color="#000000">39: </font><font color="#FF0000">}</font>
+</tt></pre>

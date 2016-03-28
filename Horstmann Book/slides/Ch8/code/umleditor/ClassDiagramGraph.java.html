@@ -1,0 +1,59 @@
+<pre><tt><font color="#000000">01: </font><b><font color="#000080">import</font></b> java<font color="#990000">.</font>awt<font color="#990000">.</font>geom<font color="#990000">.</font><font color="#990000">*</font><font color="#990000">;</font>
+<font color="#000000">02: </font>
+<font color="#000000">03: </font><i><font color="#9A1900">/**</font></i>
+<font color="#000000">04: </font><i><font color="#9A1900">   A UML class diagram.</font></i>
+<font color="#000000">05: </font><i><font color="#9A1900">*/</font></i>
+<font color="#000000">06: </font><b><font color="#0000FF">public</font></b> <b><font color="#0000FF">class</font></b> ClassDiagramGraph <b><font color="#0000FF">extends</font></b> Graph
+<font color="#000000">07: </font><font color="#FF0000">{</font>
+<font color="#000000">08: </font>
+<font color="#000000">09: </font>   <b><font color="#0000FF">public</font></b> <font color="#009900">boolean</font> <b><font color="#000000">connect</font></b><font color="#990000">(</font>Edge e<font color="#990000">,</font> Point2D p1<font color="#990000">,</font> Point2D p2<font color="#990000">)</font>
+<font color="#000000">10: </font>   <font color="#FF0000">{</font>
+<font color="#000000">11: </font>      Node n1 <font color="#990000">=</font> <b><font color="#000000">findNode</font></b><font color="#990000">(</font>p1<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">12: </font>      Node n2 <font color="#990000">=</font> <b><font color="#000000">findNode</font></b><font color="#990000">(</font>p2<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">13: </font>      <b><font color="#0000FF">if</font></b> <font color="#990000">(</font>n1 <font color="#990000">=</font><font color="#990000">=</font> n2<font color="#990000">)</font> <b><font color="#0000FF">return</font></b> <b><font color="#0000FF">false</font></b><font color="#990000">;</font>
+<font color="#000000">14: </font>      <b><font color="#0000FF">return</font></b> <b><font color="#0000FF">super</font></b><font color="#990000">.</font><b><font color="#000000">connect</font></b><font color="#990000">(</font>e<font color="#990000">,</font> p1<font color="#990000">,</font> p2<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">15: </font>   <font color="#FF0000">}</font>
+<font color="#000000">16: </font>
+<font color="#000000">17: </font>   <b><font color="#0000FF">public</font></b> Node<font color="#990000">[</font><font color="#990000">]</font> <b><font color="#000000">getNodePrototypes</font></b><font color="#990000">(</font><font color="#990000">)</font>
+<font color="#000000">18: </font>   <font color="#FF0000">{</font>
+<font color="#000000">19: </font>      <b><font color="#0000FF">return</font></b> <b><font color="#0000FF">new</font></b> Node<font color="#990000">[</font><font color="#990000">]</font> <font color="#FF0000">{</font> <b><font color="#0000FF">new</font></b> <b><font color="#000000">ClassNode</font></b><font color="#990000">(</font><font color="#990000">)</font> <font color="#FF0000">}</font><font color="#990000">;</font>
+<font color="#000000">20: </font>   <font color="#FF0000">}</font>
+<font color="#000000">21: </font>
+<font color="#000000">22: </font>   <b><font color="#0000FF">public</font></b> Edge<font color="#990000">[</font><font color="#990000">]</font> <b><font color="#000000">getEdgePrototypes</font></b><font color="#990000">(</font><font color="#990000">)</font>
+<font color="#000000">23: </font>   <font color="#FF0000">{</font>
+<font color="#000000">24: </font>      ClassRelationshipEdge<font color="#990000">[</font><font color="#990000">]</font> e <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> ClassRelationshipEdge<font color="#990000">[</font><font color="#993399">6</font><font color="#990000">]</font><font color="#990000">;</font>
+<font color="#000000">25: </font>
+<font color="#000000">26: </font>      e<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> <b><font color="#000000">ClassRelationshipEdge</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">27: </font>      e<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font><font color="#990000">.</font><b><font color="#000000">setLineStyle</font></b><font color="#990000">(</font>LineStyle<font color="#990000">.</font>DOTTED<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">28: </font>      e<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font><font color="#990000">.</font><b><font color="#000000">setEndArrowHead</font></b><font color="#990000">(</font>ArrowHead<font color="#990000">.</font>V<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">29: </font>
+<font color="#000000">30: </font>      e<font color="#990000">[</font><font color="#993399">1</font><font color="#990000">]</font> <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> <b><font color="#000000">ClassRelationshipEdge</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">31: </font>      e<font color="#990000">[</font><font color="#993399">1</font><font color="#990000">]</font><font color="#990000">.</font><b><font color="#000000">setBentStyle</font></b><font color="#990000">(</font>BentStyle<font color="#990000">.</font>VHV<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">32: </font>      e<font color="#990000">[</font><font color="#993399">1</font><font color="#990000">]</font><font color="#990000">.</font><b><font color="#000000">setEndArrowHead</font></b><font color="#990000">(</font>ArrowHead<font color="#990000">.</font>TRIANGLE<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">33: </font>
+<font color="#000000">34: </font>      e<font color="#990000">[</font><font color="#993399">2</font><font color="#990000">]</font> <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> <b><font color="#000000">ClassRelationshipEdge</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">35: </font>      e<font color="#990000">[</font><font color="#993399">2</font><font color="#990000">]</font><font color="#990000">.</font><b><font color="#000000">setBentStyle</font></b><font color="#990000">(</font>BentStyle<font color="#990000">.</font>VHV<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">36: </font>      e<font color="#990000">[</font><font color="#993399">2</font><font color="#990000">]</font><font color="#990000">.</font><b><font color="#000000">setLineStyle</font></b><font color="#990000">(</font>LineStyle<font color="#990000">.</font>DOTTED<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">37: </font>      e<font color="#990000">[</font><font color="#993399">2</font><font color="#990000">]</font><font color="#990000">.</font><b><font color="#000000">setEndArrowHead</font></b><font color="#990000">(</font>ArrowHead<font color="#990000">.</font>TRIANGLE<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">38: </font>
+<font color="#000000">39: </font>      e<font color="#990000">[</font><font color="#993399">3</font><font color="#990000">]</font> <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> <b><font color="#000000">ClassRelationshipEdge</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">40: </font>      e<font color="#990000">[</font><font color="#993399">3</font><font color="#990000">]</font><font color="#990000">.</font><b><font color="#000000">setBentStyle</font></b><font color="#990000">(</font>BentStyle<font color="#990000">.</font>HVH<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">41: </font>      e<font color="#990000">[</font><font color="#993399">3</font><font color="#990000">]</font><font color="#990000">.</font><b><font color="#000000">setEndArrowHead</font></b><font color="#990000">(</font>ArrowHead<font color="#990000">.</font>V<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">42: </font>
+<font color="#000000">43: </font>      e<font color="#990000">[</font><font color="#993399">4</font><font color="#990000">]</font> <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> <b><font color="#000000">ClassRelationshipEdge</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">44: </font>      e<font color="#990000">[</font><font color="#993399">4</font><font color="#990000">]</font><font color="#990000">.</font><b><font color="#000000">setBentStyle</font></b><font color="#990000">(</font>BentStyle<font color="#990000">.</font>HVH<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">45: </font>      e<font color="#990000">[</font><font color="#993399">4</font><font color="#990000">]</font><font color="#990000">.</font><b><font color="#000000">setStartArrowHead</font></b><font color="#990000">(</font>ArrowHead<font color="#990000">.</font>DIAMOND<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">46: </font>
+<font color="#000000">47: </font>      e<font color="#990000">[</font><font color="#993399">5</font><font color="#990000">]</font> <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> <b><font color="#000000">ClassRelationshipEdge</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">48: </font>      e<font color="#990000">[</font><font color="#993399">5</font><font color="#990000">]</font><font color="#990000">.</font><b><font color="#000000">setBentStyle</font></b><font color="#990000">(</font>BentStyle<font color="#990000">.</font>HVH<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">49: </font>      e<font color="#990000">[</font><font color="#993399">5</font><font color="#990000">]</font><font color="#990000">.</font><b><font color="#000000">setStartArrowHead</font></b><font color="#990000">(</font>ArrowHead<font color="#990000">.</font>BLACK_DIAMOND<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">50: </font>
+<font color="#000000">51: </font>      <b><font color="#0000FF">return</font></b> e<font color="#990000">;</font>
+<font color="#000000">52: </font>  <font color="#FF0000">}</font>
+<font color="#000000">53: </font><font color="#FF0000">}</font>
+<font color="#000000">54: </font>
+<font color="#000000">55: </font>
+<font color="#000000">56: </font>
+<font color="#000000">57: </font>
+<font color="#000000">58: </font>
+</tt></pre>

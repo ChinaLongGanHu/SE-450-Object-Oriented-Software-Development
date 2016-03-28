@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+  <title>Horstmann Chapter 4</title></head>
+
+<body>
+<div onclick="document.location='slide030.html'">
+<center><small><a href="slide028.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide030.html">next</a></small></center>
+<hr></div>
+<h2>Drawing Shapes<br />
+</h2>
+<ul>
+  <li>paintIcon method receives graphics context of
+type Graphics</li>
+  <li>Actually a Graphics2D object in modern Java versions<br />
+    <pre>public void paintIcon(Component c, Graphics g, int x, int y)<br />{<br /> Graphics2D g2 = (Graphics2D)g;<br /> . . .<br />}<br /></pre>
+  </li>
+  <li>Can draw any object that implements Shape interface<br />
+    <pre>Shape s = . . .;<br />g2.draw(s);<br /></pre>
+  </li>
+</ul>
+
+<div onclick="document.location='slide030.html'"><hr>
+<center><small><a href="slide028.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide030.html">next</a></small></center>
+</div>
+</body>
+</html>

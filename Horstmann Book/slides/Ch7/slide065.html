@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="generator"
+ content="HTML Tidy for Linux/x86 (vers 12 April 2005), see www.w3.org">
+  <title>Horstmann Chapter 7</title>
+</head>
+
+<body>
+<div onclick="document.location='slide066.html'">
+<center><small><a href="slide064.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide066.html">next</a></small></center>
+<hr></div>
+<h2>Wildcards</h2>
+<ul>
+  <li>Typical example--start with<br>
+    <pre>public static &lt;E extends Comparable&lt;E&gt;&gt; E getMax(ArrayList&lt;E&gt; a)<br>{<br>   E max = a.get(0);<br>   for (int i = 1; i &lt; a.size(); i++)<br>      if (a.get(i).compareTo(max) &gt; 0) max = a.get(i);<br>   return max;<br>}</pre>
+  </li>
+  <li><tt>E</tt> extends <tt>Comparable&lt;E&gt;</tt> so that we can
+call <tt>compareTo</tt></li>
+  <li>Too restrictive--can't call with <tt>ArrayList&lt;GregorianCalendar&gt;</tt></li>
+  <li><tt>GregorianCalendar</tt> <i>does not</i> implement <tt>Comparable&lt;GregorianCalendar&gt;</tt>,
+only <tt>Comparable&lt;Calendar&gt;</tt></li>
+  <li>Wildcards to the rescue:<br>
+    <pre>public static &lt;E extends Comparable&lt;<b>? super E</b>&gt;&gt; E getMax(ArrayList&lt;E&gt; a)</pre>
+  </li>
+</ul>
+
+<div onclick="document.location='slide066.html'"><hr>
+<center><small><a href="slide064.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide066.html">next</a></small></center>
+</div>
+</body>
+</html>

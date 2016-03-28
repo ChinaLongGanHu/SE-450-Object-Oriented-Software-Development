@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="generator"
+ content="HTML Tidy for Linux/x86 (vers 12 April 2005), see www.w3.org" />
+  <title>Horstmann Chapter 9</title>
+</head>
+
+<body>
+<div onclick="document.location='slide042.html'">
+<center><small><a href="slide040.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide042.html">next</a></small></center>
+<hr></div>
+<h2>Visitors</h2>
+<ul>
+  <li>Problem: Operation may be different for different element types </li>
+  <li>Can't rely on polymorphism </li>
+  <li>Polymorphism assumes fixed set of methods, defined in superclass<br />
+  </li>
+  <li>Trick: Can use variable set of methods <i>if set of classes is
+fixed</i> </li>
+  <li>Supply separate visitor methods:<br />
+    <tt>public interface Visitor</tt><br style="font-family: monospace;" />
+    <tt>{</tt><br style="font-family: monospace;" />
+    <tt>&nbsp;&nbsp; void visitElementType1(ElementType1 element);</tt><br
+ style="font-family: monospace;" />
+    <tt>&nbsp;&nbsp; void visitElementType2(ElementType2 element);</tt><br
+ style="font-family: monospace;" />
+    <tt>&nbsp;&nbsp; ...</tt><br style="font-family: monospace;" />
+    <tt>&nbsp;&nbsp; void visitElementTypen(ElementTypen element);</tt><br
+ style="font-family: monospace;" />
+    <tt>}</tt> </li>
+</ul>
+
+<div onclick="document.location='slide042.html'"><hr>
+<center><small><a href="slide040.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide042.html">next</a></small></center>
+</div>
+</body>
+</html>

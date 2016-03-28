@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="" />
+  <title>Horstmann Chapter 6</title>
+</head>
+
+<body>
+<div onclick="document.location='slide065.html'">
+<center><small><a href="slide063.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide065.html">next</a></small></center>
+<hr></div>
+<h2>When Not to Use Inheritance</h2>
+<ul>
+  <li>That's even weirder:<br />
+    <pre>public void translate(int dx, int dy)<br />{<br />   super.translate(dx, dy);<br />   other.translate(dx, dy);<br />}<br /></pre>
+  </li>
+  <li>Why did they do that?</li>
+  <li>Wanted to avoid abstract class <tt>Shape</tt></li>
+  <li>Remedy: Use aggregation.</li>
+  <li>Circle, Rectangle classes <i>have</i> points</li>
+</ul>
+
+<div onclick="document.location='slide065.html'"><hr>
+<center><small><a href="slide063.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide065.html">next</a></small></center>
+</div>
+</body>
+</html>

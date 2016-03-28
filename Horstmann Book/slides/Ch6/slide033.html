@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="" />
+  <title>Horstmann Chapter 6</title>
+</head>
+
+<body>
+<div onclick="document.location='slide034.html'">
+<center><small><a href="slide032.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide034.html">next</a></small></center>
+<hr></div>
+<h2>Uniform Highlighting Technique</h2>
+<ul>
+  <li>Old approach: each shape draws its selection state</li>
+  <li>Inconsistent<br />
+  </li>
+  <li>Better approach: shift, draw, shift, draw, restore to original
+position<br />
+  </li>
+  <li>Define in <tt>SelectableShape<br />
+    </tt> <tt>public void drawSelection(Graphics2D g2)<br />
+{<br />
+&nbsp;&nbsp; translate(1, 1);<br />
+&nbsp;&nbsp;&nbsp;draw(g2);<br />
+&nbsp;&nbsp;&nbsp;translate(1, 1);<br />
+&nbsp;&nbsp;&nbsp;draw(g2);<br />
+&nbsp;&nbsp;&nbsp;translate(-2, -2);<br />
+}</tt></li>
+</ul>
+
+<div onclick="document.location='slide034.html'"><hr>
+<center><small><a href="slide032.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide034.html">next</a></small></center>
+</div>
+</body>
+</html>

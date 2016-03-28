@@ -1,0 +1,14 @@
+<pre><tt><font color="#000000">01: </font><b><font color="#0000FF">public</font></b> <b><font color="#0000FF">class</font></b> MailSystemTester
+<font color="#000000">02: </font><font color="#FF0000">{</font>
+<font color="#000000">03: </font>   <b><font color="#0000FF">public</font></b> <b><font color="#0000FF">static</font></b> <font color="#009900">void</font> <b><font color="#000000">main</font></b><font color="#990000">(</font>String<font color="#990000">[</font><font color="#990000">]</font> args<font color="#990000">)</font>
+<font color="#000000">04: </font>   <font color="#FF0000">{</font>
+<font color="#000000">05: </font>      MailSystem system <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> <b><font color="#000000">MailSystem</font></b><font color="#990000">(</font>MAILBOX_COUNT<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">06: </font>
+<font color="#000000">07: </font>      Telephone p <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> <b><font color="#000000">Telephone</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">08: </font>      Connection c <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> <b><font color="#000000">Connection</font></b><font color="#990000">(</font>system<font color="#990000">,</font> p<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">09: </font>      p<font color="#990000">.</font><b><font color="#000000">run</font></b><font color="#990000">(</font>c<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">10: </font>   <font color="#FF0000">}</font>
+<font color="#000000">11: </font>
+<font color="#000000">12: </font>   <b><font color="#0000FF">private</font></b> <b><font color="#0000FF">static</font></b> <font color="#009900">int</font> MAILBOX_COUNT <font color="#990000">=</font> <font color="#993399">20</font><font color="#990000">;</font>
+<font color="#000000">13: </font><font color="#FF0000">}</font>
+</tt></pre>

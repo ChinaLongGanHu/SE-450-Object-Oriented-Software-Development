@@ -1,0 +1,47 @@
+<pre><tt><font color="#000000">01: </font><b><font color="#000080">import</font></b> java<font color="#990000">.</font>awt<font color="#990000">.</font>event<font color="#990000">.</font><font color="#990000">*</font><font color="#990000">;</font>
+<font color="#000000">02: </font><b><font color="#000080">import</font></b> javax<font color="#990000">.</font>swing<font color="#990000">.</font><font color="#990000">*</font><font color="#990000">;</font>
+<font color="#000000">03: </font>
+<font color="#000000">04: </font><i><font color="#9A1900">/**</font></i>
+<font color="#000000">05: </font><i><font color="#9A1900">   This action places a greeting into a text field </font></i>
+<font color="#000000">06: </font><i><font color="#9A1900">   and afterwards disables itself and enables its </font></i>
+<font color="#000000">07: </font><i><font color="#9A1900">   opposite action.</font></i>
+<font color="#000000">08: </font><i><font color="#9A1900">*/</font></i>
+<font color="#000000">09: </font><b><font color="#0000FF">public</font></b> <b><font color="#0000FF">class</font></b> GreetingAction <b><font color="#0000FF">extends</font></b> AbstractAction
+<font color="#000000">10: </font><font color="#FF0000">{</font>
+<font color="#000000">11: </font>   <i><font color="#9A1900">/**</font></i>
+<font color="#000000">12: </font><i><font color="#9A1900">      Constructs a greeting action.</font></i>
+<font color="#000000">13: </font><i><font color="#9A1900">      @param greeting the string to add to the text area</font></i>
+<font color="#000000">14: </font><i><font color="#9A1900">      @param textArea the text area to which to add the greeting</font></i>
+<font color="#000000">15: </font><i><font color="#9A1900">   */</font></i>      
+<font color="#000000">16: </font>   <b><font color="#0000FF">public</font></b> <b><font color="#000000">GreetingAction</font></b><font color="#990000">(</font>String greeting<font color="#990000">,</font> JTextArea textArea<font color="#990000">)</font>
+<font color="#000000">17: </font>   <font color="#FF0000">{</font>
+<font color="#000000">18: </font>      <b><font color="#0000FF">this</font></b><font color="#990000">.</font>greeting <font color="#990000">=</font> greeting<font color="#990000">;</font>
+<font color="#000000">19: </font>      <b><font color="#0000FF">this</font></b><font color="#990000">.</font>textArea <font color="#990000">=</font> textArea<font color="#990000">;</font>
+<font color="#000000">20: </font>   <font color="#FF0000">}</font>
+<font color="#000000">21: </font>
+<font color="#000000">22: </font>   <i><font color="#9A1900">/**</font></i>
+<font color="#000000">23: </font><i><font color="#9A1900">      Sets the opposite action.</font></i>
+<font color="#000000">24: </font><i><font color="#9A1900">      @param action the action to be enabled after this action was</font></i>
+<font color="#000000">25: </font><i><font color="#9A1900">      carried out</font></i>
+<font color="#000000">26: </font><i><font color="#9A1900">   */</font></i>
+<font color="#000000">27: </font>   <b><font color="#0000FF">public</font></b> <font color="#009900">void</font> <b><font color="#000000">setOpposite</font></b><font color="#990000">(</font>Action action<font color="#990000">)</font>
+<font color="#000000">28: </font>   <font color="#FF0000">{</font>
+<font color="#000000">29: </font>      oppositeAction <font color="#990000">=</font> action<font color="#990000">;</font>
+<font color="#000000">30: </font>   <font color="#FF0000">}</font>
+<font color="#000000">31: </font>
+<font color="#000000">32: </font>   <b><font color="#0000FF">public</font></b> <font color="#009900">void</font> <b><font color="#000000">actionPerformed</font></b><font color="#990000">(</font>ActionEvent event<font color="#990000">)</font>
+<font color="#000000">33: </font>   <font color="#FF0000">{</font>
+<font color="#000000">34: </font>      textArea<font color="#990000">.</font><b><font color="#000000">append</font></b><font color="#990000">(</font>greeting<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">35: </font>      textArea<font color="#990000">.</font><b><font color="#000000">append</font></b><font color="#990000">(</font><font color="#FF0000">"\n"</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">36: </font>      <b><font color="#0000FF">if</font></b> <font color="#990000">(</font>oppositeAction <font color="#990000">!</font><font color="#990000">=</font> <b><font color="#0000FF">null</font></b><font color="#990000">)</font>
+<font color="#000000">37: </font>      <font color="#FF0000">{</font>
+<font color="#000000">38: </font>         <b><font color="#000000">setEnabled</font></b><font color="#990000">(</font><b><font color="#0000FF">false</font></b><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">39: </font>         oppositeAction<font color="#990000">.</font><b><font color="#000000">setEnabled</font></b><font color="#990000">(</font><b><font color="#0000FF">true</font></b><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">40: </font>      <font color="#FF0000">}</font>
+<font color="#000000">41: </font>   <font color="#FF0000">}</font>
+<font color="#000000">42: </font>
+<font color="#000000">43: </font>   <b><font color="#0000FF">private</font></b> String greeting<font color="#990000">;</font>
+<font color="#000000">44: </font>   <b><font color="#0000FF">private</font></b> JTextArea textArea<font color="#990000">;</font>
+<font color="#000000">45: </font>   <b><font color="#0000FF">private</font></b> Action oppositeAction<font color="#990000">;</font>
+<font color="#000000">46: </font><font color="#FF0000">}</font>
+</tt></pre>

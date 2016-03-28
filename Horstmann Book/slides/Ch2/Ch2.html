@@ -1,0 +1,630 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+  <title>Horstmann Chapter 2</title></head>
+
+<body>
+<h2>Object-Oriented Design &amp; Patterns</h2>
+<h4>Cay S. Horstmann</h4>
+<h3>Chapter 2</h3>
+<h3>The Object-Oriented Design Process<br />
+</h3>
+<img alt="" src="images/oodp2.jpg" height="500" width="404" />
+<h2>Chapter Topics</h2>
+<ul>
+  <li>From Problem to Code </li>
+  <li>The Object and Class Concepts </li>
+  <li>Identifying Classes </li>
+  <li>Identifying Responsibilities </li>
+  <li>Relationships Between Classes<br />
+  </li>
+  <li>Use Cases<br />
+  </li>
+  <li>CRC Cards </li>
+  <li>UML Class Diagrams </li>
+  <li>Sequence Diagrams </li>
+  <li>State Diagrams<br />
+  </li>
+  <li>Using <tt>javadoc</tt> for Design Documentation<br />
+  </li>
+  <li>Case Study: A Voice Mail System </li>
+</ul>
+<h2>From Problem to Code</h2>
+Three Phases:<br />
+<ul>
+  <li>Analysis </li>
+  <li>Design </li>
+  <li>Implementation </li>
+</ul>
+Case Study: Voice Mail System<br />
+<h2>Analysis Phase</h2>
+Functional Specification<br />
+<ul>
+  <li>Completely defines tasks to be solved </li>
+  <li>Free from internal contradictions </li>
+  <li>Readable both by domain experts and software developers </li>
+  <li>Reviewable by diverse interested parties </li>
+  <li>Testable against reality </li>
+</ul>
+<h2>Design Phase</h2>
+Goals<br />
+<ul>
+  <li>Identify classes </li>
+  <li>Identify behavior of classes </li>
+  <li>Identify relationships among classes </li>
+</ul>
+Artifacts<br />
+<ul>
+  <li>Textual description of classes and key methods </li>
+  <li>Diagrams of class relationships </li>
+  <li>Diagrams of important usage scenarios </li>
+  <li>State diagrams for objects with rich state </li>
+</ul>
+<h2>Implementation Phase</h2>
+<ul>
+  <li>Implement and test classes </li>
+  <li>Combine classes into program </li>
+  <li>Avoid "big bang" integration </li>
+  <li>Prototypes can be very useful </li>
+</ul>
+<h2>Object and Class Concepts</h2>
+<ul>
+  <li>Object: Three characteristic concepts 
+
+    <ul>
+      <li>State </li>
+      <li>Behavior </li>
+      <li>Identity </li>
+    </ul>
+  </li>
+  <li>Class: Collection of similar objects </li>
+</ul>
+<h2>Identifying Classes</h2>
+Rule of thumb: Look for <i>nouns</i> in problem description<br />
+<ul>
+  <li><tt>Mailbox</tt> </li>
+  <li><tt>Message</tt> </li>
+  <li><tt>User</tt> </li>
+  <li><tt>Passcode</tt> </li>
+  <li><tt>Extension</tt> </li>
+  <li><tt>Menu</tt> </li>
+</ul>
+<h2>Identifying Classes</h2>
+Focus on <i>concepts</i>, not implementation<br />
+<ul>
+  <li><tt>MessageQueue</tt> stores messages </li>
+  <li>Don't worry yet how the queue is implemented<br />
+  </li>
+</ul>
+<h2>Categories of Classes</h2>
+<ul>
+  <li>Tangible Things </li>
+  <li>Agents </li>
+  <li>Events and Transactions </li>
+  <li>Users and Roles </li>
+  <li>Systems </li>
+  <li>System interfaces and devices </li>
+  <li>Foundational Classes </li>
+</ul>
+<h2>Identifying Responsibilities</h2>
+Rule of thumb: Look for <i>verbs</i> in problem description<br />
+<br />
+Behavior of <tt>MessageQueue</tt>:<br />
+<ul>
+  <li>Add message to tail </li>
+  <li>Remove message from head </li>
+  <li>Test whether queue is empty </li>
+</ul>
+<h2>Responsibilities</h2>
+<ul>
+  <li>OO Principle: Every operation is the responsibility of a single
+class </li>
+  <li>Example: Add message to mailbox </li>
+  <li>Who is responsible: <tt>Message</tt> or <tt>Mailbox</tt>? </li>
+</ul>
+<h2>Class Relationships<br />
+</h2>
+<ul>
+  <li>Dependency ("uses") </li>
+  <li>Aggregation ("has") </li>
+  <li>Inheritance ("is") </li>
+</ul>
+<h2>Dependency Relationship</h2>
+<ul>
+  <li><tt>C</tt>&nbsp; depends on <tt>D</tt>: Method of <tt>C</tt>
+manipulates objects of <tt>D</tt> </li>
+  <li>Example: <tt>Mailbox</tt> depends on <tt>Message</tt> </li>
+  <li>If <tt>C</tt> <i>doesn't use</i> <tt>D</tt>, then <tt>C</tt>
+can be developed without knowing about <tt>D</tt> </li>
+</ul>
+<h2>Coupling</h2>
+<ul>
+  <li>Minimize dependency: reduce <i>coupling</i> </li>
+  <li>Example: Replace<br />
+    <pre>void print() // prints to System.out<br /></pre>
+with<br />
+    <pre>String getText() // can print anywhere<br /></pre>
+  </li>
+  <li>Removes dependence on <tt>System</tt>, <tt>PrintStream</tt> </li>
+</ul>
+<h2>Aggregation</h2>
+<ul>
+  <li>Object of a class contains objects of another class </li>
+  <li>Example: <tt>MessageQueue</tt> aggregates <tt>Messages</tt> </li>
+  <li>Example: <tt>Mailbox</tt> aggregates <tt>MessageQueue</tt> </li>
+  <li>Implemented through instance fields </li>
+</ul>
+<h2>Multiplicities</h2>
+<ul>
+  <li>1 : 1 or 1 : 0...1 relationship:<br />
+    <pre>public class Mailbox<br />{<br />   . . .<br />   private Greeting myGreeting;<br />}<br /></pre>
+  </li>
+  <li>1 : <i>n</i> relationship:<br />
+    <pre>public class MessageQueue<br />{<br />   . . .<br />   private ArrayList&lt;Message&gt; elements;<br />}<br /></pre>
+  </li>
+</ul>
+<h2>Inheritance</h2>
+<ul>
+  <li>More general class = superclass </li>
+  <li>More specialized class = subclass </li>
+  <li>Subclass supports all method interfaces of superclass (but
+implementations may differ) </li>
+  <li>Subclass may have added methods, added state </li>
+  <li>Subclass inherits from superclass </li>
+  <li>Example: <tt>ForwardedMessage</tt> inherits from <tt>Message</tt>
+  </li>
+  <li>Example: <tt>Greeting</tt> <i>does not</i> inherit from <tt>Message</tt>
+(Can't store greetings in mailbox) </li>
+</ul>
+<h2>Use Cases</h2>
+<ul>
+  <li>Analysis technique </li>
+  <li>Each <i>use case</i> focuses on a specific scenario </li>
+  <li>Use case = sequence of <i>actions</i> </li>
+  <li>Action = interaction between <i>actor</i> and computer system<br />
+  </li>
+  <li>Each action yields a <i>result</i> </li>
+  <li>Each result has a <i>value</i> to one of the actors </li>
+  <li>Use <i>variations</i> for exceptional situations </li>
+</ul>
+<h2>Sample Use Case</h2>
+<h3>Leave a Message</h3>
+<ol>
+  <li>Caller dials main number of voice mail system </li>
+  <li>System speaks prompt<br />
+    <pre>Enter mailbox number followed by #<br /></pre>
+  </li>
+  <li>User types extension number </li>
+  <li>System speaks<br />
+    <pre>You have reached mailbox xxxx. Please leave a message now<br /></pre>
+  </li>
+  <li>Caller speaks message </li>
+  <li>Caller hangs up </li>
+  <li>System places message in mailbox </li>
+</ol>
+<h2>Sample Use Case -- Variations</h2>
+<h3>Variation #1<br />
+</h3>
+1.1. In step 3, user enters invalid extension number<br />
+1.2. Voice mail system speaks<br />
+<pre>     You have typed an invalid mailbox number.<br /></pre>
+1.3. Continue with step 2.<br />
+<h3>Variation #2</h3>
+2.1. After step 4, caller hangs up instead of speaking message<br />
+2.3. Voice mail system discards empty message<br />
+<br />
+<h2>CRC Cards</h2>
+<ul>
+  <li>CRC = Classes, Responsibilities, Collaborators<br />
+  </li>
+  <li>Developed by Beck and Cunningham </li>
+  <li>Use an index card for each class </li>
+  <li>Class name on top of card </li>
+  <li>Responsibilities on left </li>
+  <li>Collaborators on right </li>
+</ul>
+<h2>CRC Cards</h2>
+<img src="images/Ch2_02.jpg" title="" alt="" style="width: 563px; height: 338px;" /><br />
+<h2>CRC Cards</h2>
+<ul>
+  <li>Responsibilities should be <i>high level</i> </li>
+  <li>1 - 3 responsibilities per card </li>
+  <li>Collaborators are for the class, not for each responsibility </li>
+</ul>
+<h2>Walkthroughs<br />
+</h2>
+<ul>
+  <li>Use case: "Leave a message" </li>
+  <li>Caller connects to voice mail system </li>
+  <li>Caller dials extension number </li>
+  <li>"Someone" must locate mailbox </li>
+  <li>Neither <tt>Mailbox</tt> nor <tt>Message</tt> can do this </li>
+  <li>New class: <tt>MailSystem</tt> </li>
+  <li>Responsibility: manage mailboxes </li>
+</ul>
+<h2>Walkthroughs</h2>
+<img src="images/Ch2_03.jpg" title="" alt="." style="width: 563px; height: 338px;" /><br />
+<br />
+<br />
+<h2>UML Diagrams</h2>
+<ul>
+  <li>UML = Unified Modeling Language </li>
+  <li>Unifies notations developed by the "3 Amigos" Booch, Rumbaugh,
+Jacobson<br />
+  </li>
+  <li>Many diagram types </li>
+  <li>We'll use three types: 
+
+    <ul>
+      <li>Class Diagrams </li>
+      <li>Sequence Diagrams </li>
+      <li>State Diagrams </li>
+    </ul>
+  </li>
+</ul>
+<h2>Class Diagrams</h2>
+<ul>
+  <li>Rectangle with class name </li>
+  <li>Optional compartments 
+
+    <ul>
+      <li>Attributes </li>
+      <li>Methods </li>
+    </ul>
+  </li>
+  <li>Include only key attributes and methods </li>
+</ul>
+<h2>Class Diagrams<br />
+</h2>
+<img src="images/Ch2_04.jpg" title="" alt="." style="width: 681px; height: 217px;" /><br />
+<h2>Class Relationships</h2>
+<img src="images/Ch2_05.jpg" title="" alt="." style="width: 401px; height: 502px;" /><br />
+<h2>Multiplicities<br />
+</h2>
+<ul>
+  <li>any number (0 or more): <tt>*</tt> </li>
+  <li>one or more: <tt>1..*</tt> </li>
+  <li>zero or one: <tt>0..1</tt> </li>
+  <li>exactly one: <tt>1</tt> </li>
+</ul>
+<img src="images/Ch2_06.jpg" title="" alt="." style="width: 544px; height: 100px;" /><br />
+<h2>Composition</h2>
+<ul>
+  <li>Special form of aggregation </li>
+  <li>Contained objects don't exist outside container </li>
+  <li>Example: message queues permanently contained in mail box </li>
+</ul>
+<img src="images/Ch2_07.jpg" title="" alt="." style="width: 544px; height: 100px;" /><br />
+<br />
+<h2>Association</h2>
+<ul>
+  <li>Some designers don't like aggregation </li>
+  <li>More general association relationship </li>
+  <li>Association can have roles </li>
+</ul>
+<img src="images/Ch2_08.jpg" title="" alt="." style="width: 641px; height: 100px;" /><br />
+<h2>Association</h2>
+<ul>
+  <li>Some associations are bidirectional<br />
+Can navigate from either class to the other </li>
+  <li>Example: Course has set of students, student has set of courses<br />
+  </li>
+  <li>Some associations are directed<br />
+Navigation is unidirectional </li>
+  <li>Example: Message doesn't know about message queue containing it<br />
+  </li>
+</ul>
+<img src="images/Ch2_09.jpg" title="" alt="." style="width: 544px; height: 100px;" /><br />
+<br />
+<h2>Interface Types<br />
+</h2>
+<ul>
+  <li>Interface type describes a set of methods </li>
+  <li>No implementation, no state </li>
+  <li>Class implements interface if it implements its methods<br />
+  </li>
+  <li>In UML, use stereotype &laquo;interface&raquo; </li>
+</ul>
+<img src="images/Ch2_10.jpg" title="" alt="." style="width: 577px; height: 100px;" /><br />
+<br />
+<h2>Tips</h2>
+<ul>
+  <li>Use UML to inform, not to impress<br />
+  </li>
+  <li>Don't draw a single monster diagram </li>
+  <li>Each diagram must have a specific purpose </li>
+  <li>Omit inessential details<br />
+  </li>
+</ul>
+<h2>Sequence Diagrams<br />
+</h2>
+<ul>
+  <li>Each diagram shows dynamics of scenario </li>
+  <li>Object diagram: class name <u>underlined</u> </li>
+</ul>
+<img src="images/Ch2_11.jpg" title="" alt="," style="width: 461px; height: 272px;" /><br />
+<h2><br />
+Self call</h2>
+<br />
+<p><img src="images/Ch2_12.jpg" title="" alt="." style="width: 263px; height: 272px;" /></p>
+<h2>Object Construction<br />
+</h2>
+<img src="images/Ch2_13.jpg" title="" alt="." style="width: 531px; height: 272px;" />
+<h2>State Diagram</h2>
+<ul>
+  <li>Use for classes whose objects have interesting states </li>
+</ul>
+<img src="images/Ch2_14.jpg" title="" alt="." style="width: 261px; height: 466px;" /><br />
+<h2>Design Documentation</h2>
+<ul>
+  <li>Recommendation: Use Javadoc comments </li>
+  <li>Leave methods blank<br />
+    <pre>/**<br />   Adds a message to the end of the new messages.<br />   @param aMessage a message<br />*/<br />public void addMessage(Message aMessage)<br />{<br />}<br /></pre>
+  </li>
+  <li>Don't compile file, just run Javadoc </li>
+  <li>Makes a good starting point for code later<br />
+  </li>
+</ul>
+<h2>Case Study: Voice Mail System</h2>
+<ul>
+  <li>Use text for voice, phone keys, hangup<br />
+  </li>
+  <li><tt>1 2 ... 0 #</tt> on a single line means key<br />
+  </li>
+  <li><tt>H</tt> on a single line means "hang up" </li>
+  <li>All other inputs mean voice </li>
+  <li>In GUI program, will use buttons for keys (see ch. 5) </li>
+</ul>
+<h2>Use Case: Reach an Extension</h2>
+<ol>
+  <li>User dials main number of system </li>
+  <li>System speaks prompt<br />
+    <pre>Enter mailbox number followed by #<br /></pre>
+  </li>
+  <li>User types extension number </li>
+  <li>System speaks<br />
+    <pre>You have reached mailbox xxxx. Please leave a message now<br /></pre>
+  </li>
+</ol>
+<h2>Use Case: Leave a Message</h2>
+<ol>
+  <li>Caller carries out <b>Reach an Extension</b> </li>
+  <li>Caller speaks message </li>
+  <li>Caller hangs up </li>
+  <li>System places message in mailbox<br />
+  </li>
+</ol>
+<h2>Use Case: Log in</h2>
+<ol>
+  <li>Mailbox owner carries out <b>Reach an Extension</b> </li>
+  <li>Mailbox owner types password and <tt>#<br />
+    </tt> (Default password = mailbox number. To change, see <b>Change
+the Passcode</b>) </li>
+  <li>System plays mailbox menu:<br />
+    <pre>Enter 1 to retrieve your messages.<br />Enter 2 to change your passcode.<br />Enter 3 to change your greeting.<br /></pre>
+  </li>
+</ol>
+<h2>Use Case: Retrieve Messages</h2>
+<ol>
+  <li>Mailbox owner carries out <b>Log in</b> </li>
+  <li>Mailbox owner selects "retrieve messages" menu option </li>
+  <li>System plays message menu:<br />
+    <pre>Press 1 to listen to the current message<br />Press 2 to delete the current message<br />Press 3 to save the current message<br />Press 4 to return to the mailbox menu<br /></pre>
+  </li>
+  <li>Mailbox owner selects "listen to current message"<br />
+  </li>
+  <li>System plays current new message, or, if no more new messages,
+current old message.<br />
+Note: Message is played, not removed from queue </li>
+  <li>System plays message menu </li>
+  <li>User selects "delete current message". Message is removed. </li>
+  <li>Continue with step 3. </li>
+</ol>
+<h2>Use Case: Retrieve Messages</h2>
+<h3>Variation #1</h3>
+1.1. Start at Step 6<br />
+1.2. User selects "save current message".<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Message is removed from new queue
+and appended to old queue<br />
+1.3. Continue with step 3.<br />
+<h2>Use Case: Change the Greeting</h2>
+<ol>
+  <li>Mailbox owner carries out <b>Log in</b> </li>
+  <li>Mailbox owner selects "change greeting" menu option </li>
+  <li>Mailbox owner speaks new greeting </li>
+  <li>Mailbox owner presses <tt>#</tt> </li>
+  <li>System sets new greeting </li>
+</ol>
+<h2>Use Case: Change the Greeting</h2>
+<h3>Variation #1: Hang up before confirmation</h3>
+1.1. Start at step 3.<br />
+1.2. Mailbox owner hangs up.<br />
+1.3. System keeps old greeting.<br />
+<h2>Use Case: Change the Passcode</h2>
+<ol>
+  <li>Mailbox owner carries out <b>Log in</b> </li>
+  <li>Mailbox owner selects "change passcode" menu option </li>
+  <li>Mailbox owner dials new passcode </li>
+  <li>Mailbox owner presses <tt>#</tt> </li>
+  <li>System sets new passcode </li>
+</ol>
+<h2>Use Case: Change the Passcode</h2>
+<h3>Variation #1: Hang up before confirmation</h3>
+1.1. Start at step 3.<br />
+1.2. Mailbox owner hangs up.<br />
+1.3. System keeps old passcode.<br />
+<h2>CRC Cards for Voice Mail System</h2>
+Some obvious classes<br />
+<ul>
+  <li><tt>Mailbox</tt> </li>
+  <li><tt>Message</tt> </li>
+  <li><tt>MailSystem</tt> </li>
+</ul>
+<h2>Initial CRC Cards: Mailbox<br />
+</h2>
+<img src="images/2_un01.jpg" title="" alt="." style="width: 563px; height: 338px;" /><br />
+<br />
+<h2>Initial CRC Cards: MessageQueue</h2>
+<img src="images/2_un02.jpg" title="" alt="." style="width: 563px; height: 338px;" /><br />
+<br />
+<h2>Initial CRC Cards: MailSystem<br />
+</h2>
+<img src="images/2_un03.jpg" title="" alt="." style="width: 563px; height: 338px;" /><br />
+<br />
+<h2>Telephone</h2>
+<ul>
+  <li>Who interacts with user?<br />
+  </li>
+  <li>Telephone takes button presses, voice input </li>
+  <li>Telephone speaks output to user </li>
+</ul>
+<h2>Telephone<br />
+</h2>
+<img src="images/2_un04.jpg" title="" alt="." style="width: 563px; height: 338px;" /><br />
+<h2>Connection</h2>
+<ul>
+  <li>With whom does Telephone communicate </li>
+  <li>With MailSystem? </li>
+  <li>What if there are multiple telephones? </li>
+  <li>Each connection can be in different state<br />
+(dialing, recording, retrieving messages,...)<br />
+  </li>
+  <li>Should mail system keep track of all connection states? </li>
+  <li>Better to give this responsibility to a new class </li>
+</ul>
+<h2>Connection</h2>
+<img src="images/2_un05.jpg" title="" alt="." style="width: 563px; height: 338px;" /><br />
+<br />
+<h2>Analyze Use Case: Leave a message</h2>
+<ol>
+  <li>User dials extension. <tt>Telephone</tt> sends number to <tt>Connection</tt><br />
+(Add collaborator&nbsp;<tt></tt><tt>Connection</tt> to <tt>Telephone</tt>) </li>
+  <li><tt>Connection</tt> asks <tt>MailSystem</tt> to find matching <tt>Mailbox</tt>
+  </li>
+  <li><tt>Connection</tt> asks <tt>Mailbox</tt> for greeting<br />
+(Add responsibility "manage greeting" to <tt>Mailbox</tt>,<br />
+add collaborator <tt>Mailbox</tt> to <tt>Connection</tt>) </li>
+  <li><tt>Connection</tt> asks <tt>Telephone</tt> to play greeting </li>
+  <li>User speaks message. <tt>Telephone</tt> asks <tt>Connection</tt>
+to record it.<br />
+(Add responsibility "record voice input" to <tt>Connection</tt>) </li>
+  <li>User hangs up. <tt>Telephone</tt> notifies <tt>Connection.</tt>
+  </li>
+  <li><tt>Connection</tt> constructs <tt>Message<br />
+    </tt> (Add card for <tt>Message</tt> class,<br />
+add collaborator&nbsp; <tt>Message</tt> to <tt>Connection</tt>) </li>
+  <li><tt>Connection</tt> adds <tt>Message</tt> to <tt>Mailbox</tt><br />
+  </li>
+</ol>
+<h2>Result of Use Case Analysis<br />
+</h2>
+<img src="images/2_un06.jpg" title="" alt="." style="width: 563px; height: 338px;" /><br />
+<h2>Result of Use Case Analysis<br />
+</h2>
+<p><img src="images/2_un07.jpg" title="" alt="." style="width: 563px; height: 338px;" /></p>
+<h2>Result of Use Case Analysis<br />
+</h2>
+<p><img src="images/2_un07a.jpg" title="" alt="." style="width: 563px; height: 338px;" /></p>
+<h2>Result of Use Case Analysis<br />
+</h2>
+<p><img src="images/2_un08.jpg" title="" alt="." style="width: 606px; height: 338px;" /><br />
+</p>
+<h2>Analyse Use Case: Retrieve messages</h2>
+<ol>
+  <li>User types in passcode. <tt>Telephone</tt> notifies <tt>Connection</tt>
+  </li>
+  <li><tt>Connection</tt> asks <tt>Mailbox</tt> to check passcode.<br />
+(Add responsibility "manage passcode" to <tt>Mailbox</tt>) </li>
+  <li><tt>Connection</tt> sets current mailbox and asks <tt>Telephone</tt>
+to speak menu </li>
+  <li>User selects "retrieve messages". <tt>Telephone</tt> passes key
+to <tt>Connection</tt> </li>
+  <li><tt>Connection</tt> asks <tt>Telephone</tt> to speak menu </li>
+  <li>User selects "listen to current message". <tt>Telephone</tt>
+passes key to <tt>Connection</tt> </li>
+  <li><tt>Connection</tt> gets first message from current mailbox.<br />
+(Add "retrieve messages" to responsibility of <tt>Mailbox</tt>).<br />
+    <tt>Connection</tt> asks <tt>Telephone</tt> to speak message </li>
+  <li><tt>Connection</tt> asks <tt>Telephone</tt> to speak menu </li>
+  <li>User selects "save current message". <tt>Telephone</tt> passes
+key to <tt>Connection</tt> </li>
+  <li><tt>Connection</tt> tells <tt>Mailbox</tt> to save message<br />
+(Modify responsibility of <tt>Mailbox</tt> to "retrieve,save,delete
+messages") </li>
+  <li><tt>Connection</tt> asks <tt>Telephone</tt> to speak menu </li>
+</ol>
+<h2>Result of Use Case Analysis</h2>
+<img src="images/2_un09.jpg" title="" alt="." style="width: 563px; height: 338px;" /><br />
+<br />
+<h2>CRC Summary</h2>
+<ul>
+  <li>One card per class </li>
+  <li>Responsibilities at high level </li>
+  <li>Use scenario walkthroughs to fill in cards </li>
+  <li>Usually, the first design isn't perfect.<br />
+(You just saw the author's third design of the mail system) </li>
+</ul>
+<h2>UML Class Diagram for Mail System</h2>
+<ul>
+  <li>CRC collaborators yield dependencies </li>
+  <li><tt>Mailbox</tt> depends on <tt>MessageQueue</tt> </li>
+  <li><tt>Message</tt> doesn't depends on <tt>Mailbox</tt> </li>
+  <li><tt>Connection</tt> depends on <tt>Telephone, MailSystem,
+Message, Mailbox</tt> </li>
+  <li><tt>Telephone</tt> depends on <tt>Connection</tt><br />
+  </li>
+</ul>
+<h2>Dependency Relationships</h2>
+<img src="images/Ch2_15.jpg" title="" alt="." style="width: 715px; height: 359px;" /><br />
+<h2>Aggregation Relationships<br />
+</h2>
+<ul>
+  <li>A mail system has mailboxes </li>
+  <li>A mailbox has two message queues </li>
+  <li>A message queue has some number of messages </li>
+  <li>A connection has a current mailbox.<br />
+  </li>
+  <li>A connection has references to a mailsystem and a telephone </li>
+</ul>
+<h2>UML Class Diagram for Voice Mail System<br />
+</h2>
+<img src="images/Ch2_16.jpg" title="" alt="." style="width: 719px; height: 359px;" /><br />
+<h2>Sequence Diagram for Use Case: Leave&nbsp; a message</h2>
+<img src="images/Ch2_17.jpg" title="" alt="." style="width: 596px; height: 359px;" /><br />
+<br />
+<h2>Interpreting a Sequence Diagram</h2>
+<ul>
+  <li>Each key press results in separate call to <tt>dial</tt>, but
+only one is shown<br />
+  </li>
+  <li>Connection wants to get greeting to play </li>
+  <li>Each mailbox knows its greeting<br />
+  </li>
+  <li>Connection must find mailbox object:<br />
+Call <tt>findMailbox</tt> on <tt>MailSystem</tt> object </li>
+  <li>Parameters are not displayed (e.g. mailbox number) </li>
+  <li>Return values are not displayed (e.g. found mailbox) </li>
+  <li>Note that connection holds on to that mailbox over multiple calls<br />
+  </li>
+</ul>
+<h2>Sequence Diagram for Use Case: Retrieve messages</h2>
+<img src="images/Ch2_18.jpg" title="" alt="." style="width: 432px; height: 359px;" /><br />
+<h2>Connection State Diagram<br />
+</h2>
+<img src="images/Ch2_19.jpg" title="" alt="." /><br />
+<br />
+<h2>Java Implementation</h2>
+<ul>
+  <li><a href="code/mail/Message.java.html">Ch2/mail/Message.java</a> </li>
+  <li><a href="code/mail/MessageQueue.java.html">Ch2/mail/MessageQueue.java</a>
+  </li>
+  <li><a href="code/mail/Mailbox.java.html">Ch2/mail/Mailbox.java</a> </li>
+  <li><a href="code/mail/Connection.java.html">Ch2/mail/Connection.java</a>
+  </li>
+  <li><a href="code/mail/MailSystem.java.html">Ch2/mail/MailSystem.java</a>
+  </li>
+  <li><a href="code/mail/Telephone.java.html">Ch2/mail/Telephone.java</a>
+  </li>
+  <li><a href="code/mail/MailSystemTester.java.html">Ch2/mail/MailSystemTester.java</a><br />
+  </li>
+</ul>
+</body></html>

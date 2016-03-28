@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Horstmann Chapter 9</title>
+</head>
+
+<body>
+<center><small><a href="slide035.html">previous</a> | 
+<a href="slide001.html">start</a></small></center>
+<hr>
+<h2>Pausing and Running the Animation</h2>
+<ul>
+  <li>Want to pause animation until "Run" or "Step" button is clicked</li>
+  <li>Need to coordinate UI thread, animation thread</li>
+  <li>Try to use built-in thread-safe construct in <tt>java.util.concurrent</tt></li>
+  <li>Trick: Use a blocking queue</li>
+  <li>Button click adds string<cite> </cite>"Run" or "Step" to queue</li>
+  <li>Animation thread calls <tt>take</tt> on the&nbsp;queue, blocks
+if no string inserted</li>
+  <li><a href="code/animation2/Sorter.java.html">Ch9/animation2/Sorter.java</a></li>
+  <li><a href="code/animation2/AnimationTester.java.html">Ch9/animation2/AnimationTester.java</a></li>
+</ul>
+
+<hr>
+<center><small><a href="slide035.html">previous</a> | 
+<a href="slide001.html">start</a></small></center> 
+
+</body>
+</html>

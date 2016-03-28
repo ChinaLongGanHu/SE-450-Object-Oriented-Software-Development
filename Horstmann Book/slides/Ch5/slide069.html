@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+  <meta http-equiv="Content-Type" content="" />
+  <title>Horstmann Chapter 5</title></head>
+
+
+<body>
+<div onclick="document.location='slide070.html'">
+<center><small><a href="slide068.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide070.html">next</a></small></center>
+<hr></div>
+<h2>Iterators</h2>
+<ul>
+  <li>Use standard <tt>Iterator</tt> interface type<br />
+    <tt>public interface Iterator&lt;LineItem&gt;</tt><br style="font-family: monospace;" />
+    <tt>{</tt><br style="font-family: monospace;" />
+    <tt>&nbsp;&nbsp; boolean hasNext();</tt><br style="font-family: monospace;" />
+    <tt>&nbsp;&nbsp; LineItem next();</tt><br style="font-family: monospace;" />
+    <tt>&nbsp;&nbsp; void remove();</tt><br style="font-family: monospace;" />
+    <tt>}</tt></li>
+  <li><tt><tt>remove</tt></tt> is "optional operation" (see ch. 8)</li>
+  <li>implement to throw <tt>UnsupportedException</tt></li>
+  <li>implement <tt>hasNext/next</tt> manually to show inner workings</li>
+  <li><a href="code/invoice/Invoice.java.html">Ch5/invoice/Invoice.java</a></li>
+</ul>
+
+<div onclick="document.location='slide070.html'"><hr>
+<center><small><a href="slide068.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide070.html">next</a></small></center>
+</div>
+</body>
+</html>

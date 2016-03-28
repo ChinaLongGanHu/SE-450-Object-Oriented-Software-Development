@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+  
+  <meta name="generator" content="HTML Tidy for Linux/x86 (vers 12 April 2005), see www.w3.org" />
+
+  
+  <title>Horstmann Chapter 3</title>
+</head>
+
+
+
+<body>
+<div onclick="document.location='slide037.html'">
+<center><small><a href="slide035.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide037.html">next</a></small></center>
+<hr></div>
+<h2>Clarity<br />
+
+</h2>
+
+<ul>
+
+  <li>Iterator <i>between</i> elements </li>
+
+  <li>Like blinking caret in word processor </li>
+
+  <li><tt>add</tt> adds to the left of iterator (like word processor): </li>
+
+  <li>Add X before B:<br />
+
+    
+    <pre>ListIterator&lt;String&gt; iterator = countries.listIterator(); // |ABC <br />iterator.next(); // A|BC <br />iterator.add("France"); // AX|BC <br /></pre>
+
+  </li>
+
+  <li>To remove first two elements, you can't just "backspace" </li>
+
+  <li><tt>remove</tt> does <i>not</i> remove element to the left of
+iterator </li>
+
+  <li>From API documentation:<br />
+
+Removes from the list the last element that was returned by next or
+previous. This call can only be made once per call to next or previous.
+It can be made only if add has not been called after the last call to
+next or previous.&nbsp;<br />
+
+  </li>
+
+  <li>Huh?<br />
+
+  </li>
+
+</ul>
+
+
+<div onclick="document.location='slide037.html'"><hr>
+<center><small><a href="slide035.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide037.html">next</a></small></center>
+</div>
+</body>
+</html>

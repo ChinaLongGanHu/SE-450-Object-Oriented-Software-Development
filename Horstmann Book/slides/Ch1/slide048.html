@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="generator"
+ content="HTML Tidy for Linux/x86 (vers 12 April 2005), see www.w3.org" />
+  <title>Horstmann Chapter 1</title>
+</head>
+
+<body>
+<div onclick="document.location='slide049.html'">
+<center><small><a href="slide047.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide049.html">next</a></small></center>
+<hr></div>
+<h2>Static Methods</h2>
+<ul>
+  <li>Don't operate on objects </li>
+  <li>Example: <tt>Math.sqrt</tt>
+  </li>
+  <li>Example: <i>factory
+method<br />
+    </i>
+    <pre>public static Greeter getRandomInstance()<br />{<br /> if (generator.nextBoolean()) // note: generator is static field<br /> return new Greeter("Mars");<br /> else<br /> return new Greeter("Venus");<br />}<br /></pre>
+  </li>
+  <li>Invoke through class:<br />
+    <pre>Greeter g = Greeter.getRandomInstance();<br /></pre>
+  </li>
+  <li>Static fields and methods
+should be rare in OO programs </li>
+</ul>
+
+<div onclick="document.location='slide049.html'"><hr>
+<center><small><a href="slide047.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide049.html">next</a></small></center>
+</div>
+</body>
+</html>

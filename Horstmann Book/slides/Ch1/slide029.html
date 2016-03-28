@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="generator"
+ content="HTML Tidy for Linux/x86 (vers 12 April 2005), see www.w3.org" />
+  <title>Horstmann Chapter 1</title>
+</head>
+
+<body>
+<div onclick="document.location='slide030.html'">
+<center><small><a href="slide028.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide030.html">next</a></small></center>
+<hr></div>
+<h2>Declaring Checked Exceptions</h2>
+<ul>
+  <li>Example: Opening a file may
+throw <tt>FileNotFoundException</tt>:<br />
+    <pre>public void read(String filename) <b>throws FileNotFoundException</b><br />{<br /> FileReader reader = new FileReader(filename);<br /> . . .<br />}<br /></pre>
+  </li>
+  <li>Can declare multiple
+exceptions<br />
+    <pre>public void read(String filename)<br /><b> throws IOException, ClassNotFoundException<br /></b>public static void main(String[] args)<br /><b> throws IOException, ClassNotFoundException</b>
+    </pre>
+  </li>
+</ul>
+
+<div onclick="document.location='slide030.html'"><hr>
+<center><small><a href="slide028.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide030.html">next</a></small></center>
+</div>
+</body>
+</html>

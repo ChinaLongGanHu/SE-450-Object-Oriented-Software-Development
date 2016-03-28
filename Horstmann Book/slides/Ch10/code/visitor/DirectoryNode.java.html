@@ -1,0 +1,34 @@
+<pre><tt><font color="#000000">01: </font><b><font color="#000080">import</font></b> java<font color="#990000">.</font>io<font color="#990000">.</font><font color="#990000">*</font><font color="#990000">;</font>
+<font color="#000000">02: </font>
+<font color="#000000">03: </font><b><font color="#0000FF">public</font></b> <b><font color="#0000FF">class</font></b> DirectoryNode <b><font color="#0000FF">implements</font></b> FileSystemNode
+<font color="#000000">04: </font><font color="#FF0000">{</font>
+<font color="#000000">05: </font>   <b><font color="#0000FF">public</font></b> <b><font color="#000000">DirectoryNode</font></b><font color="#990000">(</font>File directory<font color="#990000">)</font>
+<font color="#000000">06: </font>   <font color="#FF0000">{</font>
+<font color="#000000">07: </font>      <b><font color="#0000FF">this</font></b><font color="#990000">.</font>directory <font color="#990000">=</font> directory<font color="#990000">;</font>
+<font color="#000000">08: </font>   <font color="#FF0000">}</font>
+<font color="#000000">09: </font>
+<font color="#000000">10: </font>   <b><font color="#0000FF">public</font></b> <font color="#009900">void</font> <b><font color="#000000">accept</font></b><font color="#990000">(</font>FileSystemVisitor v<font color="#990000">)</font>
+<font color="#000000">11: </font>   <font color="#FF0000">{</font>
+<font color="#000000">12: </font>      v<font color="#990000">.</font><b><font color="#000000">visitDirectoryNode</font></b><font color="#990000">(</font><b><font color="#0000FF">this</font></b><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">13: </font>   <font color="#FF0000">}</font>
+<font color="#000000">14: </font>
+<font color="#000000">15: </font>   <b><font color="#0000FF">public</font></b> File <b><font color="#000000">getDirectory</font></b><font color="#990000">(</font><font color="#990000">)</font> <font color="#FF0000">{</font> <b><font color="#0000FF">return</font></b> directory<font color="#990000">;</font> <font color="#FF0000">}</font>
+<font color="#000000">16: </font>
+<font color="#000000">17: </font>   <b><font color="#0000FF">public</font></b> FileSystemNode<font color="#990000">[</font><font color="#990000">]</font> <b><font color="#000000">getChildren</font></b><font color="#990000">(</font><font color="#990000">)</font>
+<font color="#000000">18: </font>   <font color="#FF0000">{</font>
+<font color="#000000">19: </font>      File<font color="#990000">[</font><font color="#990000">]</font> files <font color="#990000">=</font> directory<font color="#990000">.</font><b><font color="#000000">listFiles</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">20: </font>      FileSystemNode<font color="#990000">[</font><font color="#990000">]</font> children <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> FileSystemNode<font color="#990000">[</font>files<font color="#990000">.</font>length<font color="#990000">]</font><font color="#990000">;</font>
+<font color="#000000">21: </font>      <b><font color="#0000FF">for</font></b> <font color="#990000">(</font><font color="#009900">int</font> i <font color="#990000">=</font> <font color="#993399">0</font><font color="#990000">;</font> i <font color="#990000">&lt;</font> files<font color="#990000">.</font>length<font color="#990000">;</font> i<font color="#990000">+</font><font color="#990000">+</font><font color="#990000">)</font>
+<font color="#000000">22: </font>      <font color="#FF0000">{</font>
+<font color="#000000">23: </font>         File f <font color="#990000">=</font> files<font color="#990000">[</font>i<font color="#990000">]</font><font color="#990000">;</font>
+<font color="#000000">24: </font>         <b><font color="#0000FF">if</font></b> <font color="#990000">(</font>f<font color="#990000">.</font><b><font color="#000000">isDirectory</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">)</font>
+<font color="#000000">25: </font>            children<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> <b><font color="#000000">DirectoryNode</font></b><font color="#990000">(</font>f<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">26: </font>         <b><font color="#0000FF">else</font></b>
+<font color="#000000">27: </font>            children<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> <b><font color="#000000">FileNode</font></b><font color="#990000">(</font>f<font color="#990000">)</font><font color="#990000">;</font>
+<font color="#000000">28: </font>      <font color="#FF0000">}</font>
+<font color="#000000">29: </font>      <b><font color="#0000FF">return</font></b> children<font color="#990000">;</font>
+<font color="#000000">30: </font>   <font color="#FF0000">}</font>
+<font color="#000000">31: </font>
+<font color="#000000">32: </font>   <b><font color="#0000FF">private</font></b> File directory<font color="#990000">;</font>
+<font color="#000000">33: </font><font color="#FF0000">}</font>
+</tt></pre>

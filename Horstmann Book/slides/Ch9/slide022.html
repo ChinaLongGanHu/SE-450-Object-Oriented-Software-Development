@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Horstmann Chapter 9</title>
+</head>
+
+<body>
+<div onclick="document.location='slide023.html'">
+<center><small><a href="slide021.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide023.html">next</a></small></center>
+<hr></div>
+<h2>Race Condition Scenario</h2>
+<ul>
+  <li>First thread calls <tt>add</tt> and executes<br />
+    <tt>elements[tail] = anObject;</tt></li>
+  <li>First thread at end of time slice</li>
+  <li>Second thread calls <tt>add</tt> and executes<br />
+    <tt>elements[tail] = anObject;</tt><br />
+    <tt>tail++;</tt></li>
+  <li>Second thread at end of time slice</li>
+  <li>First thread executes<br />
+    <tt>tail++;</tt></li>
+</ul>
+
+<div onclick="document.location='slide023.html'"><hr>
+<center><small><a href="slide021.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide023.html">next</a></small></center>
+</div>
+</body>
+</html>

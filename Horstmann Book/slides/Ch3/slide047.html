@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+  
+  <meta name="generator" content="HTML Tidy for Linux/x86 (vers 12 April 2005), see www.w3.org" />
+
+  
+  <title>Horstmann Chapter 3</title>
+</head>
+
+
+
+<body>
+<div onclick="document.location='slide048.html'">
+<center><small><a href="slide046.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide048.html">next</a></small></center>
+<hr></div>
+<h2>Preconditions</h2>
+
+<ul>
+
+  <li>In circular array implementation, failure of <tt>remove</tt>
+precondition corrupts queue! </li>
+
+  <li>Bounded queue needs precondition for <tt>add</tt> </li>
+
+  <li>Naive approach:<br />
+
+    <tt>@precondition size() &lt; elements.length</tt> </li>
+
+  <li>Precondition should be checkable by caller </li>
+
+  <li>Better:<br />
+
+    <tt>@precondition size() &lt; getCapacity()</tt> </li>
+
+</ul>
+
+
+<div onclick="document.location='slide048.html'"><hr>
+<center><small><a href="slide046.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide048.html">next</a></small></center>
+</div>
+</body>
+</html>

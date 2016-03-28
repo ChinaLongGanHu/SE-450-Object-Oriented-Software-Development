@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="generator"
+ content="HTML Tidy for Linux/x86 (vers 12 April 2005), see www.w3.org">
+  <title>Horstmann Chapter 7</title>
+</head>
+
+<body>
+<div onclick="document.location='slide053.html'">
+<center><small><a href="slide051.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide053.html">next</a></small></center>
+<hr></div>
+<h2>Enumerating Constructors</h2>
+<ul>
+  <li>Print the names and parameter types of all&nbsp;<tt>Rectangle</tt><br>
+constructors:<br>
+    <pre>for (Constructor c : cons) <br>{ <br>   Class[] params = cc.getParameterTypes(); <br>   System.out.print("Rectangle(");<br>   boolean first = true; <br>   for (Class p : params) <br>   { <br>      if (first) first = false; else System.out.print(", "); <br>      System.out.print(p.getName()); <br>   } <br>   System.out.println(")"); <br>} <br></pre>
+  </li>
+  <li>Yields<br>
+    <pre>Rectangle() <br>Rectangle(java.awt.Rectangle) <br>Rectangle(int, int, int, int) <br>Rectangle(int, int) <br>Rectangle(java.awt.Point, java.awt.Dimension) <br>Rectangle(java.awt.Point) <br>Rectangle(java.awt.Dimension) <br><br></pre>
+  </li>
+</ul>
+
+<div onclick="document.location='slide053.html'"><hr>
+<center><small><a href="slide051.html">previous</a> | 
+<a href="slide001.html">start</a> | 
+<a href="slide053.html">next</a></small></center>
+</div>
+</body>
+</html>
